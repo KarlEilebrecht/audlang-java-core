@@ -7,7 +7,7 @@
 
 ----
 
-The package **erl** (external presentation layer) covers the parsing and reproduction (inline or pretty-print) of Audlang expressions with the full feature set of the Audlang expression.
+The package **erl** (external presentation layer) covers the parsing and reproduction (inline or pretty-print) of Audlang expressions with the full feature set defined by the [Audience Definition Language Specification (Audlang)](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#audience-definition-language-specification).
 
 ## Class overview
 
@@ -20,7 +20,7 @@ The package **erl** (external presentation layer) covers the parsing and reprodu
  * **[PlNegationExpression](PlNegationExpression.java)** can *negate* any simple or combined expression, either strict or non-strict (see [§5 Audlang Spec](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#5-negation))
  * **[PlSpecialSetExpression](PlSpecialSetExpression.java)** covers the two special cases `<ALL>` and `<NONE>` (see [§3.9 Audlang Spec](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#39-all-and-none))
  * **[PlCombinedExpression](PlCombinedExpression.java)** expresses a logical `AND`- resp. `OR`-combination of two or more expressions (see [§4 Audlang Spec](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#41-logical-and)).
- * **[PlCurbExpression](PlCurbExpression.java)** surrounds a *curbed OR* (see [§4 Audlang Spec](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#41-logical-and)).
+ * **[PlCurbExpression](PlCurbExpression.java)** surrounds a *OR* with a curb-bound (see [§4 Audlang Spec](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#41-logical-and)).
  * **[PlExpressionVisitor](PlExpressionVisitor.java)** is the specific visitor for PlExpressions. PlExpression is a *parameterized* implementation of AudlangExpression, so the `visit` method accepts this type of visitor.
  * **[PlExpressionDeserializer](PlExpressionDeserializer.java)** is a [Jackson](https://github.com/FasterXML/jackson)-specific implementation of a JSON-deserializer that allows having a generic set of expression members in a JSON list without a special sub-type marker. Instead we *probe* the type by checking for the existence of specific fields. Without this deserializer we could not load simple expressions and combined expressions contained side-by-side in the member list of a combined expression or a curbed OR.
 
