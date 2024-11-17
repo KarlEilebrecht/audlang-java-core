@@ -1,0 +1,157 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="type classes" id="5SNyKywJNXz974DP8J9P">
+    <mxGraphModel dx="1548" dy="1088" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;AdlType&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ name(): String&lt;br&gt;+ supportsContains: boolean&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ supportsLessThanGreaterThan: boolean&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getFormatter(): ArgValueFormatter&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getNativeTypeCaster(): NativeTypeCaster&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="380" y="320" width="250" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;ArgValueFormatter&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ format(String argName, String argValue, ...)&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="690" y="320" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-4" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;NativeTypeCaster&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ formatNativeTypeCase(...)&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="320" width="260" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;DefaultArgValueFormatter&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ NONE&lt;br&gt;+ STRING_IN_DOUBLE_QUOTES&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ STRING_IN_SINGLE_QUOTES&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ INTEGER&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DECIMAL&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ BOOL&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DATE&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="690" y="476.5" width="260" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-7" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0.5;entryY=0.997;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="mJGWW1hZhtJlUeTBFwOq-6" target="mJGWW1hZhtJlUeTBFwOq-3">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="570" y="470" as="sourcePoint" />
+            <mxPoint x="730" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;NativeEscaper&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ append(StringBuilder sb, char ch)&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="970" y="320" width="210" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;DefaultEscaper&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="970" y="476.5" width="210" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-13" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="mJGWW1hZhtJlUeTBFwOq-12" target="mJGWW1hZhtJlUeTBFwOq-11">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="830" y="495" as="sourcePoint" />
+            <mxPoint x="830" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-14" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="mJGWW1hZhtJlUeTBFwOq-6" target="mJGWW1hZhtJlUeTBFwOq-12">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="950" y="620" as="sourcePoint" />
+            <mxPoint x="1110" y="620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-18" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0.111;entryY=0.994;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="mJGWW1hZhtJlUeTBFwOq-25" target="mJGWW1hZhtJlUeTBFwOq-2">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="418" y="510" as="sourcePoint" />
+            <mxPoint x="460" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-19" value="" style="endArrow=open;endFill=1;endSize=12;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;strokeWidth=2;" edge="1" parent="1" source="mJGWW1hZhtJlUeTBFwOq-25" target="mJGWW1hZhtJlUeTBFwOq-2">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="440" y="620" as="sourcePoint" />
+            <mxPoint x="600" y="620" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="505" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-20" value="delegate" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="mJGWW1hZhtJlUeTBFwOq-19">
+          <mxGeometry x="-0.5333" y="1" relative="1" as="geometry">
+            <mxPoint x="-8" y="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-21" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;PassThroughTypeCaster&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="565" width="170" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-22" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;GenericTypeCaster&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="476.5" width="170" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-23" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="mJGWW1hZhtJlUeTBFwOq-22">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="1085" y="495" as="sourcePoint" />
+            <mxPoint x="1294" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-24" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.833;entryY=1.007;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="mJGWW1hZhtJlUeTBFwOq-21" target="mJGWW1hZhtJlUeTBFwOq-4">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="1411" y="552" as="sourcePoint" />
+            <mxPoint x="1410" y="463" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-25" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;class&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;AdlTypeDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ name(): String&lt;br&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ getFormatter(): ArgValueFormatter&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getNativeTypeCaster(): NativeTypeCaster&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="220" y="534.5" width="250" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-26" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;DefaultAdlType&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ STRING&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ INTEGER&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DECIMAL&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ BOOL&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DATE&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="380" y="690" width="250" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-27" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="mJGWW1hZhtJlUeTBFwOq-26" target="mJGWW1hZhtJlUeTBFwOq-2">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="417" y="545" as="sourcePoint" />
+            <mxPoint x="418" y="459" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-28" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="mJGWW1hZhtJlUeTBFwOq-26" target="mJGWW1hZhtJlUeTBFwOq-6">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="670" y="765" as="sourcePoint" />
+            <mxPoint x="743" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mJGWW1hZhtJlUeTBFwOq-29" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;AdlType&lt;/b&gt; (interface) describes a type with a formatter and an optional native type caster. A type&#39;s name (identifier) defines the type&#39;s identity.&lt;br&gt;&lt;/span&gt;&lt;div&gt;&lt;b style=&quot;background-color: initial; font-size: 10px;&quot;&gt;DefaultAdlType&lt;/b&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;&amp;nbsp;is an enumeration of the default types according to the Audlang language spec.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;AdlTypeDecorator&lt;/b&gt; allows conveniently deriving a new type from an existing one by changing the formatter or the type caster.&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;ArgValueFormatter&lt;/b&gt; is an interface for components that can format a value within the given context (argument name and operator).&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;NativeTypeCaster&lt;/b&gt; allows surrounding a native field as part of a target language expression with a native expression to make it compatible to an AdlT&lt;/span&gt;&lt;span style=&quot;background-color: initial; font-size: 10px;&quot;&gt;ype.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=13;labelBackgroundColor=none;fillColor=#FFFFCC;gradientColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="380" y="840" width="310" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="srzelECqFb1mtDfPtUEX-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;record&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;ArgMetaInfo&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ argName: String&lt;br&gt;+ type: AdlType&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ isAlwaysKnown : boolean&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ isCollection : boolean&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="800" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="srzelECqFb1mtDfPtUEX-2" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;record&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;DefaultArgMetaInfoLookup&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="980" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="srzelECqFb1mtDfPtUEX-3" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="srzelECqFb1mtDfPtUEX-1" target="srzelECqFb1mtDfPtUEX-2">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="1455" y="1000" as="sourcePoint" />
+            <mxPoint x="1615" y="1000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="srzelECqFb1mtDfPtUEX-4" value="map" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="srzelECqFb1mtDfPtUEX-3">
+          <mxGeometry x="-0.2508" relative="1" as="geometry">
+            <mxPoint x="-25" y="18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="srzelECqFb1mtDfPtUEX-5" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="srzelECqFb1mtDfPtUEX-3">
+          <mxGeometry x="-0.8222" relative="1" as="geometry">
+            <mxPoint x="7" y="5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="srzelECqFb1mtDfPtUEX-6" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;b&gt;ArgMetaInfoLookup &lt;/b&gt;allows the configuration of argument (attribute) meta data before starting a conversion.&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=13;labelBackgroundColor=none;fillColor=#FFFFCC;gradientColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="910" y="690" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="srzelECqFb1mtDfPtUEX-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="srzelECqFb1mtDfPtUEX-6" target="i3dzKzTynstPZUo0O_lK-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1040" y="960" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i3dzKzTynstPZUo0O_lK-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;ArgMetaInfoLookup&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ lookup(String argName) : ArgMetaInfo&lt;br&gt;+ typeOf(String argName): AdlType&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ isAlwaysKnown(&lt;span style=&quot;background-color: initial;&quot;&gt;String argName&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;) : boolean&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ isCollection(&lt;span style=&quot;background-color: initial;&quot;&gt;String argName)&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;: boolean&lt;/span&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="910" y="800" width="260" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="i3dzKzTynstPZUo0O_lK-3" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="srzelECqFb1mtDfPtUEX-2" target="i3dzKzTynstPZUo0O_lK-1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="930" y="950" as="sourcePoint" />
+            <mxPoint x="1090" y="950" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1265" y="950" />
+              <mxPoint x="1040" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="i3dzKzTynstPZUo0O_lK-6" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;The &lt;b&gt;ArgMetaInfo&lt;/b&gt; of the attribute can influence the way a concrete converter includes values in a target language expression. It includes the Audlang type as well as the information if this attribute can carry multiple values (collection) and whether it can be UNKNOWN or not.&amp;nbsp;&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;size=13;labelBackgroundColor=none;fillColor=#FFFFCC;gradientColor=none;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="690" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="i3dzKzTynstPZUo0O_lK-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="i3dzKzTynstPZUo0O_lK-6" target="srzelECqFb1mtDfPtUEX-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1272.5" y="770" as="sourcePoint" />
+            <mxPoint x="1317.5" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
