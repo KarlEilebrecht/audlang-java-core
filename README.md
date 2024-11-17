@@ -28,12 +28,12 @@ While this project does not contain any target language converters, the core pro
 
 Additionally, the core project provides utilities related to the **[Audlang Type Conventions](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#2-type-conventions)** (see [Type Support](./src/main/java/de/calamanari/adl/cnv/tps/README.md)).
 
-The implementation is based on the **[Dual Layer Language Model (DLLM)](./TheDualLayerLanguageModel)** that decouples the Audlang DSL with its user-centric feature set from the core language features required to execute expressions on any target system.
+The implementation is based on the **[Dual Layer Language Model (DLLM)](./TheDualLayerLanguageModel.md)** that decouples the Audlang DSL with its user-centric feature set from the core language features required to execute expressions on any target system.
 
 Converter implementations based on this core project can concentrate on the specific aspects of a target data store resp. its language.
 
 ***Read next:***
- * **[Dual Layer Language Model (DLLM)](./TheDualLayerLanguageModel)**
+ * **[Dual Layer Language Model (DLLM)](./TheDualLayerLanguageModel.md)**
  * **[Presentation Layer Expressions](./src/main/java/de/calamanari/adl/erl/README.md)**
  * **[Core Expressions](./src/main/java/de/calamanari/adl/irl/README.md)**
  * **[Optimization](./src/main/java/de/calamanari/adl/irl/biceps/README.md)**
