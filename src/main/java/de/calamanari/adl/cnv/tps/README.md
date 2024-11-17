@@ -1,7 +1,7 @@
 #### [Project Overview](../../../../../../../../README.md) | [package adl](../../README.md) | [package cnv](../README.md)
 ----
 
-# package tps (Type System)
+# package tps (Type Support)
 
 ![tps-overview](./tps.svg)
 
