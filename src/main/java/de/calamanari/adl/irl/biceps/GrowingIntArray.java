@@ -144,7 +144,7 @@ public class GrowingIntArray implements Serializable {
      */
     public void addAll(int[] members, int fromIdx, int toIdx) {
         if (fromIdx < 0 || toIdx > members.length || fromIdx > toIdx) {
-            throw new ArrayIndexOutOfBoundsException(String.format(
+            throw new IndexOutOfBoundsException(String.format(
                     "Expecting 0 <= fromIdx <= toIdx <= members.length, given: members.length=%s, fromIdx=%s, toIdx=%s", members.length, fromIdx, toIdx));
         }
         if (fromIdx == toIdx) {
@@ -177,7 +177,7 @@ public class GrowingIntArray implements Serializable {
      */
     public void addAll(GrowingIntArray members, int fromIdx, int toIdx) {
         if (fromIdx < 0 || toIdx > members.size() || fromIdx > toIdx) {
-            throw new ArrayIndexOutOfBoundsException(String.format(
+            throw new IndexOutOfBoundsException(String.format(
                     "Expecting 0 <= fromIdx <= toIdx <= members.size(), given: members.size()=%s, fromIdx=%s, toIdx=%s", members.size(), fromIdx, toIdx));
         }
         if (fromIdx == toIdx) {
@@ -252,7 +252,7 @@ public class GrowingIntArray implements Serializable {
     public int indexOf(int member) {
         for (int i = 0; i < idx; i++) {
             if (data[i] == member) {
-                return idx;
+                return i;
             }
         }
         return -1;
