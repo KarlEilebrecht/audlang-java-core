@@ -19,6 +19,7 @@
 
 package de.calamanari.adl.irl.biceps;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -28,7 +29,9 @@ import java.util.Arrays;
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
-public class GrowingIntArray {
+public class GrowingIntArray implements Serializable {
+
+    private static final long serialVersionUID = -3920646968344815220L;
 
     /**
      * Fixed increment in case the existing array is too small
@@ -152,6 +155,39 @@ public class GrowingIntArray {
             data[idx] = members[i];
             idx++;
         }
+    }
+
+    /**
+     * Shorthand for adding all the given members at once
+     * 
+     * @param members to be added
+     */
+    public void addAll(GrowingIntArray members) {
+        ensureCapacity(members.size());
+        System.arraycopy(members.data, 0, this.data, idx, members.size());
+        idx = idx + members.size();
+    }
+
+    /**
+     * Shorthand for adding all the given members at once
+     * 
+     * @param members to be added
+     * @param fromIdx start idx in source array (inclusive)
+     * @patam toIdx end idx in source array (exclusive)
+     */
+    public void addAll(GrowingIntArray members, int fromIdx, int toIdx) {
+        if (fromIdx < 0 || toIdx > members.size() || fromIdx > toIdx) {
+            throw new ArrayIndexOutOfBoundsException(String.format(
+                    "Expecting 0 <= fromIdx <= toIdx <= members.size(), given: members.size()=%s, fromIdx=%s, toIdx=%s", members.size(), fromIdx, toIdx));
+        }
+        if (fromIdx == toIdx) {
+            return;
+        }
+        int numberOfNewElements = toIdx - fromIdx;
+        ensureCapacity(numberOfNewElements);
+
+        System.arraycopy(members.data, fromIdx, this.data, idx, numberOfNewElements);
+        idx = idx + numberOfNewElements;
     }
 
     /**

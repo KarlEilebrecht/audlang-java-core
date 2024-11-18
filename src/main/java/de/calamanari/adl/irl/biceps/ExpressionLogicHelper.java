@@ -35,6 +35,7 @@ import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isUnknown;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.negate;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -42,8 +43,9 @@ import java.util.Arrays;
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
-public class ExpressionLogicHelper {
+public class ExpressionLogicHelper implements Serializable {
 
+    private static final long serialVersionUID = -5923746787896322169L;
     private final MemberArrayRegistry memberArrayRegistry;
 
     public ExpressionLogicHelper(MemberArrayRegistry memberArrayRegistry) {

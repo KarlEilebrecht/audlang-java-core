@@ -19,12 +19,14 @@
 
 package de.calamanari.adl.irl.biceps;
 
+import java.io.Serializable;
+
 import de.calamanari.adl.cnv.ConversionContext;
 
 /**
  * A {@link ExpressionTreeLevel} is a temporary container for members on a certain level while building the expression tree bottom-up.
  */
-public record ExpressionTreeLevel(GrowingIntArray members) implements ConversionContext {
+public record ExpressionTreeLevel(GrowingIntArray members) implements ConversionContext, Serializable {
 
     /**
      * @return deep copy of this tree-level but unrelated to the given instance

@@ -19,6 +19,7 @@
 
 package de.calamanari.adl.irl.biceps;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -57,7 +58,9 @@ import org.slf4j.LoggerFactory;
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
-public class MemberArrayRegistry {
+public class MemberArrayRegistry implements Serializable {
+
+    private static final long serialVersionUID = -2189220857484883834L;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MemberArrayRegistry.class);
 
@@ -263,7 +266,9 @@ public class MemberArrayRegistry {
      * A cache entry gives a cached integer array an identity (equals + hashcode) based on its members and their order.
      * 
      */
-    private static final class CacheEntry {
+    private static final class CacheEntry implements Serializable {
+
+        private static final long serialVersionUID = -594363567854023827L;
 
         final int[] members;
 

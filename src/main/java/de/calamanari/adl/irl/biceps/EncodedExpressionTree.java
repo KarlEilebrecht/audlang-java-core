@@ -27,6 +27,7 @@ import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isCombinedExpressionId;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,10 +58,14 @@ import de.calamanari.adl.irl.biceps.CoreExpressionCodec.Dictionary;
  * {@link ExpressionLogicHelper#haveAnyIsUnknownContradictionInOrParent(int[])}</li>
  * </ul>
  * This simplifies a couple of technical and logical operations like comparison and containment detection.
+ * <p/>
+ * 
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
-public class EncodedExpressionTree {
+public class EncodedExpressionTree implements Serializable {
+
+    private static final long serialVersionUID = 6352104542911982200L;
 
     static final Logger LOGGER = LoggerFactory.getLogger(EncodedExpressionTree.class);
 
@@ -144,7 +149,7 @@ public class EncodedExpressionTree {
     /**
      * This method resets the tree (empty, no root node) for the purpose of reuse.
      * <p/>
-     * <b>Warning:</b> This method also resets the member array registry of this tree and consequently invalidates any earlier issues node.
+     * <b>Warning:</b> This method also resets the member array registry of this tree and consequently invalidates any earlier issued node.
      * 
      * @param codec fresh codec to start with
      */
@@ -216,9 +221,14 @@ public class EncodedExpressionTree {
      * <p/>
      * The returned id is not attached anywhere. As long as you don't set it as the new root or include it in further nodes (e.g., using
      * {@link #createNode(NodeType, int[])}), the node remains an orphan.
+     * <p/>
+     * <b>Important:</b> This method cannot add any <i>new</i> arguments to an expression tree. All arguments must be known to the tree's
+     * {@link CoreExpressionCodec}. If you want to combine unrelated expressions (or parts of them), then {@link #merge(EncodedExpressionTree)} might help.
      * 
      * @param expression
      * @return newly created node
+     * @throws ExpressionCodecException if the given expression could not be encoded with this coded
+     * @throws IllegalStateException if the tree was not properly initialized with a codec (see {@link #initialize(CoreExpressionCodec)})
      */
     public int createNode(CoreExpression expression) {
         if (codec == null) {
@@ -285,7 +295,7 @@ public class EncodedExpressionTree {
      * then obtaining its members.
      * 
      * @param nodeType
-     * @param members
+     * @param members (may be modified during processing, don't use afterwards)
      * @return the members considered final members of the AND/OR
      */
     public int[] consolidateMembers(NodeType nodeType, int[] members) {
@@ -438,14 +448,21 @@ public class EncodedExpressionTree {
      * combined codec. Should any of the trees have multiple roots before, the number of roots will increase left to right.
      * <p/>
      * This method does neither modify <i>this</i> instance nor the <i>other</i>. The new instance is independent from both.
+     * <p/>
+     * Merging a tree with itself creates a new tree by doubling the number of roots.
      * 
      * @param other to be merged
      * @return new tree with two (or more) roots
      */
     public EncodedExpressionTree merge(EncodedExpressionTree other) {
         EncodedExpressionTree res = this.copy();
-        res.codec = res.codec.merge(other.codec);
 
+        if (this == other) {
+            res.getRootLevel().members().addAll(other.getRootLevel().members());
+            return res;
+        }
+
+        res.codec = res.codec.merge(other.codec);
         for (int idx = 0; idx < other.getRootLevel().members().size(); idx++) {
             int additionalRoot = recode(other, other.getRootLevel().members().get(idx), res);
             res.getRootLevel().members().add(additionalRoot);

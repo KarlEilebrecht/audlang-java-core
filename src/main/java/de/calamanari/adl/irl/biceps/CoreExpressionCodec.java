@@ -19,6 +19,7 @@
 
 package de.calamanari.adl.irl.biceps;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -58,7 +59,9 @@ import de.calamanari.adl.irl.SpecialSetExpression;
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
-public class CoreExpressionCodec {
+public class CoreExpressionCodec implements Serializable {
+
+    private static final long serialVersionUID = -4010035909404091387L;
 
     /**
      * 13 bits, maximum number of argument names or values that can be encoded
@@ -728,11 +731,13 @@ public class CoreExpressionCodec {
     }
 
     /**
-     * Encodes any leaf expression (matches, negations, special sets)
+     * Encodes any <b>leaf</b> expression (matches, negations, special sets)
+     * <p/>
+     * <b>Important:</b> You can only encode expressions dealing with arguments and values that were initially registered with this codec instance.
      * 
      * @param expression
      * @return encoded expression
-     * @throws ExpressionCodecException if the given expression is a combined expression (AND/OR)
+     * @throws ExpressionCodecException if the given expression is a combined expression (AND/OR) or otherwise not encodable (e.g. argument/value unknown)
      */
     public int encode(CoreExpression expression) {
         switch (expression) {
@@ -887,7 +892,9 @@ public class CoreExpressionCodec {
      * <p/>
      * Therefore, all expected values must be known <i>beforehand</i>. Thus a dictionary instance is an <i>immutable</i> throughout its lifetime.
      */
-    public static class Dictionary {
+    public static class Dictionary implements Serializable {
+
+        private static final long serialVersionUID = 8734164045229760905L;
 
         private final Map<String, Integer> argNameToIndexMap;
 
