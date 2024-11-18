@@ -108,14 +108,22 @@ public class EncodedExpressionTree implements Serializable {
     }
 
     /**
-     * Creates an empty tree without root
+     * Creates an empty tree without codec and root
+     * <p/>
+     * This constructor is for internal conversion purposes only. For proper initialization of the instance before use, the methods
+     * {@link #initialize(CoreExpressionCodec)} and {@link #createTreeLevel()} <b>must be called</b>.
+     * <p/>
+     * <b>Hint:</b> Most of the time {@link #fromCoreExpression(CoreExpression)} is the right way to create a properly initialized tree.
      */
     public EncodedExpressionTree() {
         this(new MemberArrayRegistry());
     }
 
     /**
-     * @return deep copy of the current tree, so that they are unrelated (except for sharing the same codec)
+     * Returns a copy of this tree. Right afterwards both instances are effectively equal but their evolution afterwards may differ. While simple expression
+     * encoding stays in sync (only depends on the immutable codec) the encoding of <i>combined sub-expressions</i> may differ.
+     * 
+     * @return deep copy of the current tree, unrelated to this instance (except for sharing the same codec)
      */
     public EncodedExpressionTree copy() {
         EncodedExpressionTree res = new EncodedExpressionTree(memberArrayRegistry.copy());
@@ -598,14 +606,25 @@ public class EncodedExpressionTree implements Serializable {
     public void appendDebugString(StringBuilder sb, int node) {
         if (isCombinedExpressionId(node)) {
             sb.append("( ");
-            int[] members = logicHelper.membersOf(node);
-            for (int i = 0; i < members.length; i++) {
-                if (i > 0) {
-                    sb.append(" ");
-                    sb.append(getNodeType(node));
-                    sb.append(" ");
+            try {
+                int[] members = logicHelper.membersOf(node);
+                for (int i = 0; i < members.length; i++) {
+                    if (i > 0) {
+                        sb.append(" ");
+                        sb.append(getNodeType(node));
+                        sb.append(" ");
+                    }
+                    appendDebugString(sb, members[i]);
                 }
-                appendDebugString(sb, members[i]);
+            }
+            catch (IndexOutOfBoundsException ex) {
+                // This code is only for the case that a bug was introduced to
+                // prevent the debug string method from crashing
+                LOGGER.error("Decoding error, unrecognizable combined node: {}", node);
+                sb.append("!?[");
+                sb.append(node);
+                sb.append("]?!");
+
             }
             sb.append(" )");
         }
