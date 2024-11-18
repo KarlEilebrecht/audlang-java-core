@@ -22,6 +22,7 @@ package de.calamanari.adl.irl.biceps;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -65,6 +66,8 @@ class GrowingIntArrayTest {
         assertEquals(1, gra.get(0));
         assertEquals("[1, 8, 10]", gra.toString());
         assertArrayEquals(new int[] { 1, 8, 10 }, gra.toArray());
+
+        assertEquals(1, gra.indexOf(8));
 
     }
 
@@ -166,6 +169,43 @@ class GrowingIntArrayTest {
         gra = new GrowingIntArray(arr, true);
         assertArrayEquals(arr, gra.toArray());
         assertNotSame(arr, gra.toArray());
+
+    }
+
+    @Test
+    void testAddAll() {
+
+        GrowingIntArray gra = new GrowingIntArray();
+
+        gra.addAll(new int[] { 1, 2, 3, 4 });
+        gra.addAll(new int[] { 4, 5, 6, 7, 8 }, 1, 3);
+        gra.addAll(new int[] { 4, 5, 6, 7, 8 }, 1, 1);
+        gra.addAll(new GrowingIntArray(new int[] { 7, 8, 9 }, false));
+        gra.addAll(new GrowingIntArray(new int[] { 8, 9, 10, 11, 12, 13 }, false), 2, 3);
+        gra.addAll(new GrowingIntArray(new int[] { 8, 9, 10, 11, 12, 13 }, false), 1, 1);
+
+        assertArrayEquals(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, gra.toArray());
+
+    }
+
+    @Test
+    void testSpecialCases() {
+
+        assertThrows(IllegalArgumentException.class, () -> new GrowingIntArray(-1));
+
+        GrowingIntArray gra = new GrowingIntArray(10);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> gra.setLength(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> gra.setLength(11));
+
+        int[] arrToBeAdded = new int[] { 7, 8, 9 };
+        GrowingIntArray graToBeAdded = new GrowingIntArray(arrToBeAdded, false);
+
+        assertThrows(IndexOutOfBoundsException.class, () -> gra.addAll(arrToBeAdded, -1, 3));
+        assertThrows(IndexOutOfBoundsException.class, () -> gra.addAll(arrToBeAdded, 0, 4));
+        assertThrows(IndexOutOfBoundsException.class, () -> gra.addAll(graToBeAdded, -1, 3));
+        assertThrows(IndexOutOfBoundsException.class, () -> gra.addAll(graToBeAdded, 0, 4));
+        assertThrows(IndexOutOfBoundsException.class, () -> graToBeAdded.get(5));
 
     }
 

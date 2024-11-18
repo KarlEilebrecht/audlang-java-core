@@ -34,6 +34,7 @@ import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.negate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -45,6 +46,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.calamanari.adl.DeepCopyUtils;
 import de.calamanari.adl.irl.CombinedExpression;
 import de.calamanari.adl.irl.CoreExpression;
 import de.calamanari.adl.irl.MatchExpression;
@@ -278,6 +280,26 @@ class CoreExpressionCodecTest {
 
         assertThrows(ExpressionCodecException.class, () -> codec.getArgName(28376283));
         assertThrows(ExpressionCodecException.class, () -> codec.getValue(-1_983_099_373));
+
+    }
+
+    @Test
+    void testSerialization() {
+
+        CoreExpressionCodec codec = new CoreExpressionCodec(new Dictionary(Arrays.asList("arg", "a", "b", "c"), Arrays.asList("val", "1", "2")));
+
+        CoreExpressionCodec codec2 = DeepCopyUtils.deepCopy(codec);
+
+        // due to the caching codec does not implement equals
+        assertNotEquals(codec, codec2);
+
+        SimpleExpression expression = (SimpleExpression) MatchExpression.of("arg", MatchOperator.EQUALS, Operand.of("val", false));
+
+        assertEquals(codec.encode(expression), codec2.encode(expression));
+
+        expression = (SimpleExpression) MatchExpression.of("b", MatchOperator.EQUALS, Operand.of("arg", true));
+
+        assertEquals(codec.encode(expression), codec2.encode(expression));
 
     }
 
