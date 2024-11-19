@@ -52,6 +52,8 @@ jobs:
           git config user.name "GitHub Actions"      
 
     - name: Create Maven Release
-      run: mvn -B release:prepare release:perform
+      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B release:prepare release:perform
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        USER_NAME: ${{ secrets.PAT_RO_USER }}
+        ACCESS_TOKEN: ${{ secrets.PAT_RO_TOKEN }}
