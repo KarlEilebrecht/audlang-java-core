@@ -14,18 +14,8 @@
                     <url>https://repo1.maven.org/maven2</url>
                 </repository>
                 <repository>
-                    <id>audlang-spec</id>
+                    <id>github</id>
                     <url>https://maven.pkg.github.com/KarlEilebrecht/audlang-spec</url>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                    <releases>
-                        <enabled>true</enabled>
-                  </releases>
-                </repository>
-                <repository>
-                    <id>audlang-java-core</id>
-                    <url>https://maven.pkg.github.com/KarlEilebrecht/audlang-java-core</url>
                     <snapshots>
                         <enabled>true</enabled>
                     </snapshots>
@@ -39,12 +29,7 @@
 
     <servers>
         <server>
-            <id>audlang-spec</id>
-            <username>${env.USER_NAME}</username>
-            <password>${env.ACCESS_TOKEN}</password>
-        </server>
-        <server>
-            <id>audlang-java-core</id>
+            <id>github</id>
             <username>${env.USER_NAME}</username>
             <password>${env.ACCESS_TOKEN}</password>
         </server>
