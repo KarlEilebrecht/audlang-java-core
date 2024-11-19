@@ -155,19 +155,19 @@ public class ExpressionLogicHelper implements Serializable {
     /**
      * Determines if the left expression <i>logically implies</i> that the right expression is true.
      * <ul>
-     * <li><code>left == &lt;ALL&gt;</li>
-     * <li><code>left == right (important: <b>&lt;NONE&gt; <i>does not imply</i> &lt;NONE&gt;</b>)</li>
-     * <li><code>arg = 1 implies arg IS NOT UNKNOWN</li>
-     * <li><code>other = &#64;arg implies arg IS NOT UNKNOWN</li>
+     * <li><code>left == &lt;ALL&gt;</code></li>
+     * <li><code>left == right</code> (<b>Note:</b> &lt;NONE&gt; <i>does <b>not</b> imply</i> &lt;NONE&gt;)</li>
+     * <li><code>arg = 1</code> implies <code>arg IS NOT UNKNOWN</code></li>
+     * <li><code>other = &#64;arg</code> implies <code>arg IS NOT UNKNOWN</code></li>
      * </ul>
      * This method works recursively:
      * <ul>
      * <li><code>(a=1 AND b=1)</code> implies <code>(b IS NOT UNKNOWN)</code></li>
      * <li><code>(a=1 AND b=1 AND (d=1 OR d=2))</code> implies <code>(d IS NOT UNKNOWN)</code></li>
      * </ul>
-     * <p/>
-     * This method is restricted to <i>simple implications</i> (we consider one element from the left at a time). See also
-     * {@link #leftContradictsRight(int, int, boolean)}
+     * <p>
+     * This method is restricted to <i>simple implications</i> (we consider one element from the left at a time). <br>
+     * See also {@link #leftContradictsRight(int, int)}
      * 
      * @param left encoded expression
      * @param right encoded expression
@@ -339,7 +339,7 @@ public class ExpressionLogicHelper implements Serializable {
     /**
      * Checks whether any of the left <i>AND expression members</i> contradicts the right leaf or combined
      * 
-     * @param leftMembers
+     * @param leftAndMembers
      * @param right
      * @param skipLeftContradictionCheck true indicates that the members of left have already been checked for simple contradictions among each other
      * @return true if any member contradicts the right one
@@ -401,24 +401,24 @@ public class ExpressionLogicHelper implements Serializable {
 
     /**
      * Checks whether the left expression contradicts the right one.
-     * <p/>
-     * This method can only detect what we call <i>simple</i> contradictions. <br/>
+     * <p>
+     * This method can only detect what we call <i>simple</i> contradictions. <br>
      * The contract of this method is:
      * <ul>
-     * <li>Simple contradictions will be detected, complex ones not. The term <i>simple</i> means <i>"taking only one member from the left at a time"</i> <br/>
+     * <li>Simple contradictions will be detected, complex ones not. The term <i>simple</i> means <i>"taking only one member from the left at a time"</i> <br>
      * Example:
      * <ul>
      * <li>left: <code>(a = 1 OR STRICT NOT c = 1) <b>AND</b> (b = 1 OR STRICT NOT c = 1)</code></li>
      * <li>right: <code>c = 1 AND (STRICT NOT a = 1 OR STRICT NOT b = 1)</code></li>
      * </ul>
      * As you can see there is no simple contradiction between left and right, because one of the left members alone does not contradict anything on the right.
-     * Only if you consider both conditions from the left <i>at the same time</i> suddenly right gets contradicted.<br/>
+     * Only if you consider both conditions from the left <i>at the same time</i> suddenly right gets contradicted.<br>
      * These contradictions are harder to find and not covered by this method.
-     * <li>For the same inputs this method and its counterpart {@link #leftImpliesRight(int, int, boolean)} will not return true at the same time (both may
-     * return false).</li>
+     * <li>For the same inputs this method and its counterpart {@link #leftImpliesRight(int, int)} will not return true at the same time (both may return
+     * false).</li>
      * </ul>
      * 
-     * @param leftMembers
+     * @param left
      * @param right
      * @return true if the left expression contradicts the right one
      */
@@ -476,7 +476,7 @@ public class ExpressionLogicHelper implements Serializable {
 
     /**
      * Checks two conditions for bi-directional contradiction
-     * <p/>
+     * <p>
      * <code>arg IS UNKNOWN</code> vs. <code>arg IS NOT UNKNOWN</code> and vice-versa.
      * 
      * @param left
@@ -832,7 +832,7 @@ public class ExpressionLogicHelper implements Serializable {
 
     /**
      * Creates a raw complement of the given node, "raw" means without any implication analysis or optimization
-     * <p/>
+     * <p>
      * Especially in case of nested expressions raw complements may be full of anomalies and thus will need implication resolution.
      * 
      * @param tree

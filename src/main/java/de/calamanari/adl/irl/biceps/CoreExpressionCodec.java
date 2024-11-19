@@ -37,17 +37,17 @@ import de.calamanari.adl.irl.SpecialSetExpression;
 
 /**
  * The {@link CoreExpressionCodec} allows representing {@link CoreExpression}s in <i>binary form</i>.
- * <p/>
- * All leaf expressions (matches, negated matches as well as special sets) are represented as 32-bit integer values.<br/>
+ * <p>
+ * All leaf expressions (matches, negated matches as well as special sets) are represented as 32-bit integer values.<br>
  * A special encoding (see below) allows quickly resolving the nature (what kind of leaf) but also the details like names and values.
- * <p/>
+ * <p>
  * This format reduces memory consumption but also allows very fast comparison and negation of leaf expressions (single bit change), so that way more
  * expressions can be processed (for optimization) than it would be possible based on instances of {@link CoreExpression}.
- * <p/>
+ * <p>
  * Combined expressions (AND/OR) can also be stored as integers but instead of storing the details of a combination (would exceed the number of available bits)
  * we instead encode an <b>expression id</b> (external reference to a {@link MemberArrayRegistry}). This allows the codec to represent all kinds of
  * {@link CoreExpression}s as simple integer values.
- * <p/>
+ * <p>
  * The theoretical limitations for a {@link CoreExpressionCodec} are:
  * <ul>
  * <li>{@value #MAX_NUMBER_OF_VALUES} of different values or arguments (both use different pools, so theoretically you could have this number of arguments and
@@ -85,10 +85,10 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * This value is not a valid encoded expression.
-     * <p/>
-     * You can understand this value as the equivalent to <b>null</b>, we use it frequently as a placeholder. <br/>
+     * <p>
+     * You can understand this value as the equivalent to <b>null</b>, we use it frequently as a placeholder. <br>
      * In contrast to {@link #NONE} the {@link #INVALID} has no logical meaning and neither contradicts nor implies anything.
-     * <p/>
+     * <p>
      * <code>10000000000000000000000000000000</code>
      */
     public static final int INVALID = 1 << 31;
@@ -140,91 +140,91 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Use <i>or</i> to set the operator
-     * <p/>
+     * <p>
      * <code>00000000000000000100000000000000</code>
      */
     public static final int OP_LESS_THAN_MASK = OP_LESS_THAN << 14;
 
     /**
      * Use <i>or</i> to set the operator
-     * <p/>
+     * <p>
      * <code>00000000000000001000000000000000</code>
      */
     public static final int OP_GREATER_THAN_MASK = OP_GREATER_THAN << 14;
 
     /**
      * Use <i>or</i> to set the operator
-     * <p/>
+     * <p>
      * <code>00000000000000001100000000000000</code>
      */
     public static final int OP_EQUALS_MASK = OP_EQUALS << 14;
 
     /**
      * Use <i>or</i> to set the operator
-     * <p/>
+     * <p>
      * <code>00000000000000010000000000000000</code>
      */
     public static final int OP_CONTAINS_MASK = OP_CONTAINS << 14;
 
     /**
      * Use <i>or</i> to set the operator
-     * <p/>
+     * <p>
      * <code>00000000000000010100000000000000</code>
      */
     public static final int OP_IS_UNKNOWN_MASK = OP_IS_UNKNOWN << 14;
 
     /**
      * Use <i>or</i> to indicate this sequence contains an external expression-ID of type AND
-     * <p/>
+     * <p>
      * <code>00000000000000110100000000000000</code>
      */
     public static final int OP_AND_EXPRESSION_ID_MASK = OP_AND_EXPRESSION_ID << 14;
 
     /**
      * Use <i>or</i> to indicate this sequence contains an external expression-ID of type OR
-     * <p/>
+     * <p>
      * <code>00000000000000111000000000000000</code>
      */
     public static final int OP_OR_EXPRESSION_ID_MASK = OP_OR_EXPRESSION_ID << 14;
 
     /**
      * Use <i>and</i> followed by a right-shift by 14 to obtain the operator
-     * <p/>
+     * <p>
      * <code>00000000000000111100000000000000</code>
      */
     public static final int OP_FILTER_MASK = 15 << 14;
 
     /**
      * Use <i>and</i> followed by a right-shift by 14 to obtain the operator
-     * <p/>
+     * <p>
      * <code>11111111111111000011111111111111</code>
      */
     public static final int OP_REMOVAL_MASK = ~(OP_FILTER_MASK);
 
     /**
      * Use <i>and</i> to obtain the index of the value or reference
-     * <p/>
+     * <p>
      * <code>00000000000000000001111111111111</code>
      */
     public static final int VALUE_FILTER_MASK = MAX_NUMBER_OF_VALUES - 1;
 
     /**
      * Use <i>and</i> to obtain the index of the value or reference
-     * <p/>
+     * <p>
      * <code>11111111111111111100000000000000</code>
      */
     public static final int VALUE_REMOVAL_MASK = -1 << 14;
 
     /**
      * Use <i>and</i> followed by a right-shift by 18 to obtain the index of the argument name
-     * <p/>
+     * <p>
      * <code>01111111111111000000000000000000</code>
      */
     public static final int ARG_NAME_FILTER_MASK = VALUE_FILTER_MASK << 18;
 
     /**
      * Use <i>and</i> to test if a given value is an argument reference
-     * <p/>
+     * <p>
      * <code>00000000000000000010000000000000</code>
      */
     public static final int ARG_REF_FILTER_MASK = 1 << 13;
@@ -268,7 +268,7 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Creates an IS UNKNOWN expression for the argument name in the given expression
-     * <p/>
+     * <p>
      * Example: for <code>arg = 1</code> we return <code>arg IS UNKNOWN</code>
      * 
      * @param encodedExpression
@@ -289,7 +289,7 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Creates an IS UNKNOWN expression for the referenced argument name in the given expression
-     * <p/>
+     * <p>
      * Example: for <code>arg = &#64;other</code> we return <code>other IS UNKNOWN</code>
      * 
      * @param encodedExpression
@@ -316,9 +316,9 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Negates the given leaf expression
-     * <p/>
-     * Example 1: <code>a = 1</code> turns into <code>NOT a = 1</code><br/>
-     * Example 2: <code>NOT a = 1</code> turns into <code>a = 1</code><br/>
+     * <p>
+     * Example 1: <code>a = 1</code> turns into <code>NOT a = 1</code><br>
+     * Example 2: <code>NOT a = 1</code> turns into <code>a = 1</code><br>
      * Example 3: <code>NONE</code> turns into <code>ALL</code> and vice-versa.
      * 
      * @param encodedExpression leaf
@@ -356,7 +356,7 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * This method only deals with leaves and allows a quick check if the left one is the negation of the right one.
-     * <p/>
+     * <p>
      * <b>Important:</b> There is a difference between <i>strict negation</i> a <i>complement</i>: <code>STRICT NOT a = 1</code> is the strict negation of
      * <code>a = 1</code> but not its complement! The complement of <code>a = 1</code> would be <code>STRICT NOT a = 1 OR a IS UNKNOWN</code>.
      * 
@@ -375,10 +375,10 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Determines if the left expression's argument name equals the right expression's argument name or the right expression's referenced argument name.
-     * <p/>
-     * Example 1: <code>a = 1</code> vs. <code>NOT a = 1</code> <br/>
-     * Example 2: <code>a = 1</code> vs. <code>a = 3</code><br/>
-     * Example 3: <code>a IS UNKNOWN</code> vs. <code>a = 1</code><br/>
+     * <p>
+     * Example 1: <code>a = 1</code> vs. <code>NOT a = 1</code> <br>
+     * Example 2: <code>a = 1</code> vs. <code>a = 3</code><br>
+     * Example 3: <code>a IS UNKNOWN</code> vs. <code>a = 1</code><br>
      * Example 4: <code>a IS UNKNOWN</code> vs. <code>other = &#64;a</code>
      * 
      * @param leftEncoded
@@ -405,9 +405,9 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Tells whether both expressions have the same argName
-     * <p/>
-     * Example 1: <code>a = 1</code> vs. <code>NOT a = 1</code> <br/>
-     * Example 2: <code>a = 1</code> vs. <code>a = 3</code><br/>
+     * <p>
+     * Example 1: <code>a = 1</code> vs. <code>NOT a = 1</code> <br>
+     * Example 2: <code>a = 1</code> vs. <code>a = 3</code><br>
      * Example 3: <code>a IS UNKNOWN</code> vs. <code>a = 1</code>
      * 
      * @param leftEncoded
@@ -478,7 +478,7 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Determines the name of the argument in a match expression
-     * <p/>
+     * <p>
      * Example: for <code>color = blue</code> we would return <code>color</code>
      * 
      * @param encodedExpression
@@ -546,7 +546,7 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Determines if this is a match expression with a referenced argument
-     * <p/>
+     * <p>
      * Example: <code>arg = &#64;other</code>
      * 
      * @param encodedExpression
@@ -559,7 +559,7 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Determines the name of the referenced argument in a reference match expression
-     * <p/>
+     * <p>
      * Example: for <code>arg = &#64;other</code> we would return <code>other</code>
      * 
      * @param encodedExpression
@@ -589,7 +589,7 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Determines the value in a match expression.
-     * <p/>
+     * <p>
      * Example: for <code>color = blue</code> we would return <code>blue</code>
      * 
      * @param encodedExpression
@@ -732,7 +732,7 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Encodes any <b>leaf</b> expression (matches, negations, special sets)
-     * <p/>
+     * <p>
      * <b>Important:</b> You can only encode expressions dealing with arguments and values that were initially registered with this codec instance.
      * 
      * @param expression
@@ -861,10 +861,10 @@ public class CoreExpressionCodec implements Serializable {
 
     /**
      * Creates a new codec that covers both, arguments and values from <i>this</i> instance and from the other.
-     * <p/>
+     * <p>
      * The new instance is created in a way that it exists independently from both sources but it remains fully compatible to <i>this</i> instance, so that an
      * existing expression tree based on <i>this</i> instance would remain valid on the newly created <i>merged</i> codec.
-     * <p/>
+     * <p>
      * Any expression tree based on the <i>other</i> coded remains valid but it would have to be recoded to be compatible to the new <i>merged</i> codec.
      * 
      * @param other to be merged
@@ -889,7 +889,7 @@ public class CoreExpressionCodec implements Serializable {
     /**
      * The dictionary holds the clear text values (attribute names and values), so that the expressions can use tiny references in their bit sequences instead
      * of dealing with clumsy text values.
-     * <p/>
+     * <p>
      * Therefore, all expected values must be known <i>beforehand</i>. Thus a dictionary instance is an <i>immutable</i> throughout its lifetime.
      */
     public static class Dictionary implements Serializable {
@@ -906,7 +906,7 @@ public class CoreExpressionCodec implements Serializable {
 
         /**
          * Creates a new dictionary by indexing the given names and values.
-         * <p/>
+         * <p>
          * The returned dictionary is only suitable for expressions using these argument names and values.
          * 
          * @param argNames <b>all</b> expected argument names ever to be encoded with the codec
@@ -929,7 +929,7 @@ public class CoreExpressionCodec implements Serializable {
 
         /**
          * Creates a new dictionary by indexing the given names and values.
-         * <p/>
+         * <p>
          * The returned dictionary is only suitable for expressions using these argument names and values.
          * 
          * @param argNames <b>all</b> expected argument names ever to be encoded with the codec
@@ -942,7 +942,7 @@ public class CoreExpressionCodec implements Serializable {
 
         /**
          * Convenience method that takes all values from the fields previously collected from an expression
-         * <p/>
+         * <p>
          * The returned dictionary is only suitable for expressions using these argument names and values.
          * 
          * @param allFields
@@ -1070,7 +1070,7 @@ public class CoreExpressionCodec implements Serializable {
 
         /**
          * This method creates a <i>new Dictionary</i> instance with the merged argument names and values.
-         * <p/>
+         * <p>
          * The new dictionary keeps all argNames and values with their existing codes from <b>this</b> instance and adds any new argName/value from the other.
          * Means: Any existing expression tree based on <b>this</b> instance will be compatible to the merged instance while any expression tree originally
          * based on the other instance would need recoding.

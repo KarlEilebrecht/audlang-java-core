@@ -68,7 +68,7 @@ import de.calamanari.adl.util.AdlTextUtils;
 
 /**
  * Presentation layer expression that matches a given argument against a plain value or an argument reference resp. a list of arguments.
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#3-basic-expressions">§3</a> Audlang
  * Spec
  * 
@@ -716,7 +716,7 @@ public record PlMatchExpression(String argName, PlMatchOperator operator, @JsonI
 
         /**
          * If a match expression has a single value or reference operand, we cannot distinguish trailing operand comments from trailing expression comments.
-         * <br/>
+         * <br>
          * This method moves the comments from after the operand after the expression to standardize behavior.
          * 
          * @param parentComments

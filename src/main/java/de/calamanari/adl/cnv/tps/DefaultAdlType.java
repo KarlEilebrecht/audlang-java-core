@@ -29,7 +29,7 @@ public enum DefaultAdlType implements AdlType {
 
     /**
      * Textual values ({@link DefaultArgValueFormatter#STRING_IN_SINGLE_QUOTES}), all control-characters below 32 that cannot be escaped will be dropped.
-     * <p/>
+     * <p>
      * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#11-strings">§1.1 Audlang
      * Spec</a>
      */
@@ -37,7 +37,7 @@ public enum DefaultAdlType implements AdlType {
 
     /**
      * Integer values ({@link DefaultArgValueFormatter#INTEGER})
-     * <p/>
+     * <p>
      * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#211-integer-values">§2.1.1
      * Audlang Spec</a>
      * 
@@ -46,7 +46,7 @@ public enum DefaultAdlType implements AdlType {
 
     /**
      * Decimal values ({@link DefaultArgValueFormatter#DECIMAL})
-     * <p/>
+     * <p>
      * See also <a href=
      * "https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#212-decimal-values-floating-point">§2.1.2
      * Audlang Spec</a>
@@ -55,15 +55,18 @@ public enum DefaultAdlType implements AdlType {
     DECIMAL(DefaultArgValueFormatter.DECIMAL),
 
     /**
-     * Boolean values ({@link DefaultArgValueFormatter#BOOL}
-     * <p/>
+     * Boolean values ({@link DefaultArgValueFormatter#BOOL})
+     * <p>
      * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#22-logical-values">§2.2 Audlang
      * Spec</a>
      */
     BOOL(DefaultArgValueFormatter.BOOL),
 
     /**
-     * Date values ({@link DefaultArgValueFormatter#DATE}
+     * Date values ({@link DefaultArgValueFormatter#DATE})
+     * <p>
+     * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#23-date-values">§2.3 Audlang
+     * Spec</a>
      */
     DATE(DefaultArgValueFormatter.DATE);
 

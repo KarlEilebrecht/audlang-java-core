@@ -26,8 +26,8 @@ public interface ConversionContext {
 
     /**
      * (Re-)sets this context in a state that a fresh conversion can happen.
-     * <p/>
-     * This method will be called during conversions to avoid artifacts from previous conversion runs. <br/>
+     * <p>
+     * This method will be called during conversions to avoid artifacts from previous conversion runs. <br>
      * Means: specific implementations may decide to keep some static or unproblematic cached data in the context across runs.
      */
     void clear();

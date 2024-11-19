@@ -35,7 +35,7 @@ import de.calamanari.adl.SpecialSetType;
  * {@link SpecialSetExpression} stands for the Audlang expressions <code>&lt;ALL&gt;</code> (resp. no restriction, always true, {@link SpecialSetType#ALL}) and
  * <code>&lt;NONE&gt;</code> (never true, {@link SpecialSetType#NONE})
  * 
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#39-all-and-none">§3.9</a> Audlang
  * Spec
  * 

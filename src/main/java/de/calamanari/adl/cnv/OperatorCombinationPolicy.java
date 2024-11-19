@@ -108,7 +108,7 @@ public enum OperatorCombinationPolicy {
 
     /**
      * Applies the rules for BETWEEN, here we must check that the operands are not references.
-     * <p/>
+     * <p>
      * Note: BETWEEN is different than less-than/greater than, here we look for the negative conditions (NOT) inside the OR rather than the AND because
      * <code>a NOT BETWEEN (1, 2)</code> is equivalent to <code>a NOT &gt;= 1 OR a NOT &lt;= 2)</code>
      * 

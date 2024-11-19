@@ -41,12 +41,12 @@ import de.calamanari.adl.irl.MatchExpression.MatchOperator;
 
 /**
  * A {@link NegationExpression} represents a logical NOT on the Audlang internal representation layer and covers all kind of negation <i>on attribute level</i>.
- * <p/>
+ * <p>
  * On this layer all expressions are implicitly STRICT. Thus the strict feature is no longer part of the expression. Only when printing the expression the
  * STRICT flag will be added to keep the expression text compatible to the Audlang specification. The other important difference to the presentation layer is
  * that {@link NegationExpression}s can only contain {@link MatchExpression}s. Negating any {@link CombinedExpression} triggers a structural change so that the
  * negations <i>trickle down</i> to the leafs ({@link MatchExpression}s).
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#5-negation">§5</a> Audlang Spec
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -69,7 +69,7 @@ public record NegationExpression(MatchExpression delegate, String inline) implem
     /**
      * Returns the negated form of this expression according to
      * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#5-negation">Audlang Spec §5</a>
-     * <p/>
+     * <p>
      * The negation on {@link CoreExpression} level sits always on the leafs and it is always strict. This method allows the caller to distinguish between a
      * logical negation (<code> strict=true</code>) and <i>without</i> (<code>strict=false</code>). So, if you want to express <i>expression1 <b>without</b>
      * expression2</i> then you should create a {@link CombinedExpression} of type AND with the members <code>expression1, expression2.negate(false)</code>.

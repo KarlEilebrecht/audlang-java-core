@@ -321,7 +321,7 @@ public class OrOfAndOverlapRegrouper implements ExpressionTreeProcessor {
 
     /**
      * Here we update the members array (members of the parent OR) with the potentially updated members by index.
-     * <p/>
+     * <p>
      * Members that are no longer needed, get replaced by INVALID to filter them later when re-creating the parent node.
      * 
      * @param tree
@@ -555,9 +555,9 @@ public class OrOfAndOverlapRegrouper implements ExpressionTreeProcessor {
     }
 
     /**
-     * The {@link Overlap} is a thin wrapper around an array of expression ids that reflects the overlap between two member arrays.<br/>
+     * The {@link Overlap} is a thin wrapper around an array of expression ids that reflects the overlap between two member arrays.<br>
      * We use these instances as <i>keys</i> of a map to rank overlaps by the number of times they are found within the same OR.
-     * <p/>
+     * <p>
      * <b>Note:</b> This technique <i>relies</i> on the fact that member arrays are sorted. The wrapped member arrays are sorted as well and can thus serve as
      * keys.
      */

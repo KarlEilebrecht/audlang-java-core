@@ -47,7 +47,7 @@ import de.calamanari.adl.irl.SpecialSetExpression;
 
 /**
  * The {@link CoreToPlExpressionConverter} takes an internal representation layer expression and produces a corresponding {@link PlExpression}.
- * <p/>
+ * <p>
  * Certain advanced language features which are only available on the presentation layer can be recreated, others like the {@link PlCurbExpression} cannot be
  * created from a plain {@link CoreExpression}.
  * 
@@ -245,8 +245,8 @@ public class CoreToPlExpressionConverter extends AbstractCoreExpressionConverter
 
     /**
      * Takes the root freshly built from a CoreExpression and re-creates the non-strict matches.
-     * <p/>
-     * The method eliminates the STRICTs where possible and afterwards cleans-up the redundant IS-UNKNOWNs.<br/>
+     * <p>
+     * The method eliminates the STRICTs where possible and afterwards cleans-up the redundant IS-UNKNOWNs.<br>
      * It is crucial to call this method <i>before</i> any other grouping (e.g., ANY OF) because it can only handle simple matches.
      * 
      * @param rootExpression to be updated
@@ -343,9 +343,9 @@ public class CoreToPlExpressionConverter extends AbstractCoreExpressionConverter
 
     /**
      * This final optimization runs on OR-combinations to detect redundant IS-UNKNOWN
-     * <p/>
+     * <p>
      * Example I: <code>a IS UNKNOWN OR a != 1</code> collapses to <code>a != 1</code> because <code>a IS UNKNOWN</code> <i>is covered</i> by the non-strict
-     * negation <code>a != 1</code>.<br/>
+     * negation <code>a != 1</code>.<br>
      * Example II: <code>a IS UNKNOWN OR (a != 1 AND a != 2)</code> collapses to <code>(a != 1 AND a != 2)</code> because <code>a IS UNKNOWN</code> <i>is
      * covered</i> by the non-strict members of the AND.
      * 
@@ -371,7 +371,7 @@ public class CoreToPlExpressionConverter extends AbstractCoreExpressionConverter
 
     /**
      * Tests whether the candidate <i>covers</i> the case that argName IS UNKNOWN.
-     * <p/>
+     * <p>
      * Example: <code>a != 1</code> <i>implicitly covers</i> <code>a IS UNKNOWN</code>
      * 
      * @param argName
@@ -403,8 +403,8 @@ public class CoreToPlExpressionConverter extends AbstractCoreExpressionConverter
 
     /**
      * Tests whether the AND-expression <i>covers</i> the case that argName IS UNKNOWN.
-     * <p/>
-     * Example 1: <code>a != 1 AND a != 2</code> <i>implicitly covers</i> <code>a IS UNKNOWN</code><br/>
+     * <p>
+     * Example 1: <code>a != 1 AND a != 2</code> <i>implicitly covers</i> <code>a IS UNKNOWN</code><br>
      * Example 2: <code>a != 1 AND b = 2</code> <i>does <b>not</b> implicitly cover</i> <code>a IS UNKNOWN</code>
      * 
      * @param argName
@@ -422,8 +422,8 @@ public class CoreToPlExpressionConverter extends AbstractCoreExpressionConverter
 
     /**
      * Tests whether the OR-expression <i>covers</i> the case that argName IS UNKNOWN.
-     * <p/>
-     * Example 1: <code>a != 1 OR a != 2</code> <i>implicitly covers</i> <code>a IS UNKNOWN</code><br/>
+     * <p>
+     * Example 1: <code>a != 1 OR a != 2</code> <i>implicitly covers</i> <code>a IS UNKNOWN</code><br>
      * Example 2: <code>a != 1 OR b = 2</code> <i>implicitly covers</i> <code>a IS UNKNOWN</code>
      * 
      * @param argName
@@ -484,7 +484,7 @@ public class CoreToPlExpressionConverter extends AbstractCoreExpressionConverter
 
     /**
      * This method takes the given is-not-unknowns and adds is-not-unknowns according to the <i>neighbors</i> within an AND.
-     * <p/>
+     * <p>
      * Example: <code>a = 1 AND a STRICT NOT CONTAINS "foo"</code>, here we <i>know</i> from <code>a = 1</code> that a cannot be UNKNOWN anyway, so the STRICT
      * is unnecessary and the expression can be simplified to <code>a = 1 AND a NOT CONTAINS "foo"</code> with better readability.
      * 
@@ -851,7 +851,7 @@ public class CoreToPlExpressionConverter extends AbstractCoreExpressionConverter
 
     /**
      * Checks the given expression if we can assume any IS-NOT-UNKNOWNs from it
-     * <p/>
+     * <p>
      * Example: <code>a = 1</code> <i>implies</i> that <code>a IS NOT UNKNOWN</code>
      * 
      * @param candidate

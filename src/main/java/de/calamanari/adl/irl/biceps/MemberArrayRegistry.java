@@ -32,28 +32,28 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Registry for encoded combined expressions.
- * <p/>
- * For performance reasons it was required to temporarily represent combined expressions in encoded form (int-arrays).<br/>
- * The registry issues for any int-array (combinedNode) an id and keeps it in memory for later lookup.<br/>
+ * <p>
+ * For performance reasons it was required to temporarily represent combined expressions in encoded form (int-arrays).<br>
+ * The registry issues for any int-array (combinedNode) an id and keeps it in memory for later lookup.<br>
  * Because the information whether a combined node is an AND or an OR is part of the reference (not part of the cached payload), we can use the same member
  * array safely for both in parallel.
- * <p/>
+ * <p>
  * Temporarily created int-arrays are slowly piling up in the registry. Thus, {@link #triggerHousekeeping(int)} allows in safe situations to run the
- * housekeeping which sets any id currently not used in the given rootNode or its child nodes to <b>null</b>.<br/>
+ * housekeeping which sets any id currently not used in the given rootNode or its child nodes to <b>null</b>.<br>
  * In other words: the underlying list is never shrinking but the payloads (int-arrays) become subject to garbage collection.
- * <p/>
- * We assume that the list never grows too far before the processing ends and the registry gets garbage-collected.<br/>
+ * <p>
+ * We assume that the list never grows too far before the processing ends and the registry gets garbage-collected.<br>
  * The benefit of this lean approach is that the access (id = position in list) is extremely fast (compared to any map), and we don't need to deal with
  * difficult garbage collection questions in other parts of the code.
- * <p/>
+ * <p>
  * This registry uses the arrays themselves as keys for caching <i>on insert</i>. So, while inserts are expensive, lookups are extremely cheap. As there are way
  * more lookups (find member array related to id) than inserts (new member array resp. find id for existing one), the registry has a positive impact on the
- * overall performance. <br/>
+ * overall performance. <br>
  * Having a guarantee to get the same ID for an equal combined node anywhere else within an expression tree also speeds up a couple of other operations.
- * <p/>
+ * <p>
  * The downside of the above approach is the increased responsibility of the users of this class to <b>never ever modify any of the arrays</b> after passing
  * them to the registry!
- * <p/>
+ * <p>
  * Instances are <b>not</b> safe to be accessed concurrently by multiple threads.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -106,9 +106,9 @@ public class MemberArrayRegistry implements Serializable {
 
     /**
      * Registers the array of the given combined node and returns a unique id. All ids are positive and start with <code>0</code>, counting strictly increasing.
-     * <p/>
+     * <p>
      * Any later request to register the logical identical array (same members in the same order) will return the same id.
-     * <p/>
+     * <p>
      * <b>Note:</b> If any entry was subject to housekeeping (because it was unused), and later the same array (same members, same order) comes again it will
      * get a fresh id.
      * 
@@ -139,7 +139,7 @@ public class MemberArrayRegistry implements Serializable {
      * @param id see {@link CoreExpressionCodec#decodeCombinedExpressionId(int)}
      * @return member array
      * @throws IllegalStateException if the given combined node was already cleaned, see {@link #triggerHousekeeping(int)}
-     * @throws IndexOutOfBoundsException if the given id is negative or if it was never issued by {@link #registerCombinedNode(int[])}
+     * @throws IndexOutOfBoundsException if the given id is negative or if it was never issued by {@link #registerMemberArray(int[])}
      */
     public int[] lookupMemberArray(int id) {
         if (id < 0 || id >= memberArrays.size()) {
@@ -153,10 +153,10 @@ public class MemberArrayRegistry implements Serializable {
     }
 
     /**
-     * This method takes the given rootNode as entry point into a tree which contains all combined nodes still in use.<br/>
+     * This method takes the given rootNode as entry point into a tree which contains all combined nodes still in use.<br>
      * Then it releases every id in the internal cache which is <i>not</i> in this list.
-     * <p/>
-     * Note: The given node must be truly the root. If this method is called on any lower level, all parents (and thus the expression) will be destroyed.<br/>
+     * <p>
+     * Note: The given node must be truly the root. If this method is called on any lower level, all parents (and thus the expression) will be destroyed.<br>
      * For the same reason you must call this method if your expression tree has currently more than one root!
      * 
      * @param rootNode entry point of an expression tree
@@ -251,7 +251,7 @@ public class MemberArrayRegistry implements Serializable {
 
     /**
      * This method returns a copy of this registry, so that both can evolve independently.
-     * <p/>
+     * <p>
      * As mentioned earlier: The implementation of {@link MemberArrayRegistry} heavily <i>relies</i> on the fact that member-int-arrays are never subject to
      * modification and thus safe to be used as cache-keys. For the same reason this method does not clone these arrays but only copies the management
      * structures.

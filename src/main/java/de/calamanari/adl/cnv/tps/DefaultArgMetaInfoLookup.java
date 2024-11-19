@@ -27,7 +27,7 @@ import java.util.TreeMap;
 
 /**
  * A {@link DefaultArgMetaInfoLookup} is a configuration-based implementation of an {@link ArgMetaInfoLookup}.
- * <p/>
+ * <p>
  * Instances are deeply immutable.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

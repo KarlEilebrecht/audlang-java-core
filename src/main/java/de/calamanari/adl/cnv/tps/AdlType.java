@@ -25,12 +25,12 @@ import de.calamanari.adl.irl.CoreExpression;
 
 /**
  * {@link AdlType} is an interface to describe a target type in a flexible (potentially extendible) type system.
- * <p/>
+ * <p>
  * While Audlang itself is type-agnostic (see also
  * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#2-type-conventions">§2 Audience Definition
  * Language Specification</a>), databases are usually not. {@link AdlType}s allow to <i>negotiate and translate</i> values to overcome the impedance mismatch
  * between {@link CoreExpression}s and any underlying storage layer.
- * <p/>
+ * <p>
  * Two types should be behave in the same way if they carry the same {@link #name()}, however, typically different instances should have unique names.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -61,7 +61,7 @@ public interface AdlType extends Serializable {
 
     /**
      * Returns a native type caster for bridging incompatible types when dealing with target storage layers.
-     * <p/>
+     * <p>
      * The default implementation returns the {@link PassThroughTypeCaster}.
      * 
      * @return type caster
@@ -72,7 +72,7 @@ public interface AdlType extends Serializable {
 
     /**
      * Tells if this type supports the Audlang-operator CONTAINS
-     * <p/>
+     * <p>
      * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#36-contains-text-snippet">§3.6
      * Audlang Spec</a>
      * 
@@ -82,7 +82,7 @@ public interface AdlType extends Serializable {
 
     /**
      * Tells if this type supports the Audlang-operators LESS THAN and GREATER THAN.
-     * <p/>
+     * <p>
      * See also
      * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#33-less-than-and-greater-than">§3.3
      * Audlang Spec</a>
@@ -93,7 +93,7 @@ public interface AdlType extends Serializable {
 
     /**
      * Allows adding a type caster to an existing type to refine the behavior of the composed {@link AdlType}
-     * <p/>
+     * <p>
      * Specifying a custom name may be useful if you know that the effectively <i>identical</i> type setup would otherwise occur multiple times with different
      * names (edge-case). Usually, the auto-generated wrapper names should be preferred.
      * 
@@ -120,7 +120,7 @@ public interface AdlType extends Serializable {
 
     /**
      * Allows adding a new formatter to an existing type to refine the behavior of the composed {@link AdlType}
-     * <p/>
+     * <p>
      * Specifying a custom name may be useful if you know that the effectively <i>identical</i> type setup would otherwise occur multiple times with different
      * names (edge-case). Usually, the auto-generated wrapper names should be preferred.
      * 

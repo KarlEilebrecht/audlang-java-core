@@ -36,7 +36,7 @@ import de.calamanari.adl.util.TriFunction;
 public enum DefaultArgValueFormatter implements ArgValueFormatter {
 
     /**
-     * Passes the string value as-is, replaces <b>null</b> with the string <code>"null"</null>
+     * Passes the string value as-is, replaces <b>null</b> with the string <code>"null"</code>
      */
     NONE((argName, argValue, operator) -> String.valueOf(argValue)),
 
@@ -54,7 +54,7 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
 
     /**
      * Formats the argValue as a decimal with <b>dot</b> and 7 decimal digits max
-     * <p/>
+     * <p>
      * See also: <a href=
      * "https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#212-decimal-values-floating-point">§2.1.2
      * Audlang Spec</a>
@@ -63,7 +63,7 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
 
     /**
      * Formats the argValue as a 64-bits signed integer with.
-     * <p/>
+     * <p>
      * See also: <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#211-integer-values">§2.1.1
      * Audlang Spec</a>
      */
@@ -71,7 +71,7 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
 
     /**
      * Formats the argValue as BOOL, converting the Audlang values 1/0 into the literals <code>TRUE</code> and <code>FALSE</code>.
-     * <p/>
+     * <p>
      * See also: <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#22-logical-values">§2.2
      * Audlang Spec</a>
      */
@@ -79,7 +79,7 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
 
     /**
      * Formats the argValue as date <code>yyyy-MM-dd</code> (pass-through) if the value is a valid Audlang date
-     * <p/>
+     * <p>
      * See also: <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#23-date-values">§2.3 Audlang
      * Spec</a>
      */
@@ -113,7 +113,7 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
 
     /**
      * This method formats a string enclosed in quotes.
-     * <p/>
+     * <p>
      * Unsupported characters will be dropped with a warning.
      * 
      * @param argName name of the current argument
@@ -146,7 +146,7 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
 
     /**
      * Formats the given value as a DECIMAL if possible
-     * <p/>
+     * <p>
      * This method implicitly handles Audlang DATE values as milliseconds UTC
      * 
      * @param argName
@@ -183,7 +183,7 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
 
     /**
      * Formats the given value as a INTEGER if possible
-     * <p/>
+     * <p>
      * This method implicitly handles Audlang DATE values as milliseconds UTC
      * 
      * @param argName

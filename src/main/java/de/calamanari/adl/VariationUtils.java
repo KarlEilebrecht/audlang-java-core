@@ -34,12 +34,12 @@ public class VariationUtils {
 
     /**
      * This method creates a list of all possible sublists of the supply list with the requested size
-     * <p/>
-     * <b>Note:</b> Should the given list contain duplicates then each position is treated as a separate identity. <br/>
-     * For example: given <code>A, A, A, D</code> there is a list of sub-lists of length=3: <code>(A, A, A), (A, A, D), (A, A, D), (A, A, D)</code><br/>
+     * <p>
+     * <b>Note:</b> Should the given list contain duplicates then each position is treated as a separate identity. <br>
+     * For example: given <code>A, A, A, D</code> there is a list of sub-lists of length=3: <code>(A, A, A), (A, A, D), (A, A, D), (A, A, D)</code><br>
      * In other words: <i>The number of returned sub-lists solely depends on the number of supplied elements and the target size.</i>
-     * <p/>
-     * <b>Important:</b>It is highly recommended to call {@link #computeNumberOfSubLists(List, int)} <i>before</> calling this method to avoid hangs or running
+     * <p>
+     * <b>Important:</b>It is highly recommended to call {@link #computeNumberOfSubLists(List, int)} <i>before</i> calling this method to avoid hangs or running
      * out of memory!
      * 
      * 
@@ -55,8 +55,8 @@ public class VariationUtils {
 
     /**
      * Computes the number of sub-lists expected to be returned by {@link #createSubLists(List, int)} with the same arguments.
-     * <p/>
-     * The number of sub-lists equals the <a href="https://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficient<a> <b><code>n</code></b> over
+     * <p>
+     * The number of sub-lists equals the <a href="https://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficient</a> <b><code>n</code></b> over
      * <b><code>k</code></b> with <b><code>n := supplyList.size()</code></b> and <b><code>k := targetSize</code></b>.
      * 
      * @param supplyList
@@ -105,7 +105,7 @@ public class VariationUtils {
 
     /**
      * This method takes a map of keys mapped to a given number of values and produces a list of maps of all subsets of unique key-value maps.
-     * <p/>
+     * <p>
      * <i>Example:</i>
      * <ul>
      * <li>A given <code>supplyMap</code> maps the key <b><code>A</code></b> to the value list <b><code>[1, 2, 3]</code></b> and the key <b><code>B</code></b>
@@ -113,22 +113,22 @@ public class VariationUtils {
      * <li>The result would be a list of maps:
      * <code>[{A=1, B=4}, {A=1, B=5}, {A=1, B=6}, {A=2, B=4}, {A=2, B=5}, {A=2, B=6}, {A=3, B=4}, {A=3, B=5}, {A=3, B=6}]</code></li>
      * </ul>
-     * <p/>
+     * <p>
      * The order of the keys (and thus the subsets, strictly left-to-right) depends on the order of the keys in the given supply map.
-     * <p/>
-     * There are no preliminary assumptions about the key and value types. Keys as well as values can be null. <br/>
+     * <p>
+     * There are no preliminary assumptions about the key and value types. Keys as well as values can be null. <br>
      * However, the lists assigned to keys in the supplyMap must not be null (otherwise NPE).
-     * <p/>
+     * <p>
      * Should one of the value lists assigned to a key be empty then this key won't appear in the generated result maps.
      * <p>
      * The number of returned variations equals the product of the size of all supplied option lists. In the example above, the number of variations is
      * <code>3 x 3 = 9</code>.
-     * <p/>
+     * <p>
      * <b>Note:</b> Should the list of options (supplied list) contain any duplicates then each position counts as a separate option. Let's say there is a
      * <code>supplyMap</code> with the key <b><code>A</code></b> mapped to the value list <b><code>[1, 2]</code></b> and the key <b><code>B</code></b> to the
      * value list <b><code>[4, 4]</code></b>, then the result would be <code>[{A=1, B=4}, {A=1, B=4}, {A=2, B=4}, {A=2, B=4}]</code>.
-     * <p/>
-     * <b>Important:</b>It is highly recommended to call {@link #computeNumberOfVariations(Map)} <i>before</> calling this method to avoid hangs or running out
+     * <p>
+     * <b>Important:</b>It is highly recommended to call {@link #computeNumberOfVariations(Map)} <i>before</i> calling this method to avoid hangs or running out
      * of memory!
      * 
      * @param <K>

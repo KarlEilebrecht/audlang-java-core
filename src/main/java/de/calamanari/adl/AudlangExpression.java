@@ -64,7 +64,7 @@ public interface AudlangExpression<T extends AudlangExpression<T, V>, V> extends
     /**
      * This method traverses the expression recursively starting with this expression and adds all expressions that meet the filter condition to the given
      * result list.
-     * <p/>
+     * <p>
      * <b>Clarification</b>: Even <i>this</i> expression will be added to the result if applicable.
      * 
      * @param filter
@@ -85,11 +85,11 @@ public interface AudlangExpression<T extends AudlangExpression<T, V>, V> extends
     /**
      * This method traverses the expression recursively starting with this expression and adds all expressions that meet the filter condition to the given
      * result list. Effectively a shorthand for creating an empty list and calling {@link #collectExpressions(Predicate, List)}
-     * <p/>
+     * <p>
      * <b>Clarification</b>: Even <i>this</i> expression will be added to the result if applicable.
      * 
      * @param filter
-     * @param result ordered, <b>mutable</b>
+     * @return result ordered, <b>mutable</b>
      */
     default List<T> collectExpressions(Predicate<T> filter) {
         List<T> res = new ArrayList<>();
@@ -100,11 +100,11 @@ public interface AudlangExpression<T extends AudlangExpression<T, V>, V> extends
 
     /**
      * This method traverses the expression recursively starting with this expression and adds all expressions that meet the filter condition to a list.
-     * <p/>
+     * <p>
      * <b>Clarification</b>: Even <i>this</i> expression will be added to the result if applicable.
      * 
      * @param filter
-     * @param result (ordered, duplicates removed, <b>mutable</b>)
+     * @return result (ordered, duplicates removed, <b>mutable</b>)
      */
     default List<T> collectExpressionsUnique(Predicate<T> filter) {
         return new ArrayList<>(collectExpressions(filter).stream().distinct().toList());

@@ -41,19 +41,19 @@ import de.calamanari.adl.Visit;
 /**
  * A {@link CombinedExpression} connects at least two expressions to form a new one either with {@link CombinedExpressionType#OR} or
  * {@link CombinedExpressionType#AND}
- * <p/>
+ * <p>
  * Other than on the presentation layer this type of combined core expressions is standardized:
  * <ul>
  * <li>Nested expressions of the same combination type <b>auto-collapse</b>: <code>(a = 1 OR b = 2) OR c = 3</code> turns into
  * <code>a = 1 OR b = 2 OR c = 3</code></li>
  * <li>There cannot be two identical members.</li>
- * <li>{@link CombinedExpression}s never contain members of type {@link SpecialSetExpression}. Instead they collapse or they get filtered<br/>
- * Example 1: <code>a = 1 OR &lt;NONE&gt;</code> results in <code>a = 1</code><br/>
- * Example 2: <code>a = 1 OR &lt;ALL&gt;</code> results in <code>&lt;ALL&gt;</code><br/>
- * Example 1: <code>a = 1 AND &lt;NONE&gt;</code> results in <code>&lt;NONE&gt;</code><br/>
+ * <li>{@link CombinedExpression}s never contain members of type {@link SpecialSetExpression}. Instead they collapse or they get filtered<br>
+ * Example 1: <code>a = 1 OR &lt;NONE&gt;</code> results in <code>a = 1</code><br>
+ * Example 2: <code>a = 1 OR &lt;ALL&gt;</code> results in <code>&lt;ALL&gt;</code><br>
+ * Example 1: <code>a = 1 AND &lt;NONE&gt;</code> results in <code>&lt;NONE&gt;</code><br>
  * Example 2: <code>a = 1 AND &lt;ALL&gt;</code> results in <code>a = 1</code></li>
  * </ul>
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#41-logical-and">§4.1</a>,
  * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#42-logical-or">§4.2</a> Audlang Spec
  * 

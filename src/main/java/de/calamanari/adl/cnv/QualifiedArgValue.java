@@ -23,7 +23,7 @@ import java.io.Serializable;
 
 /**
  * Single value qualified by its argument name, suitable to be key or value.
- * <p/>
+ * <p>
  * While the argument name must not be null, the value can be null, aka "IS UNKNOWN".
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

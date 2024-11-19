@@ -31,11 +31,11 @@ import de.calamanari.adl.FormatStyle;
 /**
  * A {@link PlComment} represents a comment, see
  * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#15-comments">§1.5 AudLang Spec</a>
- * <p/>
+ * <p>
  * This implementation handles comments explicitly as first-class-citizens.
- * <p/>
+ * <p>
  * Comment text will be implicitly normalized (see {@link CommentUtils#normalizeComment(String)} to make output reproducible.
- * <p/>
+ * <p>
  * <b>This will ...</b>
  * <ul>
  * <li>... affect line breaks, new lines are fully controlled by the formatter and they are independent from the given text.</li>

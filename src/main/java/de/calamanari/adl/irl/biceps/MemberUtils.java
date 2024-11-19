@@ -37,10 +37,10 @@ public class MemberUtils {
     public static final int[] EMPTY_MEMBERS = new int[0];
 
     /**
-     * This method merges two member lists into a single one.<br/>
+     * This method merges two member lists into a single one.<br>
      * All duplicates as well as {@link CoreExpressionCodec#INVALID}s will be filtered.
-     * <p/>
-     * <b>Important:</b> Both sides must be sorted (only INVALIDs may occur anywhere). <br/>
+     * <p>
+     * <b>Important:</b> Both sides must be sorted (only INVALIDs may occur anywhere). <br>
      * If any of the list is not sorted the result is unpredictable.
      * 
      * @param right
@@ -133,10 +133,10 @@ public class MemberUtils {
     }
 
     /**
-     * This method merges an additional member into a member list.<br/>
+     * This method merges an additional member into a member list.<br>
      * All duplicates as well as {@link CoreExpressionCodec#INVALID}s will be filtered.
-     * <p/>
-     * <b>Important:</b> The members array must be sorted (only INVALIDs may occur anywhere). <br/>
+     * <p>
+     * <b>Important:</b> The members array must be sorted (only INVALIDs may occur anywhere). <br>
      * If the list is not sorted the result is unpredictable.
      * 
      * @param members sorted array (won't be modified)
@@ -415,7 +415,7 @@ public class MemberUtils {
 
     /**
      * Contains-check on <b>sorted</b> arrays.
-     * <p/>
+     * <p>
      * By convention the empty array is contained in every array.
      * 
      * @param leftMembers sorted, free of duplicates
@@ -448,7 +448,7 @@ public class MemberUtils {
     /**
      * Detail search for the <i>remaining</i> elements of <i>rightMembers</i> (starting with the second element) in <i>leftMembers</i> starting at the given
      * leftIdx.
-     * <p/>
+     * <p>
      * The reasoning is that both sides are sorted, so all the remaining elements must <i>follow</i>.
      * 
      * @param leftMembers
@@ -482,8 +482,8 @@ public class MemberUtils {
 
     /**
      * Checks whether the left contains the right one (member overlap). If right is a leaf then this method returns true if right is one of the members of left.
-     * If both are leaves then the result is true if both are identical.<br/>
-     * If both are combined nodes of different nodes (AND vs. OR) the result is always false.<br/>
+     * If both are leaves then the result is true if both are identical.<br>
+     * If both are combined nodes of different nodes (AND vs. OR) the result is always false.<br>
      * Otherwise the result is the same as returned by {@link #sortedLeftMembersContainSortedRightMembers(int[], int[])}
      * 
      * @param memberArrayRegistry

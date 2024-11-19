@@ -46,7 +46,7 @@ import de.calamanari.adl.Visit;
 
 /**
  * {@link PlCurbExpression} represents a an Audlang curb-expression (syntactic sugar on the presentation layer) to limit an OR (e.g., <i>two of five</i>).
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#43-curbed-or">§4.3</a> Audlang Spec
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

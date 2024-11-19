@@ -45,12 +45,12 @@ import de.calamanari.adl.irl.biceps.ImplicationResolver;
 import de.calamanari.adl.irl.biceps.MemberUtils;
 
 /**
- * This converter allows to streamline an expression once we have the information if arguments can be UNKNOWN or not. <br/>
+ * This converter allows to streamline an expression once we have the information if arguments can be UNKNOWN or not. <br>
  * We eliminate useless IS UNKNOWN checks accordingly and try to optimize the expression again.
- * <p/>
- * Background: The information whether an argument can be UNKNOWN (aka is <i>nullable</i>) is part of the physical data storage layer, and not necessarily part
- * of the logical data model. This means, this information may become available relatively late while processing a request. This converter allows to react and
- * potentially simplify an expression before executing it.
+ * <p>
+ * <b>Background:</b> The information whether an argument can be UNKNOWN (aka is <i>nullable</i>) is part of the physical data storage layer, and not
+ * necessarily part of the logical data model. This means, this information may become available relatively late while processing a request. This converter
+ * allows to react and potentially simplify an expression before executing it.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
@@ -90,9 +90,9 @@ public class IsUnknownRemovalConverter implements ExpressionConverter<CoreExpres
     }
 
     /**
-     * Creates an instance with based on the given list of arguments that support UNKNOWN.<br/>
+     * Creates an instance with based on the given list of arguments that support UNKNOWN.<br>
      * All <i>other</i> argument names are supposed to <i>always</i> have a value.
-     * <p/>
+     * <p>
      * In terms of SQL: <b>all other fields</b> in the underlying data store are <b>not nullable</b>.
      * 
      * @param argNamesThatSupportIsUnknown (null means no argument supports UNKNOWN)

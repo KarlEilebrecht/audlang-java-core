@@ -23,7 +23,7 @@ import de.calamanari.adl.AdlException;
 
 /**
  * Exception to be thrown whenever anything goes wrong with the encoding or decoding of expressions.
- * <p/>
+ * <p>
  * Usually, this king of error shows any implementation problem (bug).
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

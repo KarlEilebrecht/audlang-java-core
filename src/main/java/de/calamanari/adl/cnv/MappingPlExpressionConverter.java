@@ -34,9 +34,9 @@ import de.calamanari.adl.erl.PlSpecialSetExpression;
 
 /**
  * The {@link MappingPlExpressionConverter} applies an {@link ArgNameValueMapping} to change the names and values of arguments in a given expression.
- * <p/>
+ * <p>
  * This is primarily meant for switching between labels and technical IDs on the presentation layer.
- * <p/>
+ * <p>
  * Mappings must be bijective (reversible) and structure-preserving (see {@link ArgNameValueMapper#isArgumentStructurePreserving()}).
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -68,9 +68,9 @@ public class MappingPlExpressionConverter extends AbstractPlExpressionConverter<
     }
 
     /**
-     * Simply maps all the operands (if any) to create replacement operands<br/>
+     * Simply maps all the operands (if any) to create replacement operands<br>
      * Because the mapper is bijective and structure-preserving the operands will remain compatible to the operator.
-     * <p/>
+     * <p>
      * Referenced argument names will be mapped to the corresponding argument name.
      * 
      * @param argName

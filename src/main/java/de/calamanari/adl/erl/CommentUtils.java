@@ -43,9 +43,9 @@ import de.calamanari.adl.erl.PlMatchExpression.PlMatchOperator;
 
 /**
  * Some helper methods for writing comments on elements of an expression.
- * <p/>
+ * <p>
  * It was required to define a standard way to format comments so that single-line and multi-line format correspond to each other in a reasonable way (no flaky
- * behavior).<br/>
+ * behavior).<br>
  * The methods here split/tokenize/mangle any comment to bring it into a generic form. Additionally, this utility covers the knowledge how to present comments
  * in difference positions (in-between operators, operands, etc.).
  * 
@@ -72,9 +72,9 @@ public class CommentUtils {
 
     /**
      * Creates a standard single-line format of the comment, which is reproducible.
-     * <p/>
+     * <p>
      * <b>Important:</b> This method's output is <i>compatible</i> to the output of {@link #appendCommentMultiLine(String, StringBuilder, FormatStyle, int)} in
-     * a way that both formats can be tokenized again and to be written in the one or the other way without changing anything.<br/>
+     * a way that both formats can be tokenized again and to be written in the one or the other way without changing anything.<br>
      * This also means: touching the one or the other implementation causes high effort for re-testing!
      * 
      * @param comment not null, text <b>must</b> start with <code>'/*'</code> and end with <code>'*&#47;'</code>, so the shortest possible comment is
@@ -99,11 +99,11 @@ public class CommentUtils {
 
     /**
      * This method is used to print a comment on multipliple lines
-     * <p/>
+     * <p>
      * <b>Important:</b> This method's output is <i>compatible</i> to the output of {@link #normalizeComment(String)} in a way that both formats can be
-     * tokenized again and to be written in the one or the other way without changing anything.<br/>
+     * tokenized again and to be written in the one or the other way without changing anything.<br>
      * This also means: touching the one or the other implementation causes high effort for re-testing!
-     * <p/>
+     * <p>
      * <b>Note:</b> We try to split lengthy comments but we do not enforce it if there is no way to <i>soft-split</i> a comment at whitespace or certain
      * characters. Especially, we never break a section enclosed or started by double-quote.
      * 
@@ -166,11 +166,11 @@ public class CommentUtils {
     }
 
     /**
-     * This method splits long comment lines into tokens. By default a token is a non-whitespace sequence between any whitespace.<br/>
+     * This method splits long comment lines into tokens. By default a token is a non-whitespace sequence between any whitespace.<br>
      * Only if we can't find whitespace gaps we try splitting by other special separators. The goal was to split as natural as possible.
-     * <p/>
+     * <p>
      * This method strictly preserves long character sequences and double-quoted text.
-     * <p/>
+     * <p>
      * Control characters &lt; 32 and 127 are treated as whitespace.
      * 
      * @param comment to be tokenized
@@ -695,6 +695,11 @@ public class CommentUtils {
 
     }
 
+    /**
+     * Indicates the exact position of an internal comment in a formatted expression related to its tokens.
+     * <p>
+     * It is always <i>after</i> a token reflecting the left-to-right formatting approach.
+     */
     public enum PhysicalCommentPosition {
 
         AFTER_ARG_NAME, AFTER_NOT, AFTER_STRICT, AFTER_CONTAINS, AFTER_BETWEEN, AFTER_IS, AFTER_ANY, AFTER_OF, AFTER_OPERATOR;

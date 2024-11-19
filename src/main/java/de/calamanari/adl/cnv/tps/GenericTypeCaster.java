@@ -28,7 +28,7 @@ import java.util.function.UnaryOperator;
 /**
  * The {@link GenericTypeCaster} is meant for the special scenario where the logical data model uses a couple of types but the underlying storage layer only
  * deals with a generic type (usually text). In this case certain operators (e.g., comparisons less-than / greater-than) would not work as expected.
- * <p/>
+ * <p>
  * <i>Pre-casting</i> the values (fields) as part of the native query allows on-the-fly conversion to the corresponding types, so type-specific operations work
  * as expected. A {@link GenericTypeCaster} has a an internal map specifying a native cast per {@link AdlType} of the logical data model. That also means that
  * there can be configured only a single (unique) cast function <i>per {@link AdlType}</i> of the logical data model.

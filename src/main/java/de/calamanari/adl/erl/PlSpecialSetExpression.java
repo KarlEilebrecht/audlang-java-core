@@ -44,7 +44,7 @@ import de.calamanari.adl.SpecialSetType;
  * {@link PlSpecialSetExpression} stands for the Audlang expressions <code>&lt;ALL&gt;</code> (resp. no restriction, always true, {@link SpecialSetType#ALL})
  * and <code>&lt;NONE&gt;</code> (never true, {@link SpecialSetType#NONE})
  * 
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#39-all-and-none">§3.9</a> Audlang
  * Spec
  * 
@@ -76,7 +76,7 @@ public record PlSpecialSetExpression(SpecialSetType setType, @JsonInclude(JsonIn
     }
 
     /**
-     * @param setType distinguishes between ALL and NONE
+     * @param type distinguishes between ALL and NONE
      * @param comments optional comments, maybe null
      */
     public PlSpecialSetExpression(SpecialSetType type, List<PlComment> comments) {

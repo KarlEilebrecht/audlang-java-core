@@ -24,7 +24,7 @@ import java.util.Arrays;
 
 /**
  * Lean helper structure to store int-arrays before knowing the exact number.
- * <p/>
+ * <p>
  * The array underneath grows infinitely. To avoid dealing with wrapper objects this class does not implement the List interface.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -140,7 +140,7 @@ public class GrowingIntArray implements Serializable {
      * 
      * @param members to be added
      * @param fromIdx start idx in source array (inclusive)
-     * @patam toIdx end idx in source array (exclusive)
+     * @param toIdx end idx in source array (exclusive)
      */
     public void addAll(int[] members, int fromIdx, int toIdx) {
         if (fromIdx < 0 || toIdx > members.length || fromIdx > toIdx) {
@@ -173,7 +173,7 @@ public class GrowingIntArray implements Serializable {
      * 
      * @param members to be added
      * @param fromIdx start idx in source array (inclusive)
-     * @patam toIdx end idx in source array (exclusive)
+     * @param toIdx end idx in source array (exclusive)
      */
     public void addAll(GrowingIntArray members, int fromIdx, int toIdx) {
         if (fromIdx < 0 || toIdx > members.size() || fromIdx > toIdx) {

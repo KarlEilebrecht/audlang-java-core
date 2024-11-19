@@ -28,7 +28,7 @@ import de.calamanari.adl.irl.CoreExpression;
 
 /**
  * The {@link CoreExpressionOptimizer} orchestrates the process of transforming a given expression tree into a standardized optimized form.
- * <p/>
+ * <p>
  * Usually, a couple of implications can be resolved to simplify the expression. Sometimes, conditions (or even arguments) turn out to be irrelevant.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -91,7 +91,6 @@ public class CoreExpressionOptimizer implements ExpressionTreeProcessor {
      * Shorthand to run the optimization of an existing {@link CoreExpression}
      * 
      * @param expression
-     * @param timeout (null means default, see {@link TimeOut#createDefaultTimeOut(String)})
      * @return optimized expression
      */
     public CoreExpression process(CoreExpression expression) {

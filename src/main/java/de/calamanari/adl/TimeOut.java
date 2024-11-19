@@ -20,15 +20,15 @@
 package de.calamanari.adl;
 
 /**
- * Optimization of expression trees may suffer from combinatoric explosion and can <i>run away</i> in terms of time and memory.<br/>
+ * Optimization of expression trees may suffer from combinatoric explosion and can <i>run away</i> in terms of time and memory.<br>
  * Due to efficient storage in memory, space is not so problematic as time. Solely based on the number of arguments and values it is hard to tell if and when
  * that will happen because some impressive expressions quickly collapse when checking for contradictions and implications, other examples don't look scary at
  * first glance but literally <i>explode</i>.
- * <p/>
- * Thus, I decided to introduce the {@link TimeOut}, which has a check-method that should be called often in the processing code.<br/>
+ * <p>
+ * Thus, I decided to introduce the {@link TimeOut}, which has a check-method that should be called often in the processing code.<br>
  * From time to time it checks the system clock if a pre-configured time has already been elapsed. If so, a {@link TimeOutException} will be thrown, usually
  * causing the parent process to return an error.
- * <p/>
+ * <p>
  * This method is not optimized for multi-threading, but it is safe. The negative impact might be that we check for timeouts at a lower frequency than expected
  * leading to later timeout detection.
  * 

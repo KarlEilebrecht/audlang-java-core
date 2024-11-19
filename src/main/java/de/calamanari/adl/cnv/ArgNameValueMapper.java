@@ -39,7 +39,7 @@ public interface ArgNameValueMapper extends Serializable {
     /**
      * Tells if the mapping preserves the argument structure of an expression. If this method returns true than the mapping never maps two values related to the
      * same source argument to two different target arguments.
-     * <p/>
+     * <p>
      * Example: if <code>color.blue</code> maps to <code>arg4711.blue</code> and <code>color.red</code> maps to <code>arg888.red</code> then this method should
      * return <b>false</b>.
      * 

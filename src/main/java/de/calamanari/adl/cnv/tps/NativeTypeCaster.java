@@ -32,14 +32,14 @@ import de.calamanari.adl.irl.CoreExpression;
 public interface NativeTypeCaster extends Serializable {
 
     /**
-     * Formats a native db-field of an underlying native storage layer (db) by adjusting the left argument to make it compatible to the referenced type.<br/>
+     * Formats a native db-field of an underlying native storage layer (db) by adjusting the left argument to make it compatible to the referenced type.<br>
      * This typically means surrounding the native field name with a native cast operation.
-     * <p/>
-     * Example: <br/>
+     * <p>
+     * Example: <br>
      * Be <code>color1 = color2</code> an expression, both values are numeric (1, 2, 3) but for whatever reason the native db-field for <code>c1</code> for
      * <code>color1</code> is of type integer and the field <code>c2</code> for <code>color2</code> is of type VARCHAR. The two db-fields cannot be directly
-     * compared.<br/>
-     * Let there further be a native db-function <code>str</code> that can convert from integer to string.<br/>
+     * compared.<br>
+     * Let there further be a native db-function <code>str</code> that can convert from integer to string.<br>
      * Now we could create a native expression like <code>str(c1)</code> to overcome the mismatch and create a valid target expression.
      * <p>
      * By default this method simply return the given nativeFieldName.

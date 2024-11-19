@@ -35,7 +35,7 @@ import de.calamanari.adl.irl.biceps.CoreExpressionOptimizer;
 //@formatter:off
 /**
  * This class contains convenient shorthand functions to perform typical expression conversions.
- * <p/>
+ * <p>
  * Usage examples:
  * <ul>
  * <li>Convert an <b><code>expressionString</code></b> into an {@link AudlangParseResult} which will either contain a parsed {@link PlExpression} or an error message:<pre>
@@ -45,7 +45,7 @@ import de.calamanari.adl.irl.biceps.CoreExpressionOptimizer;
  *              .get();
  * </pre></li>
  * <li>Convert an <b><code>expressionString</code></b> into a {@link PlExpression}:<pre>
- *      PlExpression<?> expr;
+ *      PlExpression&lt;?&gt; expr;
  *      expr = Optional.of(expressionString)
  *              .map(StandardConversions.parse)
  *              .map(StandardConversions.toPlExpression())
@@ -139,7 +139,7 @@ public class StandardConversions {
 
     /**
      * Creates a mapping function based on the given mapping to replace the arguments and values in {@link PlExpression}.
-     * <p/>
+     * <p>
      * The provided mapping must be bijective and structure-preserving (see {@link ArgNameValueMapper#isBijective()} resp.
      * {@link ArgNameValueMapper#isArgumentStructurePreserving()}).
      * 
@@ -160,7 +160,7 @@ public class StandardConversions {
 
     /**
      * Creates a mapping function based on the given mapping to replace the arguments and values in {@link CoreExpression}.
-     * <p/>
+     * <p>
      * This method covers bijective as well as non-bijective (not reversible) mappings. Depending on the provided mapping you can replace names with IDs or even
      * adjust the data model. E.g., <code>color = blue AND shape = circle</code> could be mapped to <code>arg156 = 1 AND arg91 = 1</code>.
      * 

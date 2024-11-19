@@ -22,7 +22,7 @@ package de.calamanari.adl;
 /**
  * This enum reflects the two special irregular set types ALL and NONE of the Audlang language.
  * https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#39-all-and-none
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#39-all-and-none">§3.9</a> Audlang
  * Spec
  * 

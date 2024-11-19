@@ -21,7 +21,7 @@ package de.calamanari.adl.cnv.tps;
 
 /**
  * The {@link DummyArgMetaInfoLookup} returns a default {@link DefaultAdlType#STRING}-meta-info for any given argument.
- * <p/>
+ * <p>
  * This is primarily meant for testing and debugging.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

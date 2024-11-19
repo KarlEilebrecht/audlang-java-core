@@ -34,7 +34,7 @@ import de.calamanari.adl.irl.MatchExpression.MatchOperator;
 
 /**
  * Utility methods related to the type convention for date values
- * <p/>
+ * <p>
  * See <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#23-date-values">§2.3 Audlang Spec</a>
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -128,8 +128,8 @@ public class AdlDateUtils {
 
     /**
      * This method increases the date by one day to match to align the technical condition to the semantical expectations.
-     * <p/>
-     * Example: The expression <code>dateValue &gt; 2024-10-12</code> would technically match <code>2024-10-12T12:34:01Z</code> in the underlying database.<br/>
+     * <p>
+     * Example: The expression <code>dateValue &gt; 2024-10-12</code> would technically match <code>2024-10-12T12:34:01Z</code> in the underlying database. <br>
      * This is not what a user expects (Audlang does not know about time!). Thus we bump the date by one day and change the expression to
      * <code>dateValue &gt;= 2024-10-13</code>.
      * 

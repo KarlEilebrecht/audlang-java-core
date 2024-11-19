@@ -36,7 +36,7 @@ public interface AudlangFieldAware {
      * <li>The returned list is free of duplicates, each argName only appears once.</li>
      * <li>The returned list ordered by {@link AudlangField#argName()}.</li>
      * <li>The returned list should be unmodifiable.</li>
-     * <li>All fields are <i>condensed</i>, see {@link AudlangField#condenseFieldData()}</li>
+     * <li>All fields are free of any duplicates or null-values.</li>
      * </ul>
      * 
      * @return list of all fields

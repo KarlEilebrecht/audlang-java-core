@@ -50,7 +50,7 @@ import de.calamanari.adl.erl.PlMatchExpression.PlMatchOperator;
 
 /**
  * {@link PlNegationExpression} represents a logical NOT on the Audlang presentation layer.
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#5-negation">§5</a> Audlang Spec
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

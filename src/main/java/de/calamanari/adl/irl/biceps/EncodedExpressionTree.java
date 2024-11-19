@@ -44,9 +44,9 @@ import de.calamanari.adl.irl.biceps.CoreExpressionCodec.Dictionary;
  * The {@link EncodedExpressionTree} holds an expression in memory that is <i>work-in-progress</i> and that may need lots of transformations. It uses a
  * light-weight form to represent the nodes, so playing with the expressions won't blow-up memory, and any logic tests are way cheaper compared to performing
  * them on {@link CoreExpression}s.
- * <p/>
+ * <p>
  * Technically, the tree is a container for the logical tree's root node with supplementary functionality.
- * <p/>
+ * <p>
  * <b>Important:</b> The <i>combined nodes</i> (AND/OR) with their member arrays adhere to a few crucial conventions:
  * <ul>
  * <li>Member arrays are sorted ascending.</li>
@@ -58,7 +58,7 @@ import de.calamanari.adl.irl.biceps.CoreExpressionCodec.Dictionary;
  * {@link ExpressionLogicHelper#haveAnyIsUnknownContradictionInOrParent(int[])}</li>
  * </ul>
  * This simplifies a couple of technical and logical operations like comparison and containment detection.
- * <p/>
+ * <p>
  * 
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -109,10 +109,10 @@ public class EncodedExpressionTree implements Serializable {
 
     /**
      * Creates an empty tree without codec and root
-     * <p/>
+     * <p>
      * This constructor is for internal conversion purposes only. For proper initialization of the instance before use, the methods
      * {@link #initialize(CoreExpressionCodec)} and {@link #createTreeLevel()} <b>must be called</b>.
-     * <p/>
+     * <p>
      * <b>Hint:</b> Most of the time {@link #fromCoreExpression(CoreExpression)} is the right way to create a properly initialized tree.
      */
     public EncodedExpressionTree() {
@@ -156,7 +156,7 @@ public class EncodedExpressionTree implements Serializable {
 
     /**
      * This method resets the tree (empty, no root node) for the purpose of reuse.
-     * <p/>
+     * <p>
      * <b>Warning:</b> This method also resets the member array registry of this tree and consequently invalidates any earlier issued node.
      * 
      * @param codec fresh codec to start with
@@ -199,7 +199,7 @@ public class EncodedExpressionTree implements Serializable {
 
     /**
      * This is the root (top level expression including all the other ones) of the tree
-     * <p/>
+     * <p>
      * 
      * @return root node
      * @throws IllegalStateException if the tree currently has no root or multiple roots
@@ -226,10 +226,10 @@ public class EncodedExpressionTree implements Serializable {
 
     /**
      * Creates a new node from the given expression (recursively) in the tree's registry.
-     * <p/>
+     * <p>
      * The returned id is not attached anywhere. As long as you don't set it as the new root or include it in further nodes (e.g., using
      * {@link #createNode(NodeType, int[])}), the node remains an orphan.
-     * <p/>
+     * <p>
      * <b>Important:</b> This method cannot add any <i>new</i> arguments to an expression tree. All arguments must be known to the tree's
      * {@link CoreExpressionCodec}. If you want to combine unrelated expressions (or parts of them), then {@link #merge(EncodedExpressionTree)} might help.
      * 
@@ -255,9 +255,10 @@ public class EncodedExpressionTree implements Serializable {
     }
 
     /**
-     * Creates a new node from any list of members. After filtering and sorting, a new node will be created. <br/>
+     * Creates a new node from any list of members. After filtering and sorting, a new node will be created.
+     * <p>
      * To be called if the caller cannot guarantee that the given members are free of duplicates and sorted.
-     * <p/>
+     * <p>
      * The returned id is not attached anywhere. As long as you don't set it as the new root or include it in further nodes (e.g., using
      * {@link #createNode(NodeType, int[])}), the node remains an orphan.
      * 
@@ -277,9 +278,9 @@ public class EncodedExpressionTree implements Serializable {
     }
 
     /**
-     * Creates a new node from any list of members. After filtering and sorting, a new node will be created. <br/>
+     * Creates a new node from any list of members. After filtering and sorting, a new node will be created. <br>
      * To be called if the caller cannot guarantee that the given members are free of duplicates and sorted.
-     * <p/>
+     * <p>
      * The returned id is not attached anywhere. As long as you don't set it as the new root or include it in further nodes (e.g., using
      * {@link #createNode(NodeType, int[])}), the node remains an orphan.
      * 
@@ -420,7 +421,7 @@ public class EncodedExpressionTree implements Serializable {
 
     /**
      * Creates a new tree level.
-     * <p/>
+     * <p>
      * The only impact this method has on the tree is that the first level ever returned by this method becomes the root level.
      * 
      * @return newly created tree level
@@ -454,9 +455,9 @@ public class EncodedExpressionTree implements Serializable {
     /**
      * Creates a new tree with at least <b>two roots</b>: the first one is the one of this tree, the second is the one of the other tree, both are based on a
      * combined codec. Should any of the trees have multiple roots before, the number of roots will increase left to right.
-     * <p/>
+     * <p>
      * This method does neither modify <i>this</i> instance nor the <i>other</i>. The new instance is independent from both.
-     * <p/>
+     * <p>
      * Merging a tree with itself creates a new tree by doubling the number of roots.
      * 
      * @param other to be merged

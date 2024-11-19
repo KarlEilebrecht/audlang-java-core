@@ -41,13 +41,13 @@ import de.calamanari.adl.util.AdlTextUtils;
 
 /**
  * A {@link PlOperand} can either be a plain string value or an argument reference in Audlang comparison to an argument
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#122-argument-values">§1.2.2</a>,
  * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#123-argument-reference">§1.2.3</a> Audlang
  * Spec
  * 
  * @param value the value or argRef (without the '@'), not null
- * @paran isReference true if this operand is an argument name reference
+ * @param isReference true if this operand is an argument name reference
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public record PlOperand(String value, @JsonInclude(JsonInclude.Include.NON_DEFAULT) boolean isReference,

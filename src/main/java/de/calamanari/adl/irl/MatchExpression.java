@@ -41,14 +41,14 @@ import de.calamanari.adl.util.AdlTextUtils;
 /**
  * Internal representation layer expression that matches a given argument against a plain value or an argument reference. Because all <i>syntactic sugar</i> has
  * been removed, you don't see here any list arguments but only single value/reference matches. Also any negation becomes a surrounding NOT (implicitly strict).
- * <p/>
+ * <p>
  * <b>Note:</b> To avoid ambiguity, {@link MatchException}s perform a few auto-adjustments on reference matches:
  * <ul>
- * <li><code>arg2 = &#64;arg1</code> => <code>arg1 = &#64;arg2</code></li>
- * <li><code>arg2 < &#64;arg1</code> => <code>arg1 > &#64;arg2</code></li>
- * <li><code>arg2 > &#64;arg1</code> => <code>arg1 < &#64;arg2</code></li>
+ * <li><code>arg2 = &#64;arg1</code> =&gt; <code>arg1 = &#64;arg2</code></li>
+ * <li><code>arg2 &lt; &#64;arg1</code> =&gt; <code>arg1 &gt; &#64;arg2</code></li>
+ * <li><code>arg2 &gt; &#64;arg1</code> =&gt; <code>arg1 &lt; &#64;arg2</code></li>
  * </ul>
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#3-basic-expressions">§3</a> Audlang
  * Spec
  * 
@@ -122,7 +122,7 @@ public record MatchExpression(String argName, MatchOperator operator, @JsonInclu
 
     /**
      * Creates a match expression for the given argName
-     * <p/>
+     * <p>
      * This is the preferred way to create a {@link MatchExpression}
      * 
      * @param argName

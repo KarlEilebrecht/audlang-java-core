@@ -42,7 +42,7 @@ import de.calamanari.adl.irl.biceps.ExpressionLogicHelper.Advice;
 
 /**
  * The {@link ImplicationResolver} cleans-up a couple of implications in a given expression tree.
- * <p/>
+ * <p>
  * This is a rule-based implication resolver which can run on any tree. Additionally,
  * {@link ImplicationResolver#cleanupImplicationsRecursively(EncodedExpressionTree, CombinedNodeRegistry, int, int[], boolean)} allows to cleanup a single node
  * without touching the tree state. This way, you can leverage caching and advanced analytics.
@@ -67,9 +67,9 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
 
     /**
      * Performs a couple of tests and potentially rebuilds the expression node tree, so its root node may change.
-     * <p/>
+     * <p>
      * <b>Note:</b> For performance reasons this default run skips the expensive advanced analysis. If you need caching or combined complement analysis, please
-     * check the documentation of {@link #cleanupImplications(EncodedExpressionTree, CombinedNodeRegistry, int, boolean)}.
+     * check the documentation of {@link #cleanupImplications(EncodedExpressionTree, int, boolean)}.
      * 
      * @param tree
      */
@@ -112,7 +112,7 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
 
     /**
      * This method runs the cleanup on a particular node to produce a simpler node if possible.
-     * <p/>
+     * <p>
      * There are ways to configure the analysis process to either run a very strict analysis (time-consuming) or sacrifice precision for the purpose of speed.
      * 
      * @param tree
@@ -182,7 +182,7 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
     /**
      * This method applies assumptions top-down to every node. An assumption is any <i>true condition</i> we know about because of an enclosing AND. These facts
      * we collect recursively.
-     * <p/>
+     * <p>
      * Example: <code>a = 1 AND (b = 3 OR (c = 4 AND a != 1))</code>, here we know that <code>a = 1</code>, so the term <code>(c = 4 AND a != 1)</code> can
      * never become true.
      * 
@@ -438,12 +438,12 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
 
     /**
      * This method performs two types of analysis on an OR-combination until there is no further change.
-     * <p/>
+     * <p>
      * First we look at the simpler implications within pairs of members.
-     * <p/>
-     * The second test tries to identify more complex problems to eliminate irrelevant sub-conditions.<br/>
+     * <p>
+     * The second test tries to identify more complex problems to eliminate irrelevant sub-conditions.<br>
      * For example: <code>(a=1 AND b=2) OR (a!=1 AND b=2)</code> means: <code>(a IS NOT UNKNOWN AND b=2)</code>
-     * <p/>
+     * <p>
      * The effort is quite high, but every branch we can eliminate early helps to reduce effort in later transformations.
      * 
      * @param tree
@@ -632,9 +632,9 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
     /**
      * The preparation method can be either quick (detect contradictions) or complex with consolidation. Consolidation means running the full process of
      * creating an AND-node with optimization to ensure the assumptions array is optimal (lean).
-     * <p/>
+     * <p>
      * Because the consolidation is quite expensive we control it by parameter.
-     * <p/>
+     * <p>
      * In either case the returned array of assumptions will be sorted and free of duplicates.
      * 
      * @param tree
@@ -691,9 +691,9 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
 
     /**
      * This method returns the assumptions which can safely be applied to leaf members inside an OR, because they stem from a single other OR-member.
-     * <p/>
+     * <p>
      * The created array has always the same length, the combined length of both given arrays. New member assumptions precede the parent assumptions. This way,
-     * we can later easily hide a member-related assumption by using its member index.<br/>
+     * we can later easily hide a member-related assumption by using its member index.<br>
      * Any member we cannot create an assumptions for (or we want to hide) gets an INVALID assumption.
      * 
      * @param tree
@@ -726,29 +726,29 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
 
     /**
      * This method derives special complement assumptions from members within an OR.
-     * <p/>
+     * <p>
      * In general if you have a number of conditions combined with OR, and you evaluate left-to-right, you can do a short-circuit-evaluation. The first
      * condition that matches is fine, forget about the trailing. This is interesting, because it means for any two given conditions <i>left</i> and
-     * <i>right</i> that <i>right</i> would only be relevant (subject to testing) if the the <i>complement of left</i> is <b>true</b>. <br/>
+     * <i>right</i> that <i>right</i> would only be relevant (subject to testing) if the the <i>complement of left</i> is <b>true</b>. <br>
      * This method follows this idea and creates <i>complement assumptions</i> that can be applied to the other conditions to potentially simplify or even
      * contradict them early.
-     * <p/>
+     * <p>
      * <b>Example 1:</b> <code>arg IS NOT UNKNOWN OR (arg IS UNKNOWN AND b = 2)</code> is <b>true</b> if <code>arg IS NOT UNKNOWN</code> but also <b>true</b> if
      * <code>arg IS UNKNOWN</code> and at the same time <code>b = 2</code>, so the whole condition collapses into <code>arg IS NOT UNKNOWN OR b = 2</code>.
-     * <p/>
+     * <p>
      * <b>Example 2:</b> <code>arg != 3 OR b IS UNKNOWN OR b = 2 OR (arg = 3 AND b != 2)</code> can be simplified because <code>b IS UNKNOWN OR b = 2</code> is
      * the <i>complement</i> of <code>b != 2</code>, so we can take <code>b != 2</code> as a valid assumption when analyzing the other condition in the same OR
-     * <code>(arg = 3 AND b != 2)</code>.<br/>
+     * <code>(arg = 3 AND b != 2)</code>.<br>
      * Reason: if the complement of this assumption is true, the OR anyway becomes true. With this assumption the sub-condition collapses to
      * <code>arg = 3</code> and consequently the OR collapses to <code>arg != 3 OR b IS UNKNOWN OR b = 2 OR arg = 3</code>, finally:
      * <code>arg IS NOT UNKNOWN OR b IS UNKNOWN OR b = 2</code>
-     * <p/>
+     * <p>
      * <b>Example 3:</b> <code>arg = 1 OR (b = 2 AND (arg != 1 OR arg IS UNKNOWN))</code> can be simplified because <code>(arg != 1 OR arg IS UNKNOWN)</code> is
      * the <i>complement</i> of <code>arg = 1</code>. When we take this complement as an assumption, the second condition of the OR
      * (<code>(b = 2 AND (arg != 1 OR arg IS UNKNOWN))</code>) collapses to <code>b = 2</code>, the expression gets shortened to <code>arg = 1 OR b = 2</code>.
-     * <p/>
+     * <p>
      * By default we do this only for leaves to limit the effort. However, the control flag enforces the <b>expensive</b> <i>combined complement analysis</i>.
-     * <p/>
+     * <p>
      * <b>Important:</b>All the parent assumptions come <i>after</i> the member assumptions in the returned array, so that an original member index is always
      * equal to the index of the assumption.
      * 
@@ -832,7 +832,7 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
 
     /**
      * Here we look at two members of the same parent-array to do a deeper analysis if sub-conditions can be removed.
-     * <p/>
+     * <p>
      * This method directly operates on the given parentMembers array and modifies it.
      * 
      * @param tree
@@ -861,7 +861,7 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
     }
 
     /**
-     * This method processes the member sets of two ANDs (same length) to detect irrelevant sub-conditions. <br/>
+     * This method processes the member sets of two ANDs (same length) to detect irrelevant sub-conditions. <br>
      * If successful, the parentMembers-array gets updated.
      * 
      * @param tree
@@ -913,9 +913,9 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
     }
 
     /**
-     * This method answers the question if two complex conditions are the same when we skip the specified elements.<br/>
+     * This method answers the question if two complex conditions are the same when we skip the specified elements.<br>
      * Tests whether the <i>remaining</i> conditions are the same after removing the skip-members on both sides.
-     * <p/>
+     * <p>
      * If so we can concentrate on the given pair of sub-conditions to detect irrelevant ones.
      * 
      * @param leftMembers
@@ -969,12 +969,12 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
 
     /**
      * This method determines for a given member the logical complement (only for leaves).
-     * <p/>
+     * <p>
      * Example 1: <code>a = 1 OR a IS UNKNOWN</code> In this case we can easily derive the complement <code>(a != 1)</code> to leverage it as an assumption for
-     * further analysis and simplification of the other OR-members.<br/>
+     * further analysis and simplification of the other OR-members.<br>
      * The point here is that if the complement of <code>a != 1</code> is anyway covered by the surrounding OR (will become true) then we can take
-     * <code>a != 1</code> as an assumption to reduce the complexity of any other OR-member.<br/>
-     * Example 2: <code>a != 1 OR a IS UNKNOWN</code> makes <code>(a = 1)</code> a cheap simple complement <br/>
+     * <code>a != 1</code> as an assumption to reduce the complexity of any other OR-member.<br>
+     * Example 2: <code>a != 1 OR a IS UNKNOWN</code> makes <code>(a = 1)</code> a cheap simple complement <br>
      * Example 3: <code>a = &#64;other OR a IS UNKNOWN OR other IS UNKNOWN</code> makes <code>(a != &#64;other)</code> a cheap simple complement Example 4:
      * <code>a = 1 OR (b = 1 AND (a != 1 OR a IS UNKNOWN))</code> makes <code>(a != 1 <b>OR</b> a IS UNKNOWN)</code> the complement which can be used to reduce
      * the second condition in the OR. The simplification would be <code>a = 1 OR b = 1</code>.

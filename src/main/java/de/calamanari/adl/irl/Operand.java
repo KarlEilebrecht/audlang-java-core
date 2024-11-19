@@ -30,7 +30,7 @@ import de.calamanari.adl.util.AdlTextUtils;
 
 /**
  * An {@link Operand} can either be a plain string value or an argument reference for comparison to an argument.
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#122-argument-values">§1.2.2</a>,
  * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#123-argument-reference">§1.2.3</a> Audlang
  * Spec

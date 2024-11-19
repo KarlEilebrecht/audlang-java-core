@@ -29,7 +29,7 @@ import java.util.TreeSet;
 
 /**
  * An {@link AudlangField} reflects an argument name with all the values and argument name references collected from an Audlang expression.
- * <p/>
+ * <p>
  * <ul>
  * <li>An {@link AudlangField} is immutable.</li>
  * <li>Lists are immutable copies of the source lists.</li>

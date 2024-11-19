@@ -29,10 +29,10 @@ import de.calamanari.adl.irl.SpecialSetExpression;
 
 /**
  * The {@link MappingCoreExpressionConverter} applies a {@link ArgNameValueMapping} to a given expression to translate argument names and values.
- * <p/>
+ * <p>
  * Other than on the presentation layer this {@link CoreExpression} converter also covers <i>non-bijective</i> mappings and those that imply changes to the data
  * model like mapping two values of the same attribute in the source system to two different attributes in the target system.
- * <p/>
+ * <p>
  * Example: <code>color=blue OR color=red</code> could be mapped so that the result expression would be: <code>arg123=1 OR arg162=1</code> (structurally
  * different data model).
  * 

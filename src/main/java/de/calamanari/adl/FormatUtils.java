@@ -45,7 +45,7 @@ public class FormatUtils {
 
     /**
      * Removes all white characters from the end of the string builder
-     * <p/>
+     * <p>
      * Ideally this should not be necessary when building output but it turned out to be complex as hell to consider all possible cases. This method eases the
      * pain! ;-)
      * 
@@ -70,7 +70,7 @@ public class FormatUtils {
      * 
      * @param sb to be modified
      * @param style determines indentation
-     * @param level number of times to append 4 spaces
+     * @param n number of times to append 4 spaces
      */
     public static void appendIndent(StringBuilder sb, FormatStyle style, int n) {
         for (int i = 0; i < n; i++) {
@@ -517,7 +517,7 @@ public class FormatUtils {
     }
 
     /**
-     * Appends a value of a width n <= size to the string builder, so that the result is enclosed in spaces to let the value appear centered in its reserved
+     * Appends a value of a width n &lt;= size to the string builder, so that the result is enclosed in spaces to let the value appear centered in its reserved
      * range
      * 
      * @param sb
@@ -540,7 +540,7 @@ public class FormatUtils {
     }
 
     /**
-     * Appends a value of a width n <= size to the string builder, so that the result followed by spaces to let the value appear left-aligned in its reserved
+     * Appends a value of a width n &lt;= size to the string builder, so that the result followed by spaces to let the value appear left-aligned in its reserved
      * range
      * 
      * @param sb
@@ -560,8 +560,8 @@ public class FormatUtils {
     }
 
     /**
-     * Appends a value of a width n <= size to the string builder, so that the result followed by spaces to let the value appear right-aligned in its reserved
-     * range
+     * Appends a value of a width n &lt;= size to the string builder, so that the result followed by spaces to let the value appear right-aligned in its
+     * reserved range
      * 
      * @param sb
      * @param value (null appears as the literal null)

@@ -44,24 +44,24 @@ import de.calamanari.adl.erl.PlSpecialSetExpression;
 import de.calamanari.adl.irl.CoreExpression;
 import de.calamanari.adl.irl.MatchExpression;
 import de.calamanari.adl.irl.MatchExpression.MatchOperator;
+import de.calamanari.adl.irl.Operand;
 import de.calamanari.adl.irl.biceps.CoreExpressionCodec;
+import de.calamanari.adl.irl.biceps.CoreExpressionCodec.Dictionary;
 import de.calamanari.adl.irl.biceps.EncodedExpressionTree;
 import de.calamanari.adl.irl.biceps.ExpressionTreeLevel;
 import de.calamanari.adl.irl.biceps.ExpressionTreeProcessor;
 import de.calamanari.adl.irl.biceps.ImplicationResolver;
 import de.calamanari.adl.irl.biceps.NodeType;
-import de.calamanari.adl.irl.biceps.CoreExpressionCodec.Dictionary;
-import de.calamanari.adl.irl.Operand;
 
 /**
  * The {@link PlToCoreExpressionConverter} takes a presentation layer expression and produces a corresponding {@link CoreExpression}.
- * <p/>
+ * <p>
  * Because {@link CoreExpression}s have less features and they follow a couple of conventions, the created expression may look drastically different which still
  * reflecting the same <i>logical</i> expression.
- * <p/>
+ * <p>
  * Optionally, the converter can be configured with a post-processor ({@link ExpressionTreeProcessor}), so that the produced expression can be optimized as part
  * of the conversion process.
- * <p/>
+ * <p>
  * Conversion and especially optimization can take long, maybe too long. Thus, it is possible to configure a timeout after the process will throw a
  * {@link TimeoutException} indicating that the duration exceeded the estimated time.
  * 

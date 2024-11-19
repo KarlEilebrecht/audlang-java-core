@@ -21,7 +21,7 @@ package de.calamanari.adl.irl.biceps;
 
 /**
  * An {@link ExpressionTreeProcessor} takes a given tree to transform it. The result is a new root node.
- * <p/>
+ * <p>
  * <b>Important:</b> The transformation may run on the entire tree. Thus, any node that was previously valid may be invalidated, and new nodes may be created.
  * Consequently, callers should not keep references to any tree nodes created <i>before</i> calling {@link #process(EncodedExpressionTree)}.
  * 

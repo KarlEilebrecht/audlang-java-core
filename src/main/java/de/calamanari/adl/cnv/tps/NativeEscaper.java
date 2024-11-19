@@ -43,7 +43,7 @@ public interface NativeEscaper {
 
     /**
      * Tells if the given character is supported by this escaper.
-     * <p/>
+     * <p>
      * This method must not return <b>false</b> if {@link #needsEscaping(char)} returns <b>true</b>.
      * 
      * @param ch

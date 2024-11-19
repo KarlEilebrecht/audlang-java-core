@@ -36,7 +36,7 @@ import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
 
 /**
  * The {@link CurbResolver} utility resolves {@link PlCurbExpression}s (recursively) into basic Audlang expressions.
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#43-curbed-or">§4.3 Audlang
  * Specification</a>
  * 
@@ -94,7 +94,7 @@ public class CurbResolver {
     /**
      * Resolves the given curbed OR into a (potentially very large) expression composed of simple expressions.
      * 
-     * @param expression to
+     * @param curbExpression to be resolved
      * @return new expression composed of simple expressions
      */
     @SuppressWarnings("java:S1452")
@@ -192,7 +192,7 @@ public class CurbResolver {
 
     /**
      * System protection: Throws an exception if the execution would otherwise exceed system limits.
-     * <p/>
+     * <p>
      * In case of combinatoric explosion the algorithm can <i>run away</i> causing insane runtime or worst-case {@link OutOfMemoryError}s.
      * 
      * @param supplyList
@@ -298,7 +298,7 @@ public class CurbResolver {
 
     /**
      * Each sublist of the given list represents a set of conditions that must be fulfilled (logical) AND.
-     * <p/>
+     * <p>
      * This method returns a single OR composed of these sub-ANDs.
      * 
      * @param subConditionLists list with condition lists

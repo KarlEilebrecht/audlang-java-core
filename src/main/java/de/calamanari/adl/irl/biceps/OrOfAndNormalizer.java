@@ -33,9 +33,9 @@ import de.calamanari.adl.TimeOut;
 /**
  * The {@link OrOfAndNormalizer} brings the expression tree in such a form that the result is either a LEAF or an AND composed of LEAFs or an OR that can
  * contain ANDs composed of LEAFs or LEAFs.
- * <p/>
+ * <p>
  * In other words the result expression has at most 2 levels, and if there are two levels, the top-level will be an OR.
- * <p/>
+ * <p>
  * Due to sorting this operation is deterministic. However, it can take quite long (combinatoric explosion), thus it is recommended to set a timeout.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -45,7 +45,7 @@ public class OrOfAndNormalizer implements ExpressionTreeProcessor {
     private static final Logger LOGGER = LoggerFactory.getLogger(OrOfAndNormalizer.class);
 
     /**
-     * To reduce the amount of unnecessary branches, from time to time we check for implications.<br/>
+     * To reduce the amount of unnecessary branches, from time to time we check for implications.<br>
      * As this cleanup is expensive, there is a threshold involved. We won't cleanup a smaller group, and the maximum cleanup size has the same limit. Should
      * the normalization <i>run away</i> and produce way too many members then we must deal with the problem otherwise.
      */
@@ -149,7 +149,7 @@ public class OrOfAndNormalizer implements ExpressionTreeProcessor {
 
     /**
      * This method ensures that the members are normalized first (bottom-up) before dealing with the parent.
-     * <p/>
+     * <p>
      * After this method has run, the members are all ORs or ANDs (composed of leaves) or leaves.
      * 
      * @param tree
@@ -226,7 +226,7 @@ public class OrOfAndNormalizer implements ExpressionTreeProcessor {
 
     /**
      * Performs an implications check on the accumulated members in the OR to reduce the number of members early.
-     * <p/>
+     * <p>
      * <b>Note:</b> This operation is so expensive that the cleanup call was reduced on a maximum number of members ({@value #INTERMEDIATE_CLEANUP_THRESHOLD})
      * in a single run. We basically sacrifice some memory consumption for performance reasons.
      * 

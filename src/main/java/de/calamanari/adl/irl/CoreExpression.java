@@ -27,11 +27,11 @@ import de.calamanari.adl.FormatStyle;
 
 /**
  * {@link CoreExpression}s are the standard Audlang expressions on the <b>internal representation layer</b>.
- * <p/>
+ * <p>
  * This layer is meant for optimization and translation into target languages. It avoids syntactic sugar and thus has fewer language elements while still being
  * compatible to the Audlang language specification. A special characteristic of {@link CoreExpression}s is that there are <b>no higher level negations</b>, in
  * other words: all negations <i>trickle down</i> to the leaf expressions.
- * <p/>
+ * <p>
  * <b>Contract:</b>
  * <ul>
  * <li>A Core expressions is a directed acyclic graph (DAG).</li>
@@ -59,7 +59,7 @@ public interface CoreExpression extends AudlangExpression<CoreExpression, CoreEx
     /**
      * Returns a the negated form of this expression according to
      * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#5-negation">Audlang Spec §5</a>
-     * <p/>
+     * <p>
      * The negation on {@link CoreExpression} level is always on the leafs and always strict this method allows the caller to distinguish between a logical
      * negation (<code> strict=true</code>) and <i>without</i> (<code>strict=false</code>). So, if you want to express <i>expression1 <b>without</b>
      * expression2</i> then you should create a {@link CombinedExpression} or type AND with the members <code>expression1, expression2.negate(false)</code>.
@@ -71,7 +71,7 @@ public interface CoreExpression extends AudlangExpression<CoreExpression, CoreEx
 
     /**
      * Creates a new expression that expresses <i>"this expression <b>without</b> the other expression"</i> (aka <code>expr1 AND NOT expr2</code>).
-     * <p/>
+     * <p>
      * The method is a shorthand for creating a {@link CombinedExpression} of type {@link CombinedExpressionType#AND} with this expression and the other
      * expression negated.
      * 

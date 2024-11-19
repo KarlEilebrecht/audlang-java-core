@@ -27,21 +27,21 @@ import de.calamanari.adl.AudlangExpression;
 import de.calamanari.adl.FormatStyle;
 
 /**
- * {@link PlExpression} stands for <i><b>P</b>resentation <b>L</b>ayer Expression</i>, any expression for the external representation. This kind of expression
- * must be immutable and represent an acyclic directed graph (DAG) of a user-facing Audlang-expressing in its original form (not optimized, order preserved, all
- * potentially useless items preserved).
- * <p/>
+ * {@link PlExpression} stands for <i>external re<b>P</b>resentation <b>L</b>ayer expression</i>, any expression for the external representation. This kind of
+ * expression must be immutable and represent an acyclic directed graph (DAG) of a user-facing Audlang-expressing in its original form (not optimized, order
+ * preserved, all potentially useless items preserved).
+ * <p>
  * The main purpose of this expression type is parsing and reproduction (maybe pretty-printing) of a given valid Audlang expression without changing it.
- * <p/>
+ * <p>
  * Because {@link PlExpression}s are not normalized, many different expressions may be logically identical. Thus, you can only compare two {@link PlExpression}s
  * on the textual level but not on the logical level.
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#3-basic-expressions">§3</a>,
  * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#3-composite-expressions">§4</a> AudLang Spec
- * <p/>
+ * <p>
  * <b>Instances must be immutable.</b>
- * <p/>
- * The {@link #toString()} method of any {@link PlExpression} <b>must</b> return a valid Audlang expression equivalent to the instance.
+ * <p>
+ * The <code>toString()</code> method of any {@link PlExpression} <b>must</b> return a valid Audlang expression equivalent to the instance.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
@@ -61,9 +61,9 @@ public interface PlExpression<T extends PlExpression<T>> extends AudlangExpressi
     T stripComments();
 
     /**
-     * Creates an expression with the given comments on expression level.<br/>
+     * Creates an expression with the given comments on expression level.<br>
      * Any previously existing comments on expression level will not be copied.
-     * <p/>
+     * <p>
      * <b>Clarification:</b> This method does not change any comments on any child expressions.
      * 
      * @param comments to set

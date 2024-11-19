@@ -115,7 +115,7 @@ import de.calamanari.adl.util.AdlTextUtils;
 /**
  * The {@link PlExpressionBuilder} is the concrete ANTLR-listener implementation for parsing textual representations of Audlang expressions. It supports the
  * full language including comments.
- * <p/>
+ * <p>
  * See also: <a href=
  * "https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#audience-definition-language-specification">Audience
  * Definition Language Specification</a>
@@ -870,7 +870,7 @@ public class PlExpressionBuilder extends AudlangBaseListener {
     }
 
     /**
-     * When a level is closed there is just one child but the related comments sit on the parent level. <br/>
+     * When a level is closed there is just one child but the related comments sit on the parent level. <br>
      * This method attaches the comments to the produced child expression.
      */
     private void moveCommentsToLastChild() {
@@ -912,7 +912,7 @@ public class PlExpressionBuilder extends AudlangBaseListener {
     }
 
     /**
-     * braces on AND/OR are optional, so we need to distinguish comments after a combined expression (AND/OR) <br/>
+     * Braces on AND/OR are optional, so we need to distinguish comments after a combined expression (AND/OR) <br>
      * vs. comments after the last element of the combined expression (if there was no brace in-between)
      * 
      * @param child to attach look-back comments to
@@ -999,7 +999,7 @@ public class PlExpressionBuilder extends AudlangBaseListener {
 
     /**
      * This method deals with the problem that comments can be placed after closing extra braces.
-     * <p/>
+     * <p>
      * Because we eliminate the useless braces we must attach the comments to the child (not to the parent!)
      * 
      * @param ctx

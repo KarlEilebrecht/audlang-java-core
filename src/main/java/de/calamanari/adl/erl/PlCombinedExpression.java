@@ -48,7 +48,7 @@ import de.calamanari.adl.Visit;
 /**
  * A {@link PlCombinedExpression} connects at least two expressions to form a new one either with {@link CombinedExpressionType#OR} or
  * {@link CombinedExpressionType#AND}
- * <p/>
+ * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#41-logical-and">§4.1</a>,
  * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#42-logical-or">§4.2</a> Audlang Spec
  * 
@@ -88,8 +88,8 @@ public record PlCombinedExpression(CombinedExpressionType combiType, List<PlExpr
     }
 
     /**
-     * @param members the elements inside, list must at least contain two elements
-     * @param combiType logical connector
+     * @param type AND vs. OR
+     * @param members the elements inside, list must at least contain two members
      * @param comments optional comments, may be null
      */
     public PlCombinedExpression(CombinedExpressionType type, List<PlExpression<?>> members, List<PlComment> comments) {

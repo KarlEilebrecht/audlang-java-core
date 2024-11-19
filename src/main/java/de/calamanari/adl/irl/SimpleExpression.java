@@ -23,7 +23,7 @@ import de.calamanari.adl.irl.MatchExpression.MatchOperator;
 
 /**
  * The purpose of this interface is clarity for method signatures that cannot deal with combined or special expressions.
- * <p/>
+ * <p>
  * This interface only defines some of the properties a match or negated match has.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

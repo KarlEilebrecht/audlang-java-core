@@ -39,10 +39,10 @@ import de.calamanari.adl.irl.CoreExpression;
 
 /**
  * The {@link ExpressionTreeSimulator} allows a <b>brute-force simulation</b> (truth-table) of one or multiple expressions (side-by-side).
- * <p/>
- * For very complex expressions with many conditions this kind of simulation may be slow or even infeasible. <br/>
+ * <p>
+ * For very complex expressions with many conditions this kind of simulation may be slow or even infeasible. <br>
  * However, in many cases the simulator allows to check whether an expression after some transformations still behaves in the same way.
- * <p/>
+ * <p>
  * <b>Important:</b> Meant solely for testing and debugging, this implementation has <b>no built-in protection from combinatoric runaway</b> and can thus
  * produce {@link OutOfMemoryError}s.
  * 
@@ -185,7 +185,7 @@ public class ExpressionTreeSimulator {
     /**
      * This method left-to-right creates the setups and triggers the simulation. The setupVector contains one bit per available condition, so one test case is a
      * unique sequence of 1s and 0s.
-     * <p/>
+     * <p>
      * When all conditions have been added (either yes or no), then we do the simulation and add the result to the collection.
      * 
      * @param tree
@@ -214,7 +214,7 @@ public class ExpressionTreeSimulator {
 
     /**
      * This is the heart of the simulation, for each bin in the setup-vector we either assume one of the given conditions or its exact complement.
-     * <p/>
+     * <p>
      * Of course, it can happen that the assumptions contain contradictions which invalidates the particular setup. In this case we mark the corresponding run
      * as <i>not applicable</i> ({@link Result#NA}).
      * 
