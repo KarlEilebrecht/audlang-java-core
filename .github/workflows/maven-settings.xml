@@ -39,7 +39,12 @@
 
     <servers>
         <server>
-            <id>github</id>
+            <id>audlang-spec</id>
+            <username>${env.USER_NAME}</username>
+            <password>${env.ACCESS_TOKEN}</password>
+        </server>
+        <server>
+            <id>audlang-java-core</id>
             <username>${env.USER_NAME}</username>
             <password>${env.ACCESS_TOKEN}</password>
         </server>
