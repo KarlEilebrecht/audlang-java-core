@@ -37,17 +37,17 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         cache: maven
 
-    - name: View settings.xml
-      run: cat /home/runner/.m2/settings.xml        
-
-    - name: Configure Git user
-      run: |
-          git config user.email "actions@github.com"
-          git config user.name "GitHub Actions"      
+#    - name: View settings.xml
+#      run: cat /home/runner/.m2/settings.xml        
+#
+#    - name: Configure Git user
+#      run: |
+#          git config user.email "actions@github.com"
+#          git config user.name "GitHub Actions"      
 
     - name: Deploy artifacts with Maven
       run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B deploy -DskipTests
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         USER_NAME: ${{ secrets.PAT_RW_USER }}
         ACCESS_TOKEN: ${{ secrets.PAT_RW_TOKEN }}
