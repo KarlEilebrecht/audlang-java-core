@@ -46,8 +46,8 @@ jobs:
           git config user.name "GitHub Actions"      
 
     - name: Deploy artifacts with Maven
-      run: mvn -X -e -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B deploy -DskipTests
+      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B deploy -DskipTests
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        USER_NAME: ${{ secrets.PAT_RO_USER }}
-#        ACCESS_TOKEN: ${{ secrets.PAT_RO_TOKEN }}
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        USER_NAME: ${{ secrets.PAT_GOLDEN_USER }}
+        ACCESS_TOKEN: ${{ secrets.PAT_GOLDEN_TOKEN }}
