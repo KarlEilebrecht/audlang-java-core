@@ -18,7 +18,10 @@ jobs:
 
   release:
 
-    permissions: write-all
+    permissions:
+      contents: write
+      pages: write
+      packages: write
 
     runs-on: ubuntu-latest
 
