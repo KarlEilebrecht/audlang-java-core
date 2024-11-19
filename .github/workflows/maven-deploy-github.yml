@@ -49,5 +49,5 @@ jobs:
       run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B deploy -DskipTests
       env:
 #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        USER_NAME: ${{ secrets.PAT_GOLDEN_USER }}
-        ACCESS_TOKEN: ${{ secrets.PAT_GOLDEN_TOKEN }}
+        USER_NAME: ${{ secrets.PAT_PKG_WRITE_USER }}
+        ACCESS_TOKEN: ${{ secrets.PAT_PKG_WRITE_TOKEN }}
