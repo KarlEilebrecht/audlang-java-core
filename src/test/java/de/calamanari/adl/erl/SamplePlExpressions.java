@@ -39,7 +39,6 @@ import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.SpecialSetType;
 import de.calamanari.adl.erl.PlComment.Position;
 import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
-import de.calamanari.adl.erl.PlMatchExpression.PlMatchOperator;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

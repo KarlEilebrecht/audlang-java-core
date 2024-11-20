@@ -50,7 +50,7 @@ import de.calamanari.adl.DeepCopyUtils;
 import de.calamanari.adl.irl.CombinedExpression;
 import de.calamanari.adl.irl.CoreExpression;
 import de.calamanari.adl.irl.MatchExpression;
-import de.calamanari.adl.irl.MatchExpression.MatchOperator;
+import de.calamanari.adl.irl.MatchOperator;
 import de.calamanari.adl.irl.Operand;
 import de.calamanari.adl.irl.SimpleExpression;
 import de.calamanari.adl.irl.SpecialSetExpression;

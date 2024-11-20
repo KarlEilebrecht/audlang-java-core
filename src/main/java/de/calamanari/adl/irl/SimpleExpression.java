@@ -19,8 +19,6 @@
 
 package de.calamanari.adl.irl;
 
-import de.calamanari.adl.irl.MatchExpression.MatchOperator;
-
 /**
  * The purpose of this interface is clarity for method signatures that cannot deal with combined or special expressions.
  * <p>

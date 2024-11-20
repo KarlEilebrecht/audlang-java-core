@@ -39,7 +39,6 @@ import java.util.Set;
 import de.calamanari.adl.FormatConstants;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.erl.PlComment.Position;
-import de.calamanari.adl.erl.PlMatchExpression.PlMatchOperator;
 
 /**
  * Some helper methods for writing comments on elements of an expression.

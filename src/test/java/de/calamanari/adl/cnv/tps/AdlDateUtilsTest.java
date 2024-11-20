@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
 
 import de.calamanari.adl.cnv.StandardConversions;
 import de.calamanari.adl.irl.CoreExpression;
-import de.calamanari.adl.irl.MatchExpression.MatchOperator;
+import de.calamanari.adl.irl.MatchOperator;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

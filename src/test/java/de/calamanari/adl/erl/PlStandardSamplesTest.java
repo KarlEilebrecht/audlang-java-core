@@ -42,7 +42,6 @@ import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.SpecialSetType;
 import de.calamanari.adl.erl.PlComment.Position;
 import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
-import de.calamanari.adl.erl.PlMatchExpression.PlMatchOperator;
 import de.calamanari.adl.util.AdlTextUtils;
 import de.calamanari.adl.util.sgen.SampleExpression;
 import de.calamanari.adl.util.sgen.SampleExpressionGroup;

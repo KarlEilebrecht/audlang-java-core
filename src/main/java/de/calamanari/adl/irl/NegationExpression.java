@@ -37,7 +37,6 @@ import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.FormatUtils.FormatInfo;
 import de.calamanari.adl.Visit;
-import de.calamanari.adl.irl.MatchExpression.MatchOperator;
 
 /**
  * A {@link NegationExpression} represents a logical NOT on the Audlang internal representation layer and covers all kind of negation <i>on attribute level</i>.

@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 
 import de.calamanari.adl.irl.CoreExpression;
 import de.calamanari.adl.irl.MatchExpression;
-import de.calamanari.adl.irl.MatchExpression.MatchOperator;
+import de.calamanari.adl.irl.MatchOperator;
 
 /**
  * Utility methods related to the type convention for date values

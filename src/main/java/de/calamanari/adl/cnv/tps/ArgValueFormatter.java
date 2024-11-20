@@ -21,7 +21,7 @@ package de.calamanari.adl.cnv.tps;
 
 import java.io.Serializable;
 
-import de.calamanari.adl.irl.MatchExpression.MatchOperator;
+import de.calamanari.adl.irl.MatchOperator;
 
 /**
  * Classes implementing this interface encapsulate the knowledge how to format an argument value within the realm of its argument and in the context of the

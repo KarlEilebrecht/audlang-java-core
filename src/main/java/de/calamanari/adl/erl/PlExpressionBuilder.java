@@ -109,7 +109,6 @@ import de.calamanari.adl.antlr.AudlangParser.ValueOrRefListItemContext;
 import de.calamanari.adl.erl.CommentUtils.PhysicalCommentPosition;
 import de.calamanari.adl.erl.PlComment.Position;
 import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
-import de.calamanari.adl.erl.PlMatchExpression.PlMatchOperator;
 import de.calamanari.adl.util.AdlTextUtils;
 
 /**

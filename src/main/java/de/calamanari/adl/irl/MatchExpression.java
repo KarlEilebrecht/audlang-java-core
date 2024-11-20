@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.irl;
 
-import static de.calamanari.adl.FormatUtils.endsWith;
-import static de.calamanari.adl.FormatUtils.space;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +33,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import de.calamanari.adl.AudlangField;
 import de.calamanari.adl.AudlangValidationException;
 import de.calamanari.adl.FormatStyle;
-import de.calamanari.adl.util.AdlTextUtils;
 
 /**
  * Internal representation layer expression that matches a given argument against a plain value or an argument reference. Because all <i>syntactic sugar</i> has
@@ -78,7 +74,7 @@ public record MatchExpression(String argName, MatchOperator operator, @JsonInclu
         }
         if (!operator.isCompatibleWithOperand(operand)) {
             throw new AudlangValidationException(String.format("The operator is not applicable to the operand, given: argName=%s, operator=%s, operand=%s. %s",
-                    argName, operator, operand, operator.operandConstraint.message));
+                    argName, operator, operand, operator.getOperandConstraint().getMessage()));
 
         }
         if (operand != null && operand.isReference() && operand.value().equals(argName)) {
@@ -270,98 +266,6 @@ public record MatchExpression(String argName, MatchOperator operator, @JsonInclu
             }
             return CombinedExpression.orOf(orMembers);
         }
-    }
-
-    public enum MatchOperator {
-
-        /**
-         * <a href=
-         * "https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#33-less-than-and-greater-than">§3.3</a>
-         * Audlang Spec
-         */
-        LESS_THAN("<", OperandConstraint.ONE_VALUE_OR_ARG_REF),
-
-        /**
-         * <a href=
-         * "https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#33-less-than-and-greater-than">§3.3</a>
-         * Audlang Spec
-         */
-        GREATER_THAN(">", OperandConstraint.ONE_VALUE_OR_ARG_REF),
-
-        /**
-         * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#31-equals">§3.1</a> Audlang Spec
-         */
-        EQUALS("=", OperandConstraint.ONE_VALUE_OR_ARG_REF),
-
-        /**
-         * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#36-contains-text-snippet">§3.6</a>
-         * Audlang Spec
-         */
-        CONTAINS("CONTAINS", OperandConstraint.ONE_VALUE),
-
-        /**
-         * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#38-is-not-unknown">§3.8</a> Audlang
-         * Spec
-         */
-        IS_UNKNOWN("IS UNKNOWN", OperandConstraint.NONE);
-
-        private final OperandConstraint operandConstraint;
-
-        private final String operatorString;
-
-        private MatchOperator(String operatorString, OperandConstraint operandConstraint) {
-            this.operatorString = operatorString;
-            this.operandConstraint = operandConstraint;
-        }
-
-        /**
-         * @param operand
-         * @return true if the given operand is compatible with this operator
-         */
-        boolean isCompatibleWithOperand(Operand operand) {
-            switch (this.operandConstraint) {
-            case NONE:
-                return (operand == null);
-            case ONE_VALUE:
-                return operand != null && !operand.isReference();
-            case ONE_VALUE_OR_ARG_REF:
-                return (operand != null);
-            default:
-                return false;
-            }
-
-        }
-
-        void formatAndAppend(StringBuilder sb, String argName, Operand operand, FormatStyle style, int level) {
-            sb.append(AdlTextUtils.addDoubleQuotesIfRequired(AdlTextUtils.escapeSpecialCharacters(argName)));
-            space(sb);
-            sb.append(operatorString);
-            if (operand != null) {
-                space(sb);
-                operand.appendSingleLine(sb, style, level);
-            }
-            else if (endsWith(sb, " ") && !endsWith(sb, "/ ")) {
-                sb.setLength(sb.length() - 1);
-            }
-        }
-
-    }
-
-    /**
-     * Operator constraints for validation
-     */
-    private enum OperandConstraint {
-
-        NONE("Operator does not take any operand (unary operation)."),
-        ONE_VALUE("Operator expects a value argument, no argument reference allowed."),
-        ONE_VALUE_OR_ARG_REF("Operator expects a value or an argument reference.");
-
-        private final String message;
-
-        private OperandConstraint(String message) {
-            this.message = message;
-        }
-
     }
 
 }

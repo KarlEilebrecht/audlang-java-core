@@ -43,7 +43,7 @@ import de.calamanari.adl.erl.PlOperand;
 import de.calamanari.adl.erl.PlSpecialSetExpression;
 import de.calamanari.adl.irl.CoreExpression;
 import de.calamanari.adl.irl.MatchExpression;
-import de.calamanari.adl.irl.MatchExpression.MatchOperator;
+import de.calamanari.adl.irl.MatchOperator;
 import de.calamanari.adl.irl.Operand;
 import de.calamanari.adl.irl.biceps.CoreExpressionCodec;
 import de.calamanari.adl.irl.biceps.CoreExpressionCodec.Dictionary;

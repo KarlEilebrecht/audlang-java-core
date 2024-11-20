@@ -24,7 +24,7 @@ import java.util.List;
 
 import de.calamanari.adl.erl.PlExpression;
 import de.calamanari.adl.erl.PlMatchExpression;
-import de.calamanari.adl.erl.PlMatchExpression.PlMatchOperator;
+import de.calamanari.adl.erl.PlMatchOperator;
 import de.calamanari.adl.erl.PlNegationExpression;
 import de.calamanari.adl.erl.PlOperand;
 

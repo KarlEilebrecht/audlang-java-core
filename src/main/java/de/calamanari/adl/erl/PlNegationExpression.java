@@ -46,7 +46,6 @@ import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.FormatUtils.FormatInfo;
 import de.calamanari.adl.SpecialSetType;
 import de.calamanari.adl.Visit;
-import de.calamanari.adl.erl.PlMatchExpression.PlMatchOperator;
 
 /**
  * {@link PlNegationExpression} represents a logical NOT on the Audlang presentation layer.

@@ -36,6 +36,9 @@ public class FormatConstants {
     public static final String T_CONTAINS = "CONTAINS";
     public static final String T_CURB = "CURB";
 
+    public static final String EMPTY_PREFIX = "";
+    public static final String STRICT_PREFIX = T_STRICT;
+
     /**
      * Indent size for output is 4 space characters
      */

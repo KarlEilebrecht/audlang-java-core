@@ -41,7 +41,6 @@ import de.calamanari.adl.cnv.StandardConversions;
 import de.calamanari.adl.erl.AudlangParseResult;
 import de.calamanari.adl.erl.PlExpression;
 import de.calamanari.adl.erl.PlExpressionBuilder;
-import de.calamanari.adl.irl.MatchExpression.MatchOperator;
 import de.calamanari.adl.irl.biceps.EncodedExpressionTree;
 import de.calamanari.adl.irl.biceps.ImplicationResolver;
 import de.calamanari.adl.util.JsonUtils;
