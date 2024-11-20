@@ -34,6 +34,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.calamanari.adl.DeepCopyUtils;
 import de.calamanari.adl.irl.MatchOperator;
 
 /**
@@ -218,6 +219,39 @@ class DefaultAdlTypeTest {
         assertBadValue(type, "9,400,000.999");
         assertBadValue(type, "");
         assertBadValue(type, "1");
+    }
+
+    @Test
+    void testSerialization() {
+
+        for (AdlType type : DefaultAdlType.values()) {
+
+            assertSame(type, DeepCopyUtils.deepCopy(type));
+
+        }
+
+        AdlType type = DefaultAdlType.DATE.withFormatter((argName, argValue, operator) -> {
+            return operator.toString() + "(" + argName + ", " + argValue + ")";
+        });
+
+        assertEquals("LESS_THAN(argName, 2024-09-13)", type.getFormatter().format("argName", "2024-09-13", MatchOperator.LESS_THAN));
+
+        type = DeepCopyUtils.deepCopy(type);
+
+        assertEquals("LESS_THAN(argName, 2024-09-13)", type.getFormatter().format("argName", "2024-09-13", MatchOperator.LESS_THAN));
+
+        type = type.withNativeTypeCaster((argName, nativeFieldName, argType, reqArgType) -> {
+            return "(" + argType + " -> " + reqArgType + ") for " + argName + "." + nativeFieldName + ")";
+        });
+
+        assertEquals("(STRING -> INTEGER) for color.cl33)",
+                type.getNativeTypeCaster().formatNativeTypeCast("color", "cl33", DefaultAdlType.STRING, DefaultAdlType.INTEGER));
+
+        type = DeepCopyUtils.deepCopy(type);
+
+        assertEquals("(STRING -> INTEGER) for color.cl33)",
+                type.getNativeTypeCaster().formatNativeTypeCast("color", "cl33", DefaultAdlType.STRING, DefaultAdlType.INTEGER));
+
     }
 
     private static void assertBadValue(AdlType type, String value) {
