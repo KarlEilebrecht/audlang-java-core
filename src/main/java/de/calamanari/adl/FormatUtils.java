@@ -384,7 +384,7 @@ public class FormatUtils {
      * @param formatInfo
      */
     public static void appendCurbExpression(StringBuilder sb, AudlangFormattable delegate, String operatorString, int bound, FormatInfo formatInfo) {
-        appendCurbExpression(sb, delegate, operatorString, bound, formatInfo);
+        appendCurbExpression(sb, delegate, operatorString, bound, Collections.emptyList(), formatInfo);
     }
 
     /**
@@ -465,7 +465,7 @@ public class FormatUtils {
      * @param formatInfo
      */
     public static void appendSpecialSetExpression(StringBuilder sb, String specialSetTypeString, FormatInfo formatInfo) {
-        appendSpecialSetExpression(sb, specialSetTypeString, formatInfo);
+        appendSpecialSetExpression(sb, specialSetTypeString, Collections.emptyList(), formatInfo);
     }
 
     /**
