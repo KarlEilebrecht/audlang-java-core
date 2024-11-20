@@ -40,6 +40,10 @@ Converter implementations based on this core project can concentrate on the spec
  * **[Conversion](./src/main/java/de/calamanari/adl/cnv/README.md)**
  * **[Type Support](./src/main/java/de/calamanari/adl/cnv/tps/README.md)**
  
+----
+<div style="text-align:right"><img src="https://sonarcloud.io/api/project_badges/measure?project=KarlEilebrecht_audlang-java-core&metric=alert_status" /></div>
+
+[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=KarlEilebrecht_audlang-java-core)
 
 
 
