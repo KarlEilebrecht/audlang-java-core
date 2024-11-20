@@ -55,5 +55,5 @@ jobs:
       run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B release:prepare release:perform
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        USER_NAME: ${{ secrets.PAT_RO_USER }}
-        ACCESS_TOKEN: ${{ secrets.PAT_RO_TOKEN }}
+        USER_NAME: ${{ secrets.PAT_PKG_WRITE_USER }}
+        ACCESS_TOKEN: ${{ secrets.PAT_PKG_WRITE_TOKEN }}
