@@ -19,6 +19,9 @@
 
 package de.calamanari.adl.irl.biceps;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Disabled;
@@ -191,6 +194,26 @@ class ExpressionTreeSimulatorTest {
         assertTrue(report.indexOf("TRUE") > -1);
         assertTrue(report.indexOf("FALSE") > -1);
 
+    }
+
+    @Test
+    void testLevel() {
+
+        GrowingIntArray gia = new GrowingIntArray(new int[] { 1, 2, 3, 4 }, false);
+
+        ExpressionTreeLevel level = new ExpressionTreeLevel(gia);
+
+        assertEquals(gia, level.members());
+
+        assertArrayEquals(new int[] { 1, 2, 3, 4 }, level.members().toArray());
+
+        level.clear();
+
+        assertEquals(gia, level.members());
+
+        assertArrayEquals(new int[] {}, level.members().toArray());
+
+        assertThrows(IllegalArgumentException.class, () -> new ExpressionTreeLevel(null));
     }
 
     private static String simulateComparisonParsedVsOptimized(String expr) {
