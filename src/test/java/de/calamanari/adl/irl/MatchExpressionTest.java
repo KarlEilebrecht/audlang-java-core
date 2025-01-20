@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -37,6 +38,7 @@ import org.slf4j.LoggerFactory;
 
 import de.calamanari.adl.AudlangField;
 import de.calamanari.adl.AudlangValidationException;
+import de.calamanari.adl.cnv.CoreToPlExpressionConverter;
 import de.calamanari.adl.cnv.StandardConversions;
 import de.calamanari.adl.erl.AudlangParseResult;
 import de.calamanari.adl.erl.PlExpression;
@@ -402,6 +404,25 @@ class MatchExpressionTest {
         String jsonPl = JsonUtils.writeAsJsonString(exprPl, true);
 
         assertThrows(RuntimeException.class, () -> JsonUtils.readFromJsonString(jsonPl, CoreExpression.class));
+
+    }
+
+    @Test
+    void testPrepareContext() {
+        CoreToPlExpressionConverter converter = new CoreToPlExpressionConverter();
+
+        AtomicInteger counter = new AtomicInteger();
+
+        CoreExpression expr = parse("a = 1");
+
+        converter.setContextPreparator(ctx -> {
+            counter.incrementAndGet();
+            return ctx;
+        });
+        assertEquals("a = 1", converter.convert(expr).toString());
+
+        // root context and one level context
+        assertEquals(2, counter.get());
 
     }
 
