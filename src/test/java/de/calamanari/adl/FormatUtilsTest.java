@@ -223,6 +223,17 @@ class FormatUtilsTest {
     }
 
     @Test
+    void testAppendSpaced() {
+
+        StringBuilder sb = new StringBuilder();
+        assertSbEquals("a ", sb, () -> FormatUtils.appendSpaced(sb, "a"));
+        assertSbEquals("a a ", sb, () -> FormatUtils.appendSpaced(sb, "a"));
+        sb.append("\n");
+        assertSbEquals("a a \na ", sb, () -> FormatUtils.appendSpaced(sb, "a"));
+
+    }
+
+    @Test
     void testComma() {
         StringBuilder sb = new StringBuilder();
 
@@ -376,17 +387,6 @@ class FormatUtilsTest {
         assertEquals(4, FormatUtils.maxLength(Arrays.asList((String) null)));
 
         assertEquals(5, FormatUtils.maxLength(Arrays.asList("12345", "1", "1234", "12", "123")));
-
-    }
-
-    @Test
-    void testAppendSpaced() {
-
-        StringBuilder sb = new StringBuilder();
-        assertSbEquals("a ", sb, () -> FormatUtils.appendSpaced(sb, "a"));
-        assertSbEquals("a a ", sb, () -> FormatUtils.appendSpaced(sb, "a"));
-        sb.append("\n");
-        assertSbEquals("a a \na ", sb, () -> FormatUtils.appendSpaced(sb, "a"));
 
     }
 
