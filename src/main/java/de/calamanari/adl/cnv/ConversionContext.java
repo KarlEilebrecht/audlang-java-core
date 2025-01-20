@@ -19,16 +19,21 @@
 
 package de.calamanari.adl.cnv;
 
+import de.calamanari.adl.irl.CombinedExpression;
+import de.calamanari.adl.irl.CoreExpression;
+
 /**
+ * A {@link ConversionContext} is a <i>level context</i> while traversing an expression.
+ * <p>
+ * Each {@link CombinedExpression} in the DAG of the expression gets its own context instance to clearly separate and organize the collected information when
+ * visiting a {@link CoreExpression}.
+ * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public interface ConversionContext {
 
     /**
-     * (Re-)sets this context in a state that a fresh conversion can happen.
-     * <p>
-     * This method will be called during conversions to avoid artifacts from previous conversion runs. <br>
-     * Means: specific implementations may decide to keep some static or unproblematic cached data in the context across runs.
+     * (Re-)sets this level context to empty.
      */
     void clear();
 

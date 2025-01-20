@@ -46,8 +46,9 @@ import de.calamanari.adl.util.AdlTextUtils;
  * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#123-argument-reference">§1.2.3</a> Audlang
  * Spec
  * 
- * @param value the value or argRef (without the '@'), not null
- * @param isReference true if this operand is an argument name reference
+ * @param value either a plain value of the plain name of another argument
+ * @param isReference true to indicate that the given value is the name of another argument
+ * @param comments optional list of comments, may be null
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public record PlOperand(String value, @JsonInclude(JsonInclude.Include.NON_DEFAULT) boolean isReference,

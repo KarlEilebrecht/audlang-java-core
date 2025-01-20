@@ -25,8 +25,20 @@ import de.calamanari.adl.cnv.ConversionContext;
 
 /**
  * A {@link ExpressionTreeLevel} is a temporary container for members on a certain level while building the expression tree bottom-up.
+ * 
+ * @param members not null
+ * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public record ExpressionTreeLevel(GrowingIntArray members) implements ConversionContext, Serializable {
+
+    /**
+     * @param members not null
+     */
+    public ExpressionTreeLevel {
+        if (members == null) {
+            throw new IllegalArgumentException("The members array of a level must not be null.");
+        }
+    }
 
     /**
      * @return deep copy of this tree-level but unrelated to the given instance

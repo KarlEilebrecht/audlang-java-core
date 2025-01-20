@@ -29,6 +29,7 @@ import java.util.TreeMap;
  * {@link ArgNameValueMapping} is a container with the mappings of argument names to target argument names resp. values to target values within the realm of
  * their argument. E.g., this can be used to map between labels and technical IDs.
  * 
+ * @param mappings from qualified value to another (mapping between taxonomies)
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public record ArgNameValueMapping(Map<QualifiedArgValue, QualifiedArgValue> mappings) implements Serializable {
@@ -43,7 +44,7 @@ public record ArgNameValueMapping(Map<QualifiedArgValue, QualifiedArgValue> mapp
     }
 
     /**
-     * @param mappings from source to destination
+     * @param mappings from qualified value to another (mapping between taxonomies)
      * @throws IllegalArgumentException if any key or value of the given map was null
      */
     public ArgNameValueMapping(Map<QualifiedArgValue, QualifiedArgValue> mappings) {

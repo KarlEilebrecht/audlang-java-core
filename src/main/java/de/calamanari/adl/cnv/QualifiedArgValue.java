@@ -26,10 +26,16 @@ import java.io.Serializable;
  * <p>
  * While the argument name must not be null, the value can be null, aka "IS UNKNOWN".
  * 
+ * @param argName argument name, not null
+ * @param argValue
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public record QualifiedArgValue(String argName, String argValue) implements Comparable<QualifiedArgValue>, Serializable {
 
+    /**
+     * @param argName argument name, not null
+     * @param argValue
+     */
     public QualifiedArgValue {
         if (argName == null) {
             throw new IllegalArgumentException("argName must not be null, given: argName=null, argValue=" + argValue);

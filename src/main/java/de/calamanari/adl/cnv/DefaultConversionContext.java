@@ -23,11 +23,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * The {@link DefaultConversionContext} provides an array list of the specified type to deal with the members parsed from a particular expressen level.
+ * 
+ * @param members the members of this context level
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public record DefaultConversionContext<R>(List<R> members) implements ConversionContext {
 
-    DefaultConversionContext() {
+    /**
+     * @param members (null means empty)
+     */
+    public DefaultConversionContext(List<R> members) {
+        this.members = members == null ? new ArrayList<>() : members;
+    }
+
+    /**
+     * Creates a new context object with an empty mutable list
+     */
+    public DefaultConversionContext() {
         this(new ArrayList<>());
     }
 

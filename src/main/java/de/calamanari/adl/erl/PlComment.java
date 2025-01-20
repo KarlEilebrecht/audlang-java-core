@@ -44,8 +44,10 @@ import de.calamanari.adl.FormatStyle;
  * expressions.</li>
  * </ul>
  * 
+ * @param comment not null, text <b>must</b> start with <code>'/*'</code> and end with <code>'*&#47;'</code>, so the shortest possible comment is
+ *            <code>'/**&#47;'</code>
+ * @param position not null
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
- * 
  */
 public record PlComment(String comment, Position position) implements AudlangFormattable, Serializable {
 

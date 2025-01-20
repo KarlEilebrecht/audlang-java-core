@@ -48,6 +48,8 @@ import de.calamanari.adl.Visit;
  * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#5-negation">§5</a> Audlang Spec
  * 
+ * @param delegate {@link MatchExpression} to be negated
+ * @param inline this is an internal value computed by the constructor, no matter what you specify here, it will be ignored
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 @JsonDeserialize(using = JsonDeserializer.None.class)

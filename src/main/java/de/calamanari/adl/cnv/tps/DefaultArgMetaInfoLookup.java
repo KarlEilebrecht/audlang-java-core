@@ -30,6 +30,7 @@ import java.util.TreeMap;
  * <p>
  * Instances are deeply immutable.
  * 
+ * @param map mapping from the argument names to the related meta information
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public record DefaultArgMetaInfoLookup(Map<String, ArgMetaInfo> map) implements ArgMetaInfoLookup {
@@ -47,7 +48,7 @@ public record DefaultArgMetaInfoLookup(Map<String, ArgMetaInfo> map) implements 
     /**
      * Creates a lookup from the given map
      * 
-     * @param map
+     * @param map mapping from the argument names to the related meta information
      * @throws ConfigException if the mapping contained nulls
      */
     public DefaultArgMetaInfoLookup(Map<String, ArgMetaInfo> map) {

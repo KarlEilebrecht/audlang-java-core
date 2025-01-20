@@ -52,6 +52,10 @@ import de.calamanari.adl.Visit;
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#41-logical-and">§4.1</a>,
  * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#42-logical-or">§4.2</a> Audlang Spec
  * 
+ * @param combiType logical connector
+ * @param members the elements inside, list must at least contain two elements
+ * @param comments optional comments, may be null
+ * @param inline this is an internal value computed by the constructor, no matter what you specify here, it will be ignored
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 @JsonDeserialize(using = JsonDeserializer.None.class)

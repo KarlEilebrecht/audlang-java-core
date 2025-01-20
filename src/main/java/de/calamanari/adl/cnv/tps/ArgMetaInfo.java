@@ -36,6 +36,16 @@ import java.io.Serializable;
  */
 public record ArgMetaInfo(String argName, AdlType type, boolean isAlwaysKnown, boolean isCollection) implements Serializable {
 
+    /**
+     * @param argName name of the argument, mandatory
+     * @param type type of the argument, mandatory
+     * @param isAlwaysKnown if true, the argument <b>can never be UNKNOWN</b>, see
+     *            <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#38-is-not-unknown">§3.8
+     *            Audlang Spec</a>
+     * @param isCollection if true, the argument is a <b>value collection</b>, see <a href=
+     *            "https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#7-audlang-and-collection-attributes">§7
+     *            Audlang Spec</a>
+     */
     public ArgMetaInfo {
         if (argName == null || argName.isEmpty() || type == null) {
             throw new ConfigException(String.format("Arguments argName and type are mandatory, given: argName=%s, type=%s, isAlwaysKnown=%s, isCollection=%s",

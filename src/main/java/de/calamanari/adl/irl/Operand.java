@@ -35,6 +35,8 @@ import de.calamanari.adl.util.AdlTextUtils;
  * <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#123-argument-reference">§1.2.3</a> Audlang
  * Spec
  * 
+ * @param value either a plain value of the plain name of another argument
+ * @param isReference true to indicate that the given value is the name of another argument
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public record Operand(String value, @JsonInclude(JsonInclude.Include.NON_DEFAULT) boolean isReference) implements AudlangFormattable, Serializable {

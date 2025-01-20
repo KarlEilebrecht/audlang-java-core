@@ -36,6 +36,9 @@ import java.util.TreeSet;
  * <li>{@link #values()} and {@link #refArgNames()} are free of duplicates and ordered, independent from the given source lists.</li>
  * </ul>
  * 
+ * @param argName mandatory name of the argument
+ * @param values list of values collected for this argument, null is same as empty list
+ * @param refArgNames list of referenced argument names collected for this argument, null is same as empty list
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public record AudlangField(String argName, List<String> values, List<String> refArgNames) implements Serializable {

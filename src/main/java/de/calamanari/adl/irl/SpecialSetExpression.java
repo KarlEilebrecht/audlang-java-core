@@ -39,6 +39,8 @@ import de.calamanari.adl.SpecialSetType;
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#39-all-and-none">§3.9</a> Audlang
  * Spec
  * 
+ * @param setType distinguishes between ALL and NONE
+ * @param inline this is an internal value computed by the constructor, no matter what you specify here, it will be ignored
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 @JsonDeserialize(using = JsonDeserializer.None.class)

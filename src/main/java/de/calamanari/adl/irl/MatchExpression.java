@@ -48,6 +48,10 @@ import de.calamanari.adl.FormatStyle;
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#3-basic-expressions">§3</a> Audlang
  * Spec
  * 
+ * @param argName attribute name
+ * @param operator for matching the argument against the operand
+ * @param operand single operand or null (IS UNKNOWN case)
+ * @param inline this is an internal value computed by the constructor, no matter what you specify here, it will be ignored
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 @JsonDeserialize(using = JsonDeserializer.None.class)

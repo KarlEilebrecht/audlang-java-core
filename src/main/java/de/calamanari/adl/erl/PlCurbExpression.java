@@ -49,6 +49,11 @@ import de.calamanari.adl.Visit;
  * <p>
  * See also <a href="https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#43-curbed-or">§4.3</a> Audlang Spec
  * 
+ * @param curbDelegate {@link PlCombinedExpression} of type {@link CombinedExpressionType#OR} to be curbed
+ * @param operator the comparison operator against the bound value
+ * @param bound count to compare
+ * @param comments optional comments, may be null
+ * @param inline this is an internal value computed by the constructor, no matter what you specify here, it will be ignored
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 @JsonDeserialize(using = JsonDeserializer.None.class)
