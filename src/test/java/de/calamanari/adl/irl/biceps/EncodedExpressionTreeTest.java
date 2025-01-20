@@ -23,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -301,7 +302,7 @@ class EncodedExpressionTreeTest {
 
         CoreExpression expr1 = StandardConversions.parseCoreExpression("a = 1 AND b > 5 AND e = foo");
 
-        assertThrows(IllegalStateException.class, () -> tree.getRootNode());
+        assertThrows(IllegalStateException.class, tree::getRootNode);
         assertThrows(IllegalStateException.class, () -> tree.setRootNode(2736));
         assertThrows(IllegalStateException.class, () -> tree.createNode(expr1));
 
@@ -321,6 +322,21 @@ class EncodedExpressionTreeTest {
         tree.setRootNode(CoreExpressionCodec.INVALID);
 
         assertEquals("INVALID", tree.createDebugString(tree.getRootNode()));
+
+    }
+
+    @Test
+    void testBug3() {
+        CoreExpression expr = StandardConversions.parseCoreExpression("(color.1 = red OR color.1 = blue) AND color.3 = yellow");
+        CoreExpression expr2 = StandardConversions.parseCoreExpression("(color.1 = red OR color.1 = blue)");
+
+        EncodedExpressionTree tree = EncodedExpressionTree.fromCoreExpression(expr);
+
+        int node1 = tree.getRootNode();
+
+        int node2 = tree.createNode(expr2);
+
+        assertTrue(tree.getLogicHelper().leftImpliesRight(node1, node2));
 
     }
 

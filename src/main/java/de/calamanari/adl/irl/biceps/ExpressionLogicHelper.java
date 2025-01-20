@@ -208,12 +208,14 @@ public class ExpressionLogicHelper implements Serializable {
         NodeType rightNodeType = getNodeType(right);
 
         boolean res = false;
+
         // @formatter:off
-        if (((leftIsCombined && leftNodeType == rightNodeType)
-                     && ((leftNodeType == NodeType.AND && MemberUtils.sortedLeftMembersContainSortedRightMembers(leftMembers, rightMembers))
-                             || (leftNodeType == NodeType.OR && MemberUtils.sortedLeftMembersContainSortedRightMembers(rightMembers, leftMembers))))
-                || (!leftIsCombined && rightNodeType == NodeType.OR && Arrays.binarySearch(rightMembers, left) > -1)) {
-            // implication
+        if (leftAndContainsRight(leftNodeType, leftMembers, right)
+                || leftAndContainsRightAndMembers(leftNodeType, leftMembers, rightNodeType, rightMembers)
+                || leftAndContainsAnyOfRightOrMembers(leftNodeType, leftMembers, rightNodeType, rightMembers)
+                || leftContainedInRightOr(left, rightNodeType, rightMembers)
+                || leftOrMembersContainedInRightOr(leftNodeType, leftMembers, rightNodeType, rightMembers)) {
+            // direct implication
             res = true;
         }
         // @formatter:on
@@ -227,6 +229,71 @@ public class ExpressionLogicHelper implements Serializable {
             res = leftLeafImpliesRightLeaf(left, right);
         }
         return res;
+    }
+
+    /**
+     * Rule 1: <code>(a=1 AND b=1 AND c=1)</code> implies <code>a=1</code>
+     * 
+     * @param leftNodeType
+     * @param leftMembers
+     * @param right
+     * @return true if left implies right
+     */
+    private boolean leftAndContainsRight(NodeType leftNodeType, int[] leftMembers, int right) {
+        return leftNodeType == NodeType.AND && Arrays.binarySearch(leftMembers, right) > -1;
+    }
+
+    /**
+     * Rule 2: <code>(a=1 AND b=1 AND c=1)</code> implies <code>(b=1 AND c=1)</code>
+     * 
+     * @param leftNodeType
+     * @param leftMembers
+     * @param rightNodeType
+     * @param rightMembers
+     * @return true if left implies right
+     */
+    private boolean leftAndContainsRightAndMembers(NodeType leftNodeType, int[] leftMembers, NodeType rightNodeType, int[] rightMembers) {
+        return leftNodeType == NodeType.AND && rightNodeType == NodeType.AND
+                && MemberUtils.sortedLeftMembersContainSortedRightMembers(leftMembers, rightMembers);
+    }
+
+    /**
+     * Rule 3: <code>(a=1 AND b=1 AND c=1)</code> implies <code>(c=1 OR d=1 OR e=1)</code>
+     * 
+     * @param leftNodeType
+     * @param leftMembers
+     * @param rightNodeType
+     * @param rightMembers
+     * @return true if left implies right
+     */
+    private boolean leftAndContainsAnyOfRightOrMembers(NodeType leftNodeType, int[] leftMembers, NodeType rightNodeType, int[] rightMembers) {
+        return leftNodeType == NodeType.AND && rightNodeType == NodeType.OR
+                && MemberUtils.sortedLeftMembersContainAnyOfSortedRightMembers(leftMembers, rightMembers);
+    }
+
+    /**
+     * Rule 4: <code>a=1</code> implies <code>(a=1 OR b=1 OR c=1)</code>
+     * 
+     * @param left
+     * @param rightNodeType
+     * @param rightMembers
+     * @return true if left implies right
+     */
+    private boolean leftContainedInRightOr(int left, NodeType rightNodeType, int[] rightMembers) {
+        return rightNodeType == NodeType.OR && Arrays.binarySearch(rightMembers, left) > -1;
+    }
+
+    /**
+     * Rule 5: <code>(a=1 OR b=1)</code> implies <code>(a=1 OR b=1 OR c=1)</code>
+     * 
+     * @param leftNodeType
+     * @param leftMembers
+     * @param rightNodeType
+     * @param rightMembers
+     * @return true if left implies right
+     */
+    private boolean leftOrMembersContainedInRightOr(NodeType leftNodeType, int[] leftMembers, NodeType rightNodeType, int[] rightMembers) {
+        return leftNodeType == NodeType.OR && rightNodeType == NodeType.OR && MemberUtils.sortedLeftMembersContainSortedRightMembers(rightMembers, leftMembers);
     }
 
     /**

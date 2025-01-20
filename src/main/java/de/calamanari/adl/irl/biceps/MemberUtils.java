@@ -446,6 +446,30 @@ public class MemberUtils {
     }
 
     /**
+     * Contains-check on <b>sorted</b> arrays.
+     * 
+     * @param leftMembers sorted, free of duplicates
+     * @param rightMembers sorted, free of duplicates
+     * @return true if the right array is not empty and the left array contains any of the right array members
+     */
+    public static boolean sortedLeftMembersContainAnyOfSortedRightMembers(int[] leftMembers, int[] rightMembers) {
+        if (leftMembers.length > 0 && rightMembers.length > 0) {
+
+            int maxLeft = leftMembers[leftMembers.length - 1];
+
+            for (int rightMember : rightMembers) {
+                if (rightMember > maxLeft) {
+                    return false;
+                }
+                else if (rightMember == maxLeft || Arrays.binarySearch(leftMembers, 0, leftMembers.length, rightMember) > -1) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      * Detail search for the <i>remaining</i> elements of <i>rightMembers</i> (starting with the second element) in <i>leftMembers</i> starting at the given
      * leftIdx.
      * <p>
@@ -478,38 +502,6 @@ public class MemberUtils {
             }
         }
         return true;
-    }
-
-    /**
-     * Checks whether the left contains the right one (member overlap). If right is a leaf then this method returns true if right is one of the members of left.
-     * If both are leaves then the result is true if both are identical.<br>
-     * If both are combined nodes of different nodes (AND vs. OR) the result is always false.<br>
-     * Otherwise the result is the same as returned by {@link #sortedLeftMembersContainSortedRightMembers(int[], int[])}
-     * 
-     * @param memberArrayRegistry
-     * @param left
-     * @param right
-     * @return true if right is contained in left
-     */
-    public static boolean leftMembersContainRightMembers(MemberArrayRegistry memberArrayRegistry, int left, int right) {
-        NodeType leftNodeType = getNodeType(left);
-        NodeType rightNodeType = getNodeType(right);
-
-        if (leftNodeType == NodeType.LEAF && rightNodeType == NodeType.LEAF) {
-            return (left == right);
-        }
-        else if (rightNodeType == NodeType.LEAF) {
-            int[] leftMembers = membersOf(memberArrayRegistry, left);
-            return Arrays.binarySearch(leftMembers, right) > -1;
-        }
-        else if (leftNodeType != rightNodeType) {
-            return false;
-        }
-        else {
-            int[] leftMembers = membersOf(memberArrayRegistry, left);
-            int[] rightMembers = membersOf(memberArrayRegistry, left);
-            return sortedLeftMembersContainSortedRightMembers(leftMembers, rightMembers);
-        }
     }
 
     private MemberUtils() {
