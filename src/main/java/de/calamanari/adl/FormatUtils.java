@@ -89,10 +89,28 @@ public class FormatUtils {
         if (endsWithNewLine(sb)) {
             appendIndent(sb, style, level);
         }
-        else {
+        else if (!sb.isEmpty()) {
             space(sb);
         }
 
+    }
+
+    /**
+     * Depending on the configured style either appends an optional line break followed by indentation or just a space character.
+     * <p>
+     * For convenience reasons the method will not repeat the space or indentation after an existing space or indentation.
+     * 
+     * @param sb
+     * @param style
+     * @param level
+     * @param prependLineBreak first adds the line break before the indentation
+     */
+    public static void appendIndentOrWhitespace(StringBuilder sb, FormatStyle style, int level, boolean prependLineBreak) {
+        if (style.isMultiLine() && prependLineBreak) {
+            stripTrailingWhitespace(sb);
+            newLine(sb);
+        }
+        FormatUtils.appendIndentOrWhitespace(sb, style, level);
     }
 
     /**
@@ -127,6 +145,26 @@ public class FormatUtils {
     public static void space(StringBuilder sb) {
         if (sb.isEmpty() || !Character.isWhitespace(sb.charAt(sb.length() - 1))) {
             sb.append(" ");
+        }
+    }
+
+    /**
+     * Adds a space (if not empty/linbreak right before), value, space, value, ..., value, space
+     * 
+     * @see #space(StringBuilder)
+     * 
+     * @param sb
+     * @param value(s) to append surrounded by space
+     */
+    public static void appendSpaced(StringBuilder sb, String... values) {
+        if (values.length > 0) {
+            for (String value : values) {
+                if (!sb.isEmpty()) {
+                    space(sb);
+                }
+                sb.append(value);
+            }
+            space(sb);
         }
     }
 

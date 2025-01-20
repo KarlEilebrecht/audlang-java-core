@@ -119,32 +119,42 @@ class FormatUtilsTest {
         StringBuilder sb = new StringBuilder();
 
         FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.INLINE, 0);
-        assertEquals(" ", sb.toString());
+        assertEquals("", sb.toString());
 
         sb.append("word");
         FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.INLINE, 0);
-        assertEquals(" word ", sb.toString());
+        assertEquals("word ", sb.toString());
 
         FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.INLINE, 1);
-        assertEquals(" word ", sb.toString());
+        assertEquals("word ", sb.toString());
 
         FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.INLINE, 3);
-        assertEquals(" word ", sb.toString());
+        assertEquals("word ", sb.toString());
 
         sb.setLength(0);
         FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.PRETTY_PRINT, 0);
-        assertEquals(" ", sb.toString());
+        assertEquals("", sb.toString());
 
         sb.append("word\n");
         FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.PRETTY_PRINT, 0);
-        assertEquals(" word\n", sb.toString());
+        assertEquals("word\n", sb.toString());
         FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.PRETTY_PRINT, 1);
-        assertEquals(" word\n" + FormatConstants.DEFAULT_INDENT, sb.toString());
+        assertEquals("word\n" + FormatConstants.DEFAULT_INDENT, sb.toString());
         FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.PRETTY_PRINT, 2);
-        assertEquals(" word\n" + FormatConstants.DEFAULT_INDENT, sb.toString());
+        assertEquals("word\n" + FormatConstants.DEFAULT_INDENT, sb.toString());
         sb.append("word2\n");
         FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.PRETTY_PRINT, 2);
-        assertEquals(" word\n" + FormatConstants.DEFAULT_INDENT + "word2\n" + FormatConstants.DEFAULT_INDENT + FormatConstants.DEFAULT_INDENT, sb.toString());
+        assertEquals("word\n" + FormatConstants.DEFAULT_INDENT + "word2\n" + FormatConstants.DEFAULT_INDENT + FormatConstants.DEFAULT_INDENT, sb.toString());
+
+        sb.setLength(0);
+
+        assertSbEquals("", sb, () -> FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.INLINE, 0, false));
+        assertSbEquals("", sb, () -> FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.INLINE, 2, false));
+        assertSbEquals("", sb, () -> FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.INLINE, 0, true));
+        assertSbEquals("", sb, () -> FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.INLINE, 2, true));
+
+        assertSbEquals("\n", sb, () -> FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.PRETTY_PRINT, 0, true));
+        assertSbEquals("\n        ", sb, () -> FormatUtils.appendIndentOrWhitespace(sb, FormatStyle.PRETTY_PRINT, 2, true));
 
     }
 
@@ -367,5 +377,21 @@ class FormatUtilsTest {
 
         assertEquals(5, FormatUtils.maxLength(Arrays.asList("12345", "1", "1234", "12", "123")));
 
+    }
+
+    @Test
+    void testAppendSpaced() {
+
+        StringBuilder sb = new StringBuilder();
+        assertSbEquals("a ", sb, () -> FormatUtils.appendSpaced(sb, "a"));
+        assertSbEquals("a a ", sb, () -> FormatUtils.appendSpaced(sb, "a"));
+        sb.append("\n");
+        assertSbEquals("a a \na ", sb, () -> FormatUtils.appendSpaced(sb, "a"));
+
+    }
+
+    private static void assertSbEquals(String expected, StringBuilder sb, Runnable runnable) {
+        runnable.run();
+        assertEquals(expected, sb.toString());
     }
 }
