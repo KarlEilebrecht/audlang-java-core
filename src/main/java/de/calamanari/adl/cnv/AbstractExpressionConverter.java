@@ -22,11 +22,16 @@ package de.calamanari.adl.cnv;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 
 import de.calamanari.adl.ConversionException;
 
 /**
  * Base class for any expression converter, manages the state while traversing expressions
+ * <p>
+ * <b>Important:</b> An instance has neither a valid {@link #getRootContext()} nor a {@link #getContext()} before {@link #convert(Object)} is called.<br>
+ * The {@link #convert(Object)} methods fully (re-)initializes the state. If you want to modify the root context before conversion start, use
+ * {@link #setContextPreparator(UnaryOperator)}. Then you get control over any context object after supply but before it is actually used.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
@@ -48,9 +53,14 @@ public abstract class AbstractExpressionConverter<S, R, C extends ConversionCont
     private S rootExpression;
 
     /**
+     * This is a callback to allow intercepting the context initialization, e.g., for adding global information
+     */
+    private UnaryOperator<C> contextPreparator = UnaryOperator.identity();
+
+    /**
      * method to create a fresh context
      */
-    protected final Supplier<? extends C> contextSupplier;
+    private final Supplier<? extends C> contextSupplier;
 
     /**
      * stack with the contexts for the different levels while visiting expressions
@@ -83,6 +93,13 @@ public abstract class AbstractExpressionConverter<S, R, C extends ConversionCont
      */
     protected final C getContext() {
         return context;
+    }
+
+    /**
+     * @return a freshly created and prepared context
+     */
+    protected final C createNewContext() {
+        return contextPreparator.apply(contextSupplier.get());
     }
 
     /**
@@ -128,8 +145,6 @@ public abstract class AbstractExpressionConverter<S, R, C extends ConversionCont
             throw new IllegalArgumentException("Context supplier cannot be null.");
         }
         this.contextSupplier = contextSupplier;
-        this.rootContext = contextSupplier.get();
-        this.context = rootContext;
     }
 
     /**
@@ -137,7 +152,7 @@ public abstract class AbstractExpressionConverter<S, R, C extends ConversionCont
      */
     protected void pushContext() {
         contextStack.push(context);
-        context = contextSupplier.get();
+        context = createNewContext();
     }
 
     /**
@@ -157,26 +172,48 @@ public abstract class AbstractExpressionConverter<S, R, C extends ConversionCont
     }
 
     /**
+     * Advanced preparation step for <i>every</i> created context instance obtained from the supplier
+     * <p>
+     * Provide a function to add (global) elements or to replace the context with anything compatible.
+     * 
+     * @param rootContextPreparator null means {@link UnaryOperator#identity()} (default)
+     */
+    public void setContextPreparator(UnaryOperator<C> contextPreparator) {
+        this.contextPreparator = contextPreparator == null ? UnaryOperator.identity() : contextPreparator;
+    }
+
+    /**
      * This method can be called if you want to set an explicit root context or if this instance shall be reused. <br>
      * It resets the state of this converter for the next call of {@link #convert(Object)}.
      * <p>
-     * If you override this method, don't forget to call the super-implementation.
-     * 
-     * @param rootContext may be null (uses the supplier method)
+     * If you override this method, don't forget to call the super-implementation!
      */
-    public void init(C rootContext) {
-        this.rootContext = rootContext == null ? contextSupplier.get() : rootContext;
-        this.context = this.rootContext;
+    protected void init() {
+        this.rootContext = null;
+        this.context = null;
         this.normalizedDepth = 0;
         this.contextStack.clear();
         this.rootExpression = null;
     }
 
+    /**
+     * Flow is as follows:
+     * <ul>
+     * <li><code><b>convert(rootExpression)</b></code>
+     * <ul>
+     * <li><code>{@link #init()}</code></li>
+     * <li><code>rootContext = {@link #contextPreparator}.apply({@link #createNewContext()})</code></li>
+     * <li><code>{@link #prepareRootExpression()}</code></li>
+     * <li>Traverse expression (conversion)</li>
+     * <li><code>{@link #finishResult()}</code></li>
+     * </ul>
+     * </ul>
+     */
     @Override
     public final R convert(S rootExpression) {
-        if (this.rootContext != null) {
-            this.rootContext.clear();
-        }
+        this.init();
+        this.rootContext = createNewContext();
+        this.context = this.rootContext;
         this.rootExpression = rootExpression;
         this.rootExpression = prepareRootExpression();
         if (this.rootExpression == null) {
