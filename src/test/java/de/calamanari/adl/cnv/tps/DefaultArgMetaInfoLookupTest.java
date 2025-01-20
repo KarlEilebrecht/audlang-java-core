@@ -80,14 +80,14 @@ class DefaultArgMetaInfoLookupTest {
         assertThrows(LookupException.class, () -> lookup.lookup("fooBar"));
 
         BuilderStepConfigOrGet builder = DefaultArgMetaInfoLookup.withArg(null).ofType(DefaultAdlType.STRING);
-        assertThrows(ConfigException.class, () -> builder.get());
+        assertThrows(ConfigException.class, builder::get);
 
         BuilderStepConfigOrGet builder2 = DefaultArgMetaInfoLookup.withArg("argName").ofType(null);
-        assertThrows(ConfigException.class, () -> builder2.get());
+        assertThrows(ConfigException.class, builder2::get);
 
         BuilderStepConfigOrGet builder3 = DefaultArgMetaInfoLookup.withArg("argName").ofType(DefaultAdlType.STRING).withArg("argName")
                 .ofType(DefaultAdlType.STRING);
-        assertThrows(ConfigException.class, () -> builder3.get());
+        assertThrows(ConfigException.class, builder3::get);
 
     }
 

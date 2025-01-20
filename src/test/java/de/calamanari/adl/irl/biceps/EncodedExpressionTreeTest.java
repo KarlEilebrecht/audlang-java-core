@@ -120,12 +120,12 @@ class EncodedExpressionTreeTest {
 
         assertEquals(expr, tree.toCoreExpression());
 
-        assertThrows(IllegalStateException.class, () -> tree2.toCoreExpression());
+        assertThrows(IllegalStateException.class, tree2::toCoreExpression);
 
         tree2.initialize(tree.getCodec());
 
         assertEquals(tree.getRootNode(), tree2.createNode(expr));
-        assertThrows(IllegalStateException.class, () -> tree2.toCoreExpression());
+        assertThrows(IllegalStateException.class, tree2::toCoreExpression);
 
         tree2.setRootNode(tree.getRootNode());
 
@@ -266,7 +266,7 @@ class EncodedExpressionTreeTest {
 
         EncodedExpressionTree tree4 = tree1.merge(tree2);
 
-        assertThrows(IllegalStateException.class, () -> tree4.getRootNode());
+        assertThrows(IllegalStateException.class, tree4::getRootNode);
 
         assertEquals(tree1.getRootNode(), tree4.getRootLevel().members().get(0));
 

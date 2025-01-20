@@ -65,15 +65,15 @@ class AudlangFieldTest {
         assertThrows(AudlangValidationException.class, () -> new AudlangField("a", emptyList, listWithNull));
 
         AudlangField.Builder builder = AudlangField.forField(null);
-        assertThrows(AudlangValidationException.class, () -> builder.get());
+        assertThrows(AudlangValidationException.class, builder::get);
 
         AudlangField.Builder builder2 = AudlangField.forField("argName");
         builder2.addValue(null);
-        assertThrows(AudlangValidationException.class, () -> builder2.get());
+        assertThrows(AudlangValidationException.class, builder2::get);
 
         AudlangField.Builder builder3 = AudlangField.forField("argName");
         builder3.addRefArgName(null);
-        assertThrows(AudlangValidationException.class, () -> builder3.get());
+        assertThrows(AudlangValidationException.class, builder3::get);
 
     }
 

@@ -237,7 +237,7 @@ class ArgNameValueMappingTest {
                     (srcArg3, slippery) -> (destArg3, snowy)
                 }""", argNameValueMapping.toString());
 
-        assertThrows(AmbiguousMappingException.class, () -> argNameValueMapping.reverse());
+        assertThrows(AmbiguousMappingException.class, argNameValueMapping::reverse);
 
     }
 
@@ -279,7 +279,7 @@ class ArgNameValueMappingTest {
         // The implicitly added null-value-mappings (IS UNKNOWN)
         // causes the anomaly that we cannot reverse the reverse
 
-        assertThrows(AmbiguousMappingException.class, () -> reversed.reverse());
+        assertThrows(AmbiguousMappingException.class, reversed::reverse);
 
     }
 

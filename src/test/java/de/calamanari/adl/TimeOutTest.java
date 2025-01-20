@@ -36,7 +36,7 @@ class TimeOutTest {
 
         assertTrue(timeOut.isExpired());
 
-        assertThrows(TimeOutException.class, () -> timeOut.assertHaveTime());
+        assertThrows(TimeOutException.class, timeOut::assertHaveTime);
 
     }
 

@@ -78,7 +78,7 @@ class PlStandardSamplesTest {
             }
             else {
                 sampleGroupCount++;
-                List<SampleExpression> activeSamples = sampleGroup.samples().stream().filter(Predicate.not(sample -> sample.skip())).toList();
+                List<SampleExpression> activeSamples = sampleGroup.samples().stream().filter(Predicate.not(SampleExpression::skip)).toList();
 
                 LOGGER.debug("Found {} active samples ...", activeSamples.size());
 
@@ -282,13 +282,13 @@ class PlStandardSamplesTest {
 
     private static int countCurbOccurrences(PlExpression<?> resultExpression) {
         List<PlExpression<?>> curbExpressions = new ArrayList<>();
-        resultExpression.collectExpressions(e -> (e instanceof PlCurbExpression), curbExpressions);
+        resultExpression.collectExpressions(PlCurbExpression.class::isInstance, curbExpressions);
         return curbExpressions.size();
     }
 
     private static int countNotOccurrences(PlExpression<?> resultExpression) {
         List<PlExpression<?>> negExpressions = new ArrayList<>();
-        resultExpression.collectExpressions(e -> (e instanceof PlNegationExpression), negExpressions);
+        resultExpression.collectExpressions(PlNegationExpression.class::isInstance, negExpressions);
         return negExpressions.size() + countMatchOccurrences(resultExpression, PlMatchOperator.NOT_ANY_OF, PlMatchOperator.NOT_BETWEEN,
                 PlMatchOperator.NOT_CONTAINS, PlMatchOperator.NOT_CONTAINS_ANY_OF, PlMatchOperator.STRICT_NOT_ANY_OF, PlMatchOperator.STRICT_NOT_BETWEEN,
                 PlMatchOperator.STRICT_NOT_CONTAINS, PlMatchOperator.STRICT_NOT_CONTAINS_ANY_OF, PlMatchOperator.IS_NOT_UNKNOWN);
@@ -298,7 +298,7 @@ class PlStandardSamplesTest {
     private static List<String> collectArgNames(PlExpression<?> resultExpression) {
 
         List<PlExpression<?>> matchExpressions = new ArrayList<>();
-        resultExpression.collectExpressions(e -> (e instanceof PlMatchExpression), matchExpressions);
+        resultExpression.collectExpressions(PlMatchExpression.class::isInstance, matchExpressions);
 
         return matchExpressions.stream().map(PlMatchExpression.class::cast).map(PlMatchExpression::argName).toList();
 
@@ -343,7 +343,7 @@ class PlStandardSamplesTest {
 
     private static List<Integer> collectCurbBoundValues(PlExpression<?> resultExpression) {
         List<PlExpression<?>> curbExpressions = new ArrayList<>();
-        resultExpression.collectExpressions(e -> (e instanceof PlCurbExpression), curbExpressions);
+        resultExpression.collectExpressions(PlCurbExpression.class::isInstance, curbExpressions);
 
         return curbExpressions.stream().map(PlCurbExpression.class::cast).map(PlCurbExpression::bound).toList();
     }
@@ -357,7 +357,7 @@ class PlStandardSamplesTest {
         List<String> res = new ArrayList<>();
 
         List<PlExpression<?>> matchExpressions = new ArrayList<>();
-        resultExpression.collectExpressions(e -> (e instanceof PlMatchExpression), matchExpressions);
+        resultExpression.collectExpressions(PlMatchExpression.class::isInstance, matchExpressions);
 
         List<PlMatchOperator> matchOperators = matchExpressions.stream().map(PlMatchExpression.class::cast).map(PlMatchExpression::operator).toList();
 
@@ -375,7 +375,7 @@ class PlStandardSamplesTest {
         }
 
         List<PlExpression<?>> curbExpressions = new ArrayList<>();
-        resultExpression.collectExpressions(e -> (e instanceof PlCurbExpression), curbExpressions);
+        resultExpression.collectExpressions(PlCurbExpression.class::isInstance, curbExpressions);
         curbExpressions.stream().map(PlCurbExpression.class::cast).map(PlCurbExpression::operator).map(PlCurbOperator::name).forEach(res::add);
 
         return res.stream().map(SampleExpressionOperator::valueOf).toList();
