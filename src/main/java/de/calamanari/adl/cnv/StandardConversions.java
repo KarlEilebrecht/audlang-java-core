@@ -22,7 +22,9 @@ package de.calamanari.adl.cnv;
 import java.util.Optional;
 import java.util.function.Function;
 
+import de.calamanari.adl.AudlangErrorInfo;
 import de.calamanari.adl.AudlangExpression;
+import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.TimeOut;
@@ -183,7 +185,8 @@ public class StandardConversions {
     public static Function<AudlangParseResult, AudlangParseResult> assertValid() {
         return result -> {
             if (result.isError()) {
-                throw new ConversionException("Invalid parse result, cause: " + result.getErrorMessage());
+                AudlangErrorInfo errorInfo = AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED);
+                throw new ConversionException("Invalid parse result, cause: " + result.getErrorMessage(), errorInfo);
             }
             return result;
         };
@@ -198,7 +201,8 @@ public class StandardConversions {
      */
     public static CoreExpression parseCoreExpression(String expr) {
         if (expr == null) {
-            throw new ConversionException("Cannot convert expr=null.");
+            AudlangErrorInfo errorInfo = AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED);
+            throw new ConversionException("Cannot convert expr=null.", errorInfo);
         }
 
         // The optional below will always be present (or earlier an exception will be thrown)
@@ -207,7 +211,7 @@ public class StandardConversions {
                 .map(parse())
                 .map(toPlExpression())
                 .map(plToCoreExpression())
-                .orElseThrow(() -> new ConversionException("Unexpected missing value after parsing: " + expr));
+                .orElseThrow(() -> new ConversionException("Unexpected missing value after parsing: " + expr, AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED)));
         // @formatter:on
     }
 
@@ -221,7 +225,7 @@ public class StandardConversions {
     @SuppressWarnings("java:S1452")
     public static PlExpression<?> parsePlExpression(String expr) {
         if (expr == null) {
-            throw new ConversionException("Cannot convert expr=null.");
+            throw new ConversionException("Cannot convert expr=null.", AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED));
         }
 
         // The optional below will always be present (or earlier an exception will be thrown)
@@ -229,7 +233,7 @@ public class StandardConversions {
         return Optional.of(expr)
                 .map(parse())
                 .map(toPlExpression())
-                .orElseThrow(() -> new ConversionException("Unexpected missing value after parsing: " + expr));
+                .orElseThrow(() -> new ConversionException("Unexpected missing value after parsing: " + expr, AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED)));
         // @formatter:on
     }
 

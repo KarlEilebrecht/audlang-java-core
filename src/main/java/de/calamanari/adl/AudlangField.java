@@ -60,7 +60,7 @@ public record AudlangField(String argName, List<String> values, List<String> ref
      */
     public AudlangField(String argName, List<String> values, List<String> refArgNames) {
         if (argName == null) {
-            throw new AudlangValidationException("argName must not be null");
+            throw new AudlangValidationException(String.format("argName must not be null, given: values=%s, refArgNames=%s", values, refArgNames));
         }
         if (values != null && values.stream().anyMatch(Objects::isNull)) {
             throw new AudlangValidationException(

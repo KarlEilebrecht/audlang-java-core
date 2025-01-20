@@ -28,19 +28,54 @@ public class ConversionException extends AdlException {
 
     private static final long serialVersionUID = 302828029024323156L;
 
+    private final AudlangErrorInfo errorInfo;
+
+    /**
+     * @param message
+     * @param cause
+     * @param errorInfo detail information
+     */
+    public ConversionException(String message, Throwable cause, AudlangErrorInfo errorInfo) {
+        super(message + " " + AudlangErrorInfo.toStringOrGeneric(errorInfo), cause);
+        this.errorInfo = errorInfo == null ? AudlangErrorInfo.error(CommonErrors.ERR_4003_GENERAL_ERROR) : errorInfo;
+    }
+
     /**
      * @param message
      * @param cause
      */
     public ConversionException(String message, Throwable cause) {
-        super(message, cause);
+        this(message, cause, null);
+    }
+
+    /**
+     * @param message
+     * @param errorInfo detail information
+     */
+    public ConversionException(String message, AudlangErrorInfo errorInfo) {
+        this(message, null, errorInfo);
     }
 
     /**
      * @param message
      */
     public ConversionException(String message) {
-        super(message);
+        this(message, null, null);
+    }
+
+    /**
+     * @param errorInfo
+     */
+    public ConversionException(AudlangErrorInfo errorInfo) {
+        super(AudlangErrorInfo.toStringOrGeneric(errorInfo));
+        this.errorInfo = errorInfo == null ? AudlangErrorInfo.error(CommonErrors.ERR_4003_GENERAL_ERROR) : errorInfo;
+    }
+
+    /**
+     * @return further error information, never null
+     */
+    public AudlangErrorInfo getErrorInfo() {
+        return errorInfo;
     }
 
 }

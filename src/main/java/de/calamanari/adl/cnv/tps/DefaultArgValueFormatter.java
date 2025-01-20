@@ -25,6 +25,8 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.irl.MatchOperator;
 import de.calamanari.adl.util.TriFunction;
 
@@ -247,8 +249,9 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
             res = "TRUE";
         }
         else {
+            AudlangErrorInfo errorInfo = AudlangErrorInfo.argValueError(CommonErrors.ERR_2005_VALUE_FORMAT_BOOL, argName, argValue);
             throw new AdlFormattingException(String.format("Unable to format '%s' as boolean (argName=%s, operator=%s), expected: '%s' or '%s'.", argValue,
-                    argName, operator, BOOL_FALSE, BOOL_TRUE));
+                    argName, operator, BOOL_FALSE, BOOL_TRUE), errorInfo);
         }
         return res;
     }
@@ -270,8 +273,9 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
             return argValue;
         }
         else {
+            AudlangErrorInfo errorInfo = AudlangErrorInfo.argValueError(CommonErrors.ERR_2006_VALUE_FORMAT_DATE, argName, argValue);
             throw new AdlFormattingException(
-                    String.format("Unable to format '%s' as date (argName=%s, operator=%s), expected: 'yyyy-MM-dd'.", argValue, argName, operator));
+                    String.format("Unable to format '%s' as date (argName=%s, operator=%s), expected: 'yyyy-MM-dd'.", argValue, argName, operator), errorInfo);
         }
     }
 

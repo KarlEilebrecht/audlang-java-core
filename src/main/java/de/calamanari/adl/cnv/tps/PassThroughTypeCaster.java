@@ -19,6 +19,9 @@
 
 package de.calamanari.adl.cnv.tps;
 
+import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.CommonErrors;
+
 /**
  * Dummy implementation of a type caster that returns the target field name as-is (pass-through) if the requested type is the same as the given one or throws a
  * {@link TypeMismatchException} if not.
@@ -46,8 +49,9 @@ public class PassThroughTypeCaster implements NativeTypeCaster {
             return nativeFieldName;
         }
         else {
+            AudlangErrorInfo errorInfo = AudlangErrorInfo.argError(CommonErrors.ERR_3001_TYPE_MISMATCH, argName);
             throw new TypeMismatchException(String.format("Unable to make %s (type: %s, native field name: %s) compatible to type %s", argName, argType,
-                    nativeFieldName, requestedArgType));
+                    nativeFieldName, requestedArgType), errorInfo);
         }
     }
 

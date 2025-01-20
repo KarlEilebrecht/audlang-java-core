@@ -111,7 +111,7 @@ public abstract class AbstractPlExpressionConverter<R, C extends ConversionConte
 
     @Override
     protected ConversionException createConversionException(RuntimeException ex) {
-        if (ex instanceof TimeOutException) {
+        if (ex instanceof TimeOutException || ex instanceof ConversionException) {
             throw ex;
         }
         return new ConversionException(

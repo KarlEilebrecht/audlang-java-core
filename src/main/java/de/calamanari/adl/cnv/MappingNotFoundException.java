@@ -19,6 +19,8 @@
 
 package de.calamanari.adl.cnv;
 
+import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 
 /**
@@ -32,16 +34,33 @@ public class MappingNotFoundException extends ConversionException {
     /**
      * @param message
      * @param cause
+     * @param errorInfo
+     */
+    public MappingNotFoundException(String message, Throwable cause, AudlangErrorInfo errorInfo) {
+        super(message, cause, errorInfo);
+    }
+
+    /**
+     * @param message
+     * @param cause
      */
     public MappingNotFoundException(String message, Throwable cause) {
-        super(message, cause);
+        super(message, cause, AudlangErrorInfo.error(CommonErrors.ERR_3000_MAPPING_FAILED));
+    }
+
+    /**
+     * @param message
+     * @param errorInfo
+     */
+    public MappingNotFoundException(String message, AudlangErrorInfo errorInfo) {
+        super(message, errorInfo);
     }
 
     /**
      * @param message
      */
     public MappingNotFoundException(String message) {
-        super(message);
+        super(message, AudlangErrorInfo.error(CommonErrors.ERR_3000_MAPPING_FAILED));
     }
 
 }

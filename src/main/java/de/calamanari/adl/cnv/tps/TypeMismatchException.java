@@ -19,6 +19,7 @@
 
 package de.calamanari.adl.cnv.tps;
 
+import de.calamanari.adl.AudlangErrorInfo;
 import de.calamanari.adl.ConversionException;
 
 /**
@@ -32,18 +33,18 @@ public class TypeMismatchException extends ConversionException {
     private static final long serialVersionUID = -2582467015398806697L;
 
     /**
-     * @param message
-     * @param cause
+     * @param errorInfo
      */
-    public TypeMismatchException(String message, Throwable cause) {
-        super(message, cause);
+    public TypeMismatchException(AudlangErrorInfo errorInfo) {
+        super(errorInfo);
     }
 
     /**
      * @param message
+     * @param errorInfo
      */
-    public TypeMismatchException(String message) {
-        super(message);
+    public TypeMismatchException(String message, AudlangErrorInfo errorInfo) {
+        super(message, errorInfo);
     }
 
 }

@@ -19,6 +19,8 @@
 
 package de.calamanari.adl.erl;
 
+import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 
 /**
@@ -32,18 +34,18 @@ public class CurbComplexityException extends ConversionException {
     private static final long serialVersionUID = 7452769338707227516L;
 
     /**
-     * @param message
-     * @param cause
+     * @param errorInfo
      */
-    public CurbComplexityException(String message, Throwable cause) {
-        super(message, cause);
+    public CurbComplexityException(AudlangErrorInfo errorInfo) {
+        super(errorInfo);
     }
 
     /**
      * @param message
+     * @param errorInfo
      */
     public CurbComplexityException(String message) {
-        super(message);
+        super(message, AudlangErrorInfo.error(CommonErrors.ERR_4001_COMPLEXITY_ERROR));
     }
 
 }

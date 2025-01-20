@@ -19,6 +19,8 @@
 
 package de.calamanari.adl.cnv.tps;
 
+import de.calamanari.adl.AudlangErrorInfo;
+
 /**
  * Exception to indicate a failed lookup operation, typically related to missing meta data (configuration problem).
  * 
@@ -28,6 +30,23 @@ package de.calamanari.adl.cnv.tps;
 public class LookupException extends ConfigException {
 
     private static final long serialVersionUID = -8599486010851792487L;
+
+    /**
+     * @param message
+     * @param errorInfo
+     */
+    public LookupException(String message, AudlangErrorInfo errorInfo) {
+        super(message, errorInfo);
+    }
+
+    /**
+     * @param message
+     * @param cause
+     * @param errorInfo
+     */
+    public LookupException(String message, Throwable cause, AudlangErrorInfo errorInfo) {
+        super(message, cause, errorInfo);
+    }
 
     /**
      * @param message

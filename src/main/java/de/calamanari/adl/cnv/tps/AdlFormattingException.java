@@ -19,6 +19,8 @@
 
 package de.calamanari.adl.cnv.tps;
 
+import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 
 /**
@@ -34,16 +36,33 @@ public class AdlFormattingException extends ConversionException {
     /**
      * @param message
      * @param cause
+     * @param errorInfo
+     */
+    public AdlFormattingException(String message, Throwable cause, AudlangErrorInfo errorInfo) {
+        super(message, cause, errorInfo);
+    }
+
+    /**
+     * @param message
+     * @param errorInfo
+     */
+    public AdlFormattingException(String message, AudlangErrorInfo errorInfo) {
+        super(message, errorInfo);
+    }
+
+    /**
+     * @param message
+     * @param cause
      */
     public AdlFormattingException(String message, Throwable cause) {
-        super(message, cause);
+        super(message, cause, AudlangErrorInfo.error(CommonErrors.ERR_2004_VALUE_FORMAT));
     }
 
     /**
      * @param message
      */
     public AdlFormattingException(String message) {
-        super(message);
+        super(message, AudlangErrorInfo.error(CommonErrors.ERR_2004_VALUE_FORMAT));
     }
 
 }

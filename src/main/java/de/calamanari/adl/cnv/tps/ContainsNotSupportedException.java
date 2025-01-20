@@ -19,6 +19,7 @@
 
 package de.calamanari.adl.cnv.tps;
 
+import de.calamanari.adl.AudlangErrorInfo;
 import de.calamanari.adl.ConversionException;
 
 /**
@@ -32,18 +33,18 @@ public class ContainsNotSupportedException extends ConversionException {
     private static final long serialVersionUID = 1947265474454671831L;
 
     /**
-     * @param message
-     * @param cause
+     * @param errorInfo
      */
-    public ContainsNotSupportedException(String message, Throwable cause) {
-        super(message, cause);
+    public ContainsNotSupportedException(AudlangErrorInfo errorInfo) {
+        super(errorInfo);
     }
 
     /**
      * @param message
+     * @param errorInfo
      */
-    public ContainsNotSupportedException(String message) {
-        super(message);
+    public ContainsNotSupportedException(String message, AudlangErrorInfo errorInfo) {
+        super(message, errorInfo);
     }
 
 }

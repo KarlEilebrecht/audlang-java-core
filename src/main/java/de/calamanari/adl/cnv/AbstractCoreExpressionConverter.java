@@ -96,7 +96,7 @@ public abstract class AbstractCoreExpressionConverter<R, C extends ConversionCon
 
     @Override
     protected ConversionException createConversionException(RuntimeException ex) {
-        if (ex instanceof TimeOutException) {
+        if (ex instanceof TimeOutException || ex instanceof ConversionException) {
             throw ex;
         }
         return new ConversionException(

@@ -21,6 +21,9 @@ package de.calamanari.adl.cnv.tps;
 
 import java.io.Serializable;
 
+import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.CommonErrors;
+
 /**
  * An {@link ArgMetaInfo} contains meta data about an argument of an expression.
  *
@@ -47,9 +50,14 @@ public record ArgMetaInfo(String argName, AdlType type, boolean isAlwaysKnown, b
      *            Audlang Spec</a>
      */
     public ArgMetaInfo {
-        if (argName == null || argName.isEmpty() || type == null) {
+        if (argName == null) {
             throw new ConfigException(String.format("Arguments argName and type are mandatory, given: argName=%s, type=%s, isAlwaysKnown=%s, isCollection=%s",
                     argName, type, isAlwaysKnown, isCollection));
+        }
+        else if (argName.isEmpty() || type == null) {
+            AudlangErrorInfo errorInfo = AudlangErrorInfo.argError(CommonErrors.ERR_4002_CONFIG_ERROR, argName);
+            throw new ConfigException(String.format("Arguments argName and type are mandatory, given: argName=%s, type=%s, isAlwaysKnown=%s, isCollection=%s",
+                    argName, type, isAlwaysKnown, isCollection), errorInfo);
         }
     }
 }

@@ -19,6 +19,8 @@
 
 package de.calamanari.adl.cnv;
 
+import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 
 /**
@@ -33,7 +35,15 @@ public class AmbiguousMappingException extends ConversionException {
      * @param message
      */
     public AmbiguousMappingException(String message) {
-        super(message);
+        super(message, AudlangErrorInfo.error(CommonErrors.ERR_3000_MAPPING_FAILED));
+    }
+
+    /**
+     * @param message
+     * @param errorInfo
+     */
+    public AmbiguousMappingException(String message, AudlangErrorInfo errorInfo) {
+        super(message, errorInfo);
     }
 
 }
