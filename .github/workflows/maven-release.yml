@@ -14,11 +14,11 @@ on:
         required: true
         default: "main"
       releaseVersion:
-        description: "Default version to use when preparing a release or a branch."
+        description: "Version to apply when preparing a release or a branch."
         required: true
         default: "A.B.C"
       developmentVersion:
-        description: "Default version to use for new local working copy."
+        description: "Snapshot version to apply to new local working copy."
         required: true
         default: "A.B.D-SNAPSHOT"
 
@@ -35,6 +35,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.branch }}
     - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
@@ -48,7 +50,7 @@ jobs:
           git config user.name "GitHub Actions"      
 
     - name: Create Maven Release
-      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B release:prepare release:perform
+      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B release:prepare release:perform -DreleaseVersion=${{ github.event.inputs.releaseVersion }} -DdevelopmentVersion=${{ github.event.inputs.developmentVersion }}
       env:
         # Runs with a personal access token for download and upload
         USER_NAME: ${{ secrets.PAT_PKG_WRITE_USER }}
