@@ -36,7 +36,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: ${{ github.event.inputs.branch }}
+        ref: ${{ inputs.branch }}
     - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
@@ -50,7 +50,7 @@ jobs:
           git config user.name "GitHub Actions"      
 
     - name: Create Maven Release
-      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B release:prepare release:perform -DreleaseVersion=${{ github.event.inputs.releaseVersion }} -DdevelopmentVersion=${{ github.event.inputs.developmentVersion }}
+      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B release:prepare release:perform -DreleaseVersion=${{ inputs.releaseVersion }} -DdevelopmentVersion=${{ inputs.developmentVersion }}
       env:
         # Runs with a personal access token for download and upload
         USER_NAME: ${{ secrets.PAT_PKG_WRITE_USER }}
