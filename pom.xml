@@ -3,7 +3,7 @@
 	<groupId>de.calamanari.adl</groupId>
 	<artifactId>audlang-java-core</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.1</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<name>Audlang Java Core</name>
 	<description>Audlang foundation classes for Java (parsing, formatting,
 		conversion)</description>
@@ -18,7 +18,7 @@
 		<developerConnection>
 			scm:git:https://github.com/KarlEilebrecht/audlang-java-core.git</developerConnection>
 		<url>https://github.com/KarlEilebrecht/audlang-java-core</url>
-		<tag>v1.0.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 
