@@ -34,20 +34,13 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        github-token: ${{ secrets.GITHUB_TOKEN }}
         cache: maven
-
-    - name: View settings.xml
-      run: cat /home/runner/.m2/settings.xml        
-
-    - name: Configure Git user
-      run: |
-          git config user.email "actions@github.com"
-          git config user.name "GitHub Actions"      
+        
+# TODO: sign artifact
 
     - name: Deploy artifacts with Maven
       run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -P mavenCentral -B deploy -DskipTests
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # TODO: credentials for maven central
         USER_NAME: ${{ secrets.PAT_RO_USER }}
         ACCESS_TOKEN: ${{ secrets.PAT_RO_TOKEN }}
