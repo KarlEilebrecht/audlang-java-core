@@ -45,7 +45,7 @@ jobs:
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"      
     - name: Deploy artifacts with Maven
-      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B deploy -DskipTests
+      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B deploy -DskipTests -Dmaven.resolver.transport=wagon
       env:
 #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         USER_NAME: ${{ secrets.PAT_PKG_WRITE_USER }}
