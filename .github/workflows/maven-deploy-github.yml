@@ -36,11 +36,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Configure Git user
-      run: |
-          git config user.email "actions@github.com"
-          git config user.name "GitHub Actions"      
-
     - name: Deploy artifacts with Maven
       run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B deploy -DskipTests
       env:
