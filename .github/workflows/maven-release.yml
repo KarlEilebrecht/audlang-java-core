@@ -40,11 +40,7 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        token: ${{ secrets.GITHUB_TOKEN }}
         cache: maven
-
-    - name: View settings.xml
-      run: cat /home/runner/.m2/settings.xml        
 
     - name: Configure Git user
       run: |
@@ -54,6 +50,6 @@ jobs:
     - name: Create Maven Release
       run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B release:prepare release:perform
       env:
-        # bad impact: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Runs with a personal access token for download and upload
         USER_NAME: ${{ secrets.PAT_PKG_WRITE_USER }}
         ACCESS_TOKEN: ${{ secrets.PAT_PKG_WRITE_TOKEN }}
