@@ -52,4 +52,4 @@ jobs:
       env:
         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         USER_NAME: ${{ secrets.PAT_RW_USER }}
-        ACCESS_TOKEN: ${{ secrets.PAT_RW_TOKEN2 }}
+        ACCESS_TOKEN: ${{ secrets.PAT_CLASSIC_RW }}
