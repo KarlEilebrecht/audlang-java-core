@@ -40,7 +40,7 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         cache: maven
 
     - name: View settings.xml
