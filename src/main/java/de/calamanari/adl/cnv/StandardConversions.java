@@ -185,7 +185,7 @@ public class StandardConversions {
     public static Function<AudlangParseResult, AudlangParseResult> assertValid() {
         return result -> {
             if (result.isError()) {
-                AudlangErrorInfo errorInfo = AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED);
+                AudlangErrorInfo errorInfo = result.getErrorInfo() == null ? AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED) : result.getErrorInfo();
                 throw new ConversionException("Invalid parse result, cause: " + result.getErrorMessage(), errorInfo);
             }
             return result;

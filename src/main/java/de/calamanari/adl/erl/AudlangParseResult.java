@@ -19,63 +19,19 @@
 
 package de.calamanari.adl.erl;
 
+import de.calamanari.adl.AudlangResult;
+
 /**
  * The {@link AudlangParseResult} covers any positive or negative result (failure) when parsing a textual Audlang expression. It allows either returning a valid
  * expression or an error message with proper explanation why the parse run failed.
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
-public class AudlangParseResult {
+public class AudlangParseResult extends AudlangResult {
 
-    private boolean error = false;
-
-    private String errorMessage = null;
+    private static final long serialVersionUID = 6845829697785841894L;
 
     private PlExpression<?> resultExpression;
-
-    private String source = null;
-
-    /**
-     * @return original text that was parsed
-     */
-    public String getSource() {
-        return source;
-    }
-
-    /**
-     * @param source original text that was parsed
-     */
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    /**
-     * @return true if this parse run failed, so there is no {@link #getResultExpression()}
-     */
-    public boolean isError() {
-        return error;
-    }
-
-    /**
-     * @param error true to indicate a failed parse run
-     */
-    public void setError(boolean error) {
-        this.error = error;
-    }
-
-    /**
-     * @return error message from a failed parse run
-     */
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    /**
-     * @param errorMessage message related to the failed parse run
-     */
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
 
     /**
      * @return result expression or null if {@link #isError()}
@@ -94,8 +50,8 @@ public class AudlangParseResult {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " [error=" + error + ", errorMessage=" + errorMessage + ", source=" + source + ", resultExpression="
-                + resultExpression + "]";
+        return "AudlangParseResult [resultExpression=" + resultExpression + ", source=" + getSource() + ", error=" + isError() + ", errorMessage="
+                + getErrorMessage() + ", errorInfo=" + getErrorInfo() + "]";
     }
 
 }
