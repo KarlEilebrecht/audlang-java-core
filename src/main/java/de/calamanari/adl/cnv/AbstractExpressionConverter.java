@@ -183,8 +183,7 @@ public abstract class AbstractExpressionConverter<S, R, C extends ConversionCont
     }
 
     /**
-     * This method can be called if you want to set an explicit root context or if this instance shall be reused. <br>
-     * It resets the state of this converter for the next call of {@link #convert(Object)}.
+     * This method resets the state of this converter as a first step during {@link #convert(Object)}.
      * <p>
      * If you override this method, don't forget to call the super-implementation!
      */
