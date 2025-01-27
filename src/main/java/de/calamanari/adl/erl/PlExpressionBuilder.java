@@ -46,10 +46,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.calamanari.adl.AudlangMessage;
-import de.calamanari.adl.AudlangValidationException;
 import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.CommonErrors;
-import de.calamanari.adl.ConversionException;
 import de.calamanari.adl.SpecialSetType;
 import de.calamanari.adl.antlr.AudlangBaseListener;
 import de.calamanari.adl.antlr.AudlangLexer;
@@ -222,12 +220,7 @@ public class PlExpressionBuilder extends AudlangBaseListener {
                     // always report the first error, not the follow-up
                     res.setError(true);
                     res.setErrorMessage(msg);
-                    if (ex instanceof ConversionException convex) {
-                        res.getUserMessages().set(0, convex.getUserMessage());
-                    }
-                    else if (ex instanceof AudlangValidationException ave) {
-                        res.getUserMessages().set(0, ave.getUserMessage());
-                    }
+                    res.getUserMessages().add(0, AudlangMessage.msg(CommonErrors.ERR_1000_PARSE_FAILED));
                 }
                 LOGGER.debug(msg, ex);
             }
