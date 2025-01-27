@@ -28,12 +28,34 @@ import de.calamanari.adl.Visit;
  */
 public interface CoreExpressionVisitor {
 
+    /**
+     * Visits a {@link MatchExpression}
+     * 
+     * @param expression
+     */
     void visit(MatchExpression expression);
 
+    /**
+     * Visits any of the {@link SpecialSetExpression}s
+     * 
+     * @param expression
+     */
     void visit(SpecialSetExpression expression);
 
+    /**
+     * Visits AND/OR, two times each
+     * 
+     * @param expression
+     * @param visit enter or exit
+     */
     void visit(CombinedExpression expression, Visit visit);
 
+    /**
+     * Visits a {@link NegationExpression}, two times each
+     * 
+     * @param expression
+     * @param visit enter or exit
+     */
     void visit(NegationExpression expression, Visit visit);
 
 }

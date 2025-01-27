@@ -27,7 +27,11 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.calamanari.adl.AudlangMessage;
+import de.calamanari.adl.AudlangMessageSeverity;
+import de.calamanari.adl.AudlangResult;
 import de.calamanari.adl.CommonErrors;
+import de.calamanari.adl.ConversionException;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
@@ -43,9 +47,13 @@ class PlExpressionBuilderProblemTest {
 
         assertTrue(res.isError());
 
-        assertNotNull(res.getErrorInfo());
+        assertNotNull(res.getUserMessages());
 
-        assertEquals(CommonErrors.ERR_1000_PARSE_FAILED.code(), res.getErrorInfo().code());
+        assertTrue(res.getUserMessages().size() > 0);
+
+        assertEquals(CommonErrors.ERR_1000_PARSE_FAILED.code(), res.getUserMessages().get(0).code());
+
+        assertEquals(AudlangMessageSeverity.ERROR, res.getUserMessages().get(0).severity());
 
         res = parse("");
 
@@ -66,6 +74,34 @@ class PlExpressionBuilderProblemTest {
         res = parse("CURB (a=b or c=d) > B");
 
         LOGGER.info("{}", res);
+
+    }
+
+    @Test
+    void testAudlangResult() {
+        AudlangResult res = new AudlangResult();
+
+        assertEquals("AudlangResult [source=null, error=false, errorMessage=null, userMessages=[]]", res.toString());
+
+        res.getUserMessages().add(AudlangMessage.msg(CommonErrors.ERR_1000_PARSE_FAILED));
+
+        assertEquals("AudlangResult [source=null, error=false, errorMessage=null, userMessages=[AudlangMessage[code=ERR_1000, severity=ERROR, "
+                + "userMessage=ERR_1000: The expression could not be parsed (syntax error)., relatedArgNameLeft=null, relatedArgNameRight=null, relatedValue=null]]]",
+                res.toString());
+
+        res.setUserMessages(null);
+
+        assertNotNull(res.getUserMessages());
+
+        assertEquals("AudlangResult [source=null, error=false, errorMessage=null, userMessages=[]]", res.toString());
+
+        ConversionException ex = new ConversionException(AudlangMessage.msg(CommonErrors.ERR_1000_PARSE_FAILED));
+
+        assertEquals(CommonErrors.ERR_1000_PARSE_FAILED.code(), ex.getUserMessage().code());
+
+        ex = new ConversionException("Error!", new RuntimeException());
+
+        assertEquals(CommonErrors.ERR_4003_GENERAL_ERROR.code(), ex.getUserMessage().code());
 
     }
 

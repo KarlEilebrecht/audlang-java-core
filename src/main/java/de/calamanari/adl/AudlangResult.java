@@ -20,6 +20,8 @@
 package de.calamanari.adl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The {@link AudlangResult} is the common and base class to return results (success <i>and</i> error) when processing an Audlang expression.
@@ -34,7 +36,7 @@ public class AudlangResult implements Serializable {
 
     private String errorMessage = null;
 
-    private AudlangErrorInfo errorInfo = null;
+    private List<AudlangMessage> userMessages = new ArrayList<>();
 
     private String source = null;
 
@@ -53,7 +55,7 @@ public class AudlangResult implements Serializable {
     }
 
     /**
-     * @return true if this parse run failed, so there is no {@link #getResultExpression()}
+     * @return true if this result represents an error
      */
     public boolean isError() {
         return error;
@@ -81,22 +83,22 @@ public class AudlangResult implements Serializable {
     }
 
     /**
-     * @return optional error info with user message and details
+     * @return list with optional attached user messages
      */
-    public AudlangErrorInfo getErrorInfo() {
-        return errorInfo;
+    public List<AudlangMessage> getUserMessages() {
+        return userMessages;
     }
 
     /**
-     * @param errorInfo optional error info with user message and details
+     * @param userMessages list with optional attached user messages
      */
-    public void setErrorInfo(AudlangErrorInfo errorInfo) {
-        this.errorInfo = errorInfo;
+    public void setUserMessages(List<AudlangMessage> userMessages) {
+        this.userMessages = userMessages == null ? new ArrayList<>() : userMessages;
     }
 
     @Override
     public String toString() {
-        return "AudlangResult [source=" + source + ", error=" + error + ", errorMessage=" + errorMessage + ", errorInfo=" + errorInfo + "]";
+        return "AudlangResult [source=" + source + ", error=" + error + ", errorMessage=" + errorMessage + ", userMessages=" + userMessages + "]";
     }
 
 }

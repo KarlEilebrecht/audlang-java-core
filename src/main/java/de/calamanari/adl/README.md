@@ -16,6 +16,8 @@ This package contains some base interfaces and common functionality.
 * [FormatUtils](FormatUtils.java), [FormatConstants](FormatConstants.java) and [FormatStyle](FormatStyle.java) abstract the mostly identical formatting (pretty-printing) of expressions.
 * [TimeOut](TimeOut.java) and [TimeOutException](TimeOutException.java) relate to any process that might take too long (overload protection).
 * [Visit](Visit.java) enumeration lists the two possible events (entry/exit) when visiting an element. We use the VISITOR-pattern frequently in this project when converting expressions.
+* [AudlangMessage](AudlangMessage.java) is a message object with a code, an [AudlangMessageSeverity](AudlangMessageSeverity.java) and a text intended for an end user.
+* [AudlangResult](AudlangResult.java) is a general purpose result object and base class for results to be returned by any component that processes Audlang expressions.
 
 The sub-packages of this project deal with:
 * **[External Representation Layer](./erl/README.md)**: ANTLR-parser implementation and [PlExpression](./erl/PlExpression.java)

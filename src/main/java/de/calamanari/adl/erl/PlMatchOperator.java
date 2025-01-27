@@ -54,6 +54,8 @@ import de.calamanari.adl.erl.PlComment.Position;
 import de.calamanari.adl.util.AdlTextUtils;
 
 /**
+ * The {@link PlMatchOperator} enumeration covers the Audlang operators for {@link PlMatchExpression}s on the presentation layer.
+ * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public enum PlMatchOperator {
@@ -431,8 +433,8 @@ public enum PlMatchOperator {
     }
 
     /**
-     * @param operand
-     * @return true if the given operand is compatible with this operator
+     * @param operands
+     * @return true if the given operands are compatible with this operator
      */
     public boolean isCompatibleWithOperands(List<PlOperand> operands) {
         switch (this.operandConstraint) {

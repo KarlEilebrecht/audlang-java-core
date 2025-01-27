@@ -19,7 +19,7 @@
 
 package de.calamanari.adl.cnv;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 
@@ -36,10 +36,10 @@ public class IncompatibleMappingException extends ConversionException {
     /**
      * @param message
      * @param cause
-     * @param errorInfo
+     * @param userMessage
      */
-    public IncompatibleMappingException(String message, Throwable cause, AudlangErrorInfo errorInfo) {
-        super(message, cause, errorInfo);
+    public IncompatibleMappingException(String message, Throwable cause, AudlangMessage userMessage) {
+        super(message, cause, userMessage);
     }
 
     /**
@@ -47,14 +47,14 @@ public class IncompatibleMappingException extends ConversionException {
      * @param cause
      */
     public IncompatibleMappingException(String message, Throwable cause) {
-        super(message, cause, AudlangErrorInfo.error(CommonErrors.ERR_3000_MAPPING_FAILED));
+        super(message, cause, AudlangMessage.msg(CommonErrors.ERR_3000_MAPPING_FAILED));
     }
 
     /**
      * @param message
      */
     public IncompatibleMappingException(String message) {
-        super(message, AudlangErrorInfo.error(CommonErrors.ERR_3000_MAPPING_FAILED));
+        super(message, AudlangMessage.msg(CommonErrors.ERR_3000_MAPPING_FAILED));
     }
 
 }

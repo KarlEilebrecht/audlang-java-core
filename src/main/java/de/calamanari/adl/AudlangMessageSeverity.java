@@ -1,7 +1,7 @@
 //@formatter:off
 /*
- * ExpressionConverter
- * Copyright 2024 Karl Eilebrecht
+ * AudlangMessageSeverity
+ * Copyright 2025 Karl Eilebrecht
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"):
  * you may not use this file except in compliance with the License.
@@ -17,23 +17,28 @@
  */
 //@formatter:on
 
-package de.calamanari.adl.cnv;
+package de.calamanari.adl;
 
 /**
- * Interface for expression converters from one representation into another.
+ * Severity for messages reported back from a process that processes an Audlang expression
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
- * @param <S> source type
- * @param <R> result type
  */
-public interface ExpressionConverter<S, R> {
+public enum AudlangMessageSeverity {
 
     /**
-     * Converts a given source expression representation to anything else
-     * 
-     * @param source
-     * @return converted expression
+     * To be used for plain information
      */
-    R convert(S source);
+    INFO,
+
+    /**
+     * To be used for any message that indicates a potential problem or critical consequence.
+     */
+    WARNING,
+
+    /**
+     * To be used <b>only</b> in conjunction with error responses / failed processing.
+     */
+    ERROR;
 
 }

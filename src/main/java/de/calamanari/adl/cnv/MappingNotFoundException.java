@@ -19,11 +19,13 @@
 
 package de.calamanari.adl.cnv;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 
 /**
+ * Exception to be thrown if a mapping failed.
+ * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 @SuppressWarnings("java:S110")
@@ -34,10 +36,10 @@ public class MappingNotFoundException extends ConversionException {
     /**
      * @param message
      * @param cause
-     * @param errorInfo
+     * @param userMessage
      */
-    public MappingNotFoundException(String message, Throwable cause, AudlangErrorInfo errorInfo) {
-        super(message, cause, errorInfo);
+    public MappingNotFoundException(String message, Throwable cause, AudlangMessage userMessage) {
+        super(message, cause, userMessage);
     }
 
     /**
@@ -45,22 +47,22 @@ public class MappingNotFoundException extends ConversionException {
      * @param cause
      */
     public MappingNotFoundException(String message, Throwable cause) {
-        super(message, cause, AudlangErrorInfo.error(CommonErrors.ERR_3000_MAPPING_FAILED));
+        super(message, cause, AudlangMessage.msg(CommonErrors.ERR_3000_MAPPING_FAILED));
     }
 
     /**
      * @param message
-     * @param errorInfo
+     * @param userMessage
      */
-    public MappingNotFoundException(String message, AudlangErrorInfo errorInfo) {
-        super(message, errorInfo);
+    public MappingNotFoundException(String message, AudlangMessage userMessage) {
+        super(message, userMessage);
     }
 
     /**
      * @param message
      */
     public MappingNotFoundException(String message) {
-        super(message, AudlangErrorInfo.error(CommonErrors.ERR_3000_MAPPING_FAILED));
+        super(message, AudlangMessage.msg(CommonErrors.ERR_3000_MAPPING_FAILED));
     }
 
 }

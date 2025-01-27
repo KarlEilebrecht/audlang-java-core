@@ -19,7 +19,7 @@
 
 package de.calamanari.adl.cnv.tps;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 
 /**
  * Exception to indicate a failed lookup operation, typically related to missing meta data (configuration problem).
@@ -33,19 +33,19 @@ public class LookupException extends ConfigException {
 
     /**
      * @param message
-     * @param errorInfo
+     * @param userMessage
      */
-    public LookupException(String message, AudlangErrorInfo errorInfo) {
-        super(message, errorInfo);
+    public LookupException(String message, AudlangMessage userMessage) {
+        super(message, userMessage);
     }
 
     /**
      * @param message
      * @param cause
-     * @param errorInfo
+     * @param userMessage
      */
-    public LookupException(String message, Throwable cause, AudlangErrorInfo errorInfo) {
-        super(message, cause, errorInfo);
+    public LookupException(String message, Throwable cause, AudlangMessage userMessage) {
+        super(message, cause, userMessage);
     }
 
     /**

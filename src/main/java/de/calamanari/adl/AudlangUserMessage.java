@@ -1,6 +1,6 @@
 //@formatter:off
 /*
- * AudlangErrorMessage
+ * AudlangUserMessage
  * Copyright 2025 Karl Eilebrecht
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"):
@@ -20,11 +20,11 @@
 package de.calamanari.adl;
 
 /**
- * Interface for error collections
+ * Interface for information messages and errors that can be presented to end users
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
-public interface AudlangErrorMessage {
+public interface AudlangUserMessage {
 
     /**
      * @return code of the error
@@ -32,10 +32,14 @@ public interface AudlangErrorMessage {
     String code();
 
     /**
-     * @param args optional additio
      * @return message that can be displayed to any end user (not too technical)
      */
     String userMessage();
+
+    /**
+     * @return severity of the message
+     */
+    AudlangMessageSeverity severity();
 
     /**
      * Formats the user message (this message may be displayed to an end user, do not include technical details)

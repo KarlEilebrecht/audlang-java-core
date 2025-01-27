@@ -176,7 +176,7 @@ public abstract class AbstractExpressionConverter<S, R, C extends ConversionCont
      * <p>
      * Provide a function to add (global) elements or to replace the context with anything compatible.
      * 
-     * @param rootContextPreparator null means {@link UnaryOperator#identity()} (default)
+     * @param contextPreparator null means {@link UnaryOperator#identity()} (default)
      */
     public void setContextPreparator(UnaryOperator<C> contextPreparator) {
         this.contextPreparator = contextPreparator == null ? UnaryOperator.identity() : contextPreparator;

@@ -19,7 +19,7 @@
 
 package de.calamanari.adl.cnv.tps;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.ConversionException;
 
 /**
@@ -34,18 +34,18 @@ public class LessThanGreaterThanNotSupportedException extends ConversionExceptio
     private static final long serialVersionUID = 1947265474454671831L;
 
     /**
-     * @param errorInfo
+     * @param userMessage
      */
-    public LessThanGreaterThanNotSupportedException(AudlangErrorInfo errorInfo) {
-        super(errorInfo);
+    public LessThanGreaterThanNotSupportedException(AudlangMessage userMessage) {
+        super(userMessage);
     }
 
     /**
      * @param message
-     * @param errorInfo
+     * @param userMessage
      */
-    public LessThanGreaterThanNotSupportedException(String message, AudlangErrorInfo errorInfo) {
-        super(message, errorInfo);
+    public LessThanGreaterThanNotSupportedException(String message, AudlangMessage userMessage) {
+        super(message, userMessage);
     }
 
 }

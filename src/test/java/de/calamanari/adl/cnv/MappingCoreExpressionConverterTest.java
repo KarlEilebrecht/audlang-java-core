@@ -20,19 +20,26 @@
 package de.calamanari.adl.cnv;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import de.calamanari.adl.ConversionException;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.erl.AudlangParseResult;
 import de.calamanari.adl.erl.PlExpressionBuilder;
 import de.calamanari.adl.irl.CoreExpression;
+import de.calamanari.adl.irl.CoreExpressionVisitor;
 import de.calamanari.adl.irl.biceps.CoreExpressionOptimizer;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 class MappingCoreExpressionConverterTest {
+
+    static final Logger LOGGER = LoggerFactory.getLogger(MappingCoreExpressionConverterTest.class);
 
     @Test
     void testBasics() {
@@ -178,6 +185,50 @@ class MappingCoreExpressionConverterTest {
 
         expr = "STRICT NOT color CONTAINS \"N/A\" OR color IS UNKNOWN OR taste = blueberry OR ( (STRICT NOT look = nice OR look IS UNKNOWN) AND (shape = circle OR taste = lemon) ) OR (look = nice AND shape = square)";
         assertEquals(expr, convert(reverseConverter, convert(converter, parse(expr))).format(FormatStyle.INLINE));
+
+    }
+
+    @Test
+    void testSpecialCase() {
+        CoreExpression badGuy = new CoreExpression() {
+
+            private static final long serialVersionUID = 7852320023666619710L;
+
+            @Override
+            public void appendSingleLine(StringBuilder sb, FormatStyle style, int level) {
+                // no-op
+            }
+
+            @Override
+            public void appendMultiLine(StringBuilder sb, FormatStyle style, int level) {
+                // no-op
+
+            }
+
+            @Override
+            public void accept(CoreExpressionVisitor visitor) {
+                // no-op
+
+            }
+
+            @Override
+            public CoreExpression negate(boolean strict) {
+                return null;
+            }
+        };
+
+        // @formatter:off
+        ArgNameValueMapping argNameValueMapping = ArgNameValueMapping.create()
+            .withMapping("color", "blue", "cl", "light blue")
+            .withMapping("look", "nice", "l", "good")
+            .get();
+        // @formatter:on
+
+        DefaultArgNameValueMapper mapper = new DefaultArgNameValueMapper(argNameValueMapping);
+
+        MappingCoreExpressionConverter converter = new MappingCoreExpressionConverter(mapper);
+
+        assertThrows(ConversionException.class, () -> converter.convert(badGuy));
 
     }
 

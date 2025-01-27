@@ -19,11 +19,13 @@
 
 package de.calamanari.adl.cnv;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 
 /**
+ * Exception to be thrown if any mapping detects that a source value cannot be mapped to a target value because there are multiple options.
+ * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 @SuppressWarnings("java:S110")
@@ -35,15 +37,15 @@ public class AmbiguousMappingException extends ConversionException {
      * @param message
      */
     public AmbiguousMappingException(String message) {
-        super(message, AudlangErrorInfo.error(CommonErrors.ERR_3000_MAPPING_FAILED));
+        super(message, AudlangMessage.msg(CommonErrors.ERR_3000_MAPPING_FAILED));
     }
 
     /**
      * @param message
-     * @param errorInfo
+     * @param userMessage
      */
-    public AmbiguousMappingException(String message, AudlangErrorInfo errorInfo) {
-        super(message, errorInfo);
+    public AmbiguousMappingException(String message, AudlangMessage userMessage) {
+        super(message, userMessage);
     }
 
 }

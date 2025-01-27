@@ -24,7 +24,7 @@ package de.calamanari.adl;
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
-public enum CommonErrors implements AudlangErrorMessage {
+public enum CommonErrors implements AudlangUserMessage {
 
     ERR_1000_PARSE_FAILED("The expression could not be parsed (syntax error)."),
 
@@ -84,6 +84,11 @@ public enum CommonErrors implements AudlangErrorMessage {
     @Override
     public String code() {
         return code;
+    }
+
+    @Override
+    public AudlangMessageSeverity severity() {
+        return AudlangMessageSeverity.ERROR;
     }
 
 }

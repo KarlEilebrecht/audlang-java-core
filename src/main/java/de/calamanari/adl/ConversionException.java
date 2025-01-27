@@ -28,16 +28,16 @@ public class ConversionException extends AdlException {
 
     private static final long serialVersionUID = 302828029024323156L;
 
-    private final AudlangErrorInfo errorInfo;
+    private final AudlangMessage userMessage;
 
     /**
      * @param message
      * @param cause
-     * @param errorInfo detail information
+     * @param userMessage detail information
      */
-    public ConversionException(String message, Throwable cause, AudlangErrorInfo errorInfo) {
-        super(message + " " + AudlangErrorInfo.toStringOrGeneric(errorInfo), cause);
-        this.errorInfo = errorInfo == null ? AudlangErrorInfo.error(CommonErrors.ERR_4003_GENERAL_ERROR) : errorInfo;
+    public ConversionException(String message, Throwable cause, AudlangMessage userMessage) {
+        super(message + " " + AudlangMessage.toStringOrGenericError(userMessage), cause);
+        this.userMessage = userMessage == null ? AudlangMessage.msg(CommonErrors.ERR_4003_GENERAL_ERROR) : userMessage;
     }
 
     /**
@@ -50,10 +50,10 @@ public class ConversionException extends AdlException {
 
     /**
      * @param message
-     * @param errorInfo detail information
+     * @param userMessage detail information
      */
-    public ConversionException(String message, AudlangErrorInfo errorInfo) {
-        this(message, null, errorInfo);
+    public ConversionException(String message, AudlangMessage userMessage) {
+        this(message, null, userMessage);
     }
 
     /**
@@ -64,18 +64,18 @@ public class ConversionException extends AdlException {
     }
 
     /**
-     * @param errorInfo
+     * @param userMessage
      */
-    public ConversionException(AudlangErrorInfo errorInfo) {
-        super(AudlangErrorInfo.toStringOrGeneric(errorInfo));
-        this.errorInfo = errorInfo == null ? AudlangErrorInfo.error(CommonErrors.ERR_4003_GENERAL_ERROR) : errorInfo;
+    public ConversionException(AudlangMessage userMessage) {
+        super(AudlangMessage.toStringOrGenericError(userMessage));
+        this.userMessage = userMessage == null ? AudlangMessage.msg(CommonErrors.ERR_4003_GENERAL_ERROR) : userMessage;
     }
 
     /**
      * @return further error information, never null
      */
-    public AudlangErrorInfo getErrorInfo() {
-        return errorInfo;
+    public AudlangMessage getUserMessage() {
+        return userMessage;
     }
 
 }

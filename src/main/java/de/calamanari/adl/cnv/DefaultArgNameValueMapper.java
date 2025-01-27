@@ -22,10 +22,13 @@ package de.calamanari.adl.cnv;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.CommonErrors;
 
 /**
+ * The {@link DefaultArgNameValueMapper} is convenient default implementation based on a given {@link ArgNameValueMapping} with optional fallback-mapping to
+ * build a *mapper chain*.
+ * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public class DefaultArgNameValueMapper implements ArgNameValueMapper {
@@ -73,7 +76,7 @@ public class DefaultArgNameValueMapper implements ArgNameValueMapper {
                 res = fallBackMapper.mapArgValue(argName, value);
             }
             else {
-                AudlangErrorInfo errorInfo = AudlangErrorInfo.argValueError(CommonErrors.ERR_3000_MAPPING_FAILED, argName, value);
+                AudlangMessage errorInfo = AudlangMessage.argValueMsg(CommonErrors.ERR_3000_MAPPING_FAILED, argName, value);
                 throw new MappingNotFoundException(String.format("No suitable mapping for argName=%s, value=%s", argName, value), errorInfo);
             }
         }

@@ -21,9 +21,10 @@ package de.calamanari.adl.cnv;
 
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
-import de.calamanari.adl.AudlangErrorInfo;
 import de.calamanari.adl.AudlangExpression;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 import de.calamanari.adl.FormatStyle;
@@ -107,7 +108,7 @@ public class StandardConversions {
      */
     @SuppressWarnings("java:S1452")
     public static Function<AudlangParseResult, PlExpression<?>> toPlExpression() {
-        return result -> assertValid().apply(result).getResultExpression();
+        return result -> assertValidParseResult().apply(result).getResultExpression();
     }
 
     /**
@@ -136,7 +137,7 @@ public class StandardConversions {
      * @return function to extract a {@link CoreExpression} from an {@link AudlangParseResult} if available or to otherwise throw an {@link ConversionException}
      */
     public static Function<AudlangParseResult, CoreExpression> toCoreExpression() {
-        return result -> plToCoreExpression().apply(assertValid().apply(result).getResultExpression());
+        return result -> plToCoreExpression().apply(assertValidParseResult().apply(result).getResultExpression());
     }
 
     /**
@@ -146,12 +147,12 @@ public class StandardConversions {
      * {@link ArgNameValueMapper#isArgumentStructurePreserving()}).
      * 
      * @param mapping settings how to map argument names and values
-     * @param lazy if true all unresolvable arguments names and values will be kept as is rather than throwing a {@link MappingNotFoundException}
+     * @param lazy if true all not-resolvable arguments names and values will be kept as is rather than throwing a {@link MappingNotFoundException}
      * @return argument name and value function
      * @throws IncompatibleMappingException if the mapping does not fulfill the requirements
      */
     @SuppressWarnings("java:S1452")
-    public static Function<PlExpression<?>, PlExpression<?>> mapPlArguments(ArgNameValueMapping mapping, boolean lazy) {
+    public static UnaryOperator<PlExpression<?>> mapPlArguments(ArgNameValueMapping mapping, boolean lazy) {
         if (lazy) {
             return new MappingPlExpressionConverter(new DefaultArgNameValueMapper(mapping, DummyArgNameValueMapper.getInstance()))::convert;
         }
@@ -167,10 +168,10 @@ public class StandardConversions {
      * adjust the data model. E.g., <code>color = blue AND shape = circle</code> could be mapped to <code>arg156 = 1 AND arg91 = 1</code>.
      * 
      * @param mapping settings how to map argument names and values
-     * @param lazy if true all unresolvable arguments names and values will be kept as is rather than throwing a {@link MappingNotFoundException}
+     * @param lazy if true all not-resolvable arguments names and values will be kept as is rather than throwing a {@link MappingNotFoundException}
      * @return argument name and value function
      */
-    public static Function<CoreExpression, CoreExpression> mapCoreArguments(ArgNameValueMapping mapping, boolean lazy) {
+    public static UnaryOperator<CoreExpression> mapCoreArguments(ArgNameValueMapping mapping, boolean lazy) {
         if (lazy) {
             return new MappingCoreExpressionConverter(new DefaultArgNameValueMapper(mapping, DummyArgNameValueMapper.getInstance()))::convert;
         }
@@ -182,10 +183,10 @@ public class StandardConversions {
     /**
      * @return function to either pass-through the given result or throw an {@link ConversionException} if the result is in error-state
      */
-    public static Function<AudlangParseResult, AudlangParseResult> assertValid() {
+    public static UnaryOperator<AudlangParseResult> assertValidParseResult() {
         return result -> {
             if (result.isError()) {
-                AudlangErrorInfo errorInfo = result.getErrorInfo() == null ? AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED) : result.getErrorInfo();
+                AudlangMessage errorInfo = AudlangMessage.pickFirstError(result.getUserMessages(), AudlangMessage.msg(CommonErrors.ERR_1000_PARSE_FAILED));
                 throw new ConversionException("Invalid parse result, cause: " + result.getErrorMessage(), errorInfo);
             }
             return result;
@@ -201,8 +202,8 @@ public class StandardConversions {
      */
     public static CoreExpression parseCoreExpression(String expr) {
         if (expr == null) {
-            AudlangErrorInfo errorInfo = AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED);
-            throw new ConversionException("Cannot convert expr=null.", errorInfo);
+            AudlangMessage userMessage = AudlangMessage.msg(CommonErrors.ERR_1000_PARSE_FAILED);
+            throw new ConversionException("Cannot convert expr=null.", userMessage);
         }
 
         // The optional below will always be present (or earlier an exception will be thrown)
@@ -211,7 +212,7 @@ public class StandardConversions {
                 .map(parse())
                 .map(toPlExpression())
                 .map(plToCoreExpression())
-                .orElseThrow(() -> new ConversionException("Unexpected missing value after parsing: " + expr, AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED)));
+                .orElseThrow(() -> new ConversionException("Unexpected missing value after parsing: " + expr, AudlangMessage.msg(CommonErrors.ERR_1000_PARSE_FAILED)));
         // @formatter:on
     }
 
@@ -225,7 +226,7 @@ public class StandardConversions {
     @SuppressWarnings("java:S1452")
     public static PlExpression<?> parsePlExpression(String expr) {
         if (expr == null) {
-            throw new ConversionException("Cannot convert expr=null.", AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED));
+            throw new ConversionException("Cannot convert expr=null.", AudlangMessage.msg(CommonErrors.ERR_1000_PARSE_FAILED));
         }
 
         // The optional below will always be present (or earlier an exception will be thrown)
@@ -233,7 +234,7 @@ public class StandardConversions {
         return Optional.of(expr)
                 .map(parse())
                 .map(toPlExpression())
-                .orElseThrow(() -> new ConversionException("Unexpected missing value after parsing: " + expr, AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED)));
+                .orElseThrow(() -> new ConversionException("Unexpected missing value after parsing: " + expr, AudlangMessage.msg(CommonErrors.ERR_1000_PARSE_FAILED)));
         // @formatter:on
     }
 

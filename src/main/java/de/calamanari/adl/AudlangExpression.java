@@ -28,6 +28,9 @@ import java.util.TreeMap;
 import java.util.function.Predicate;
 
 /**
+ * Common interface for expression types on different levels in the Audlang world.
+ * 
+ * @param <T> The concrete expression type (parameterized with itself)
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 public interface AudlangExpression<T extends AudlangExpression<T, V>, V> extends AudlangFieldAware, AudlangFormattable, Comparable<T>, Serializable {

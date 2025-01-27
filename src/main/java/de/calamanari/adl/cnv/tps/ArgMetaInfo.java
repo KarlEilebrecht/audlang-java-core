@@ -21,7 +21,7 @@ package de.calamanari.adl.cnv.tps;
 
 import java.io.Serializable;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.CommonErrors;
 
 /**
@@ -55,9 +55,9 @@ public record ArgMetaInfo(String argName, AdlType type, boolean isAlwaysKnown, b
                     argName, type, isAlwaysKnown, isCollection));
         }
         else if (argName.isEmpty() || type == null) {
-            AudlangErrorInfo errorInfo = AudlangErrorInfo.argError(CommonErrors.ERR_4002_CONFIG_ERROR, argName);
+            AudlangMessage userMessage = AudlangMessage.argMsg(CommonErrors.ERR_4002_CONFIG_ERROR, argName);
             throw new ConfigException(String.format("Arguments argName and type are mandatory, given: argName=%s, type=%s, isAlwaysKnown=%s, isCollection=%s",
-                    argName, type, isAlwaysKnown, isCollection), errorInfo);
+                    argName, type, isAlwaysKnown, isCollection), userMessage);
         }
     }
 }

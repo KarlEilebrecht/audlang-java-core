@@ -51,7 +51,7 @@ public class AudlangParseResult extends AudlangResult {
     @Override
     public String toString() {
         return "AudlangParseResult [resultExpression=" + resultExpression + ", source=" + getSource() + ", error=" + isError() + ", errorMessage="
-                + getErrorMessage() + ", errorInfo=" + getErrorInfo() + "]";
+                + getErrorMessage() + ", userMessages=" + getUserMessages() + "]";
     }
 
 }

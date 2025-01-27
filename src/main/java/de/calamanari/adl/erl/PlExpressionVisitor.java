@@ -28,14 +28,42 @@ import de.calamanari.adl.Visit;
  */
 public interface PlExpressionVisitor {
 
+    /**
+     * Visits a match between an argument and a value or a reference match
+     * 
+     * @param expression
+     */
     void visit(PlMatchExpression expression);
 
+    /**
+     * Visits any of the two {@link PlSpecialSetExpression}s, two times each
+     * 
+     * @param expression
+     */
     void visit(PlSpecialSetExpression expression);
 
+    /**
+     * Visits and AND or an OR
+     * 
+     * @param expression
+     * @param visit enter or exit
+     */
     void visit(PlCombinedExpression expression, Visit visit);
 
+    /**
+     * Visits a {@link PlCurbExpression}, two times each
+     * 
+     * @param expression
+     * @param visit enter or exit
+     */
     void visit(PlCurbExpression expression, Visit visit);
 
+    /**
+     * Visits a {@link PlNegationExpression}
+     * 
+     * @param expression
+     * @param visit enter or exit
+     */
     void visit(PlNegationExpression expression, Visit visit);
 
 }

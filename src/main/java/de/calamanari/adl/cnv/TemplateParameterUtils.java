@@ -91,7 +91,7 @@ public class TemplateParameterUtils {
      * If the returned value is null (not found) or blank the related reference will be left as is.
      * 
      * @see #replaceVariables(String, Function, ReplacementContraint)
-     * @see ReplacementContraint#NOT_BLANK
+     * @see ReplacementConstraint#NOT_BLANK
      * @param source
      * @param lookup to obtain variable values from
      * @return string with replacements applied or source if unchanged
@@ -103,7 +103,7 @@ public class TemplateParameterUtils {
     /**
      * @param lookup
      * @param varName
-     * @param constraint null means {@link ReplacementContraint#NONE}
+     * @param constraint null means {@link ReplacementConstraint#NONE}
      * @return replacement value or null if replacement is not possible
      */
     private static String lookupReplacement(Function<String, Object> lookup, String varName, ReplacementConstraint constraint) {

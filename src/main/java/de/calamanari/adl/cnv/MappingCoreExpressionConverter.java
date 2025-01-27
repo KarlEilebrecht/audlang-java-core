@@ -61,9 +61,9 @@ public class MappingCoreExpressionConverter extends AbstractCoreExpressionConver
                     null);
         }
         else if (expression.operand().isReference()) {
-            QualifiedArgValue qav = mapper.mapArgValue(expression.argName(), null);
+            QualifiedArgValue qavArgNameOnly = mapper.mapArgValue(expression.argName(), null);
             QualifiedArgValue qavRef = mapper.mapArgValue(expression.operand().value(), null);
-            mappedExpression = new MatchExpression(qav.argName(), expression.operator(), new Operand(qavRef.argName(), true), null);
+            mappedExpression = new MatchExpression(qavArgNameOnly.argName(), expression.operator(), new Operand(qavRef.argName(), true), null);
         }
         else if (expression.operator() == MatchOperator.CONTAINS) {
             QualifiedArgValue qav = mapper.mapArgValue(expression.argName(), null);
@@ -71,9 +71,26 @@ public class MappingCoreExpressionConverter extends AbstractCoreExpressionConver
         }
         else {
             QualifiedArgValue qav = mapper.mapArgValue(expression.argName(), expression.operand().value());
-            mappedExpression = new MatchExpression(qav.argName(), expression.operator(), new Operand(qav.argValue(), false), null);
+            mappedExpression = new MatchExpression(findMappedArgName(expression, qav), expression.operator(), new Operand(qav.argValue(), false), null);
         }
         getParentContext().members().add(mappedExpression);
+    }
+
+    /**
+     * This method <i>selects</i> the argName in the special case that the argName/value combination did not map the argName but there is a mapping for the
+     * argName alone.
+     * 
+     * @param expression
+     * @param argNameFromValue
+     * @return either the argNameFromValue or the mapped argName
+     */
+    private String findMappedArgName(MatchExpression expression, QualifiedArgValue qav) {
+        if (qav.argName().equals(expression.argName()) && qav.argValue().equals(expression.operand().value())) {
+            // not mapped, check if we can map the argName alone, see bug #10
+            QualifiedArgValue qavArgNameOnly = mapper.mapArgValue(expression.argName(), null);
+            return qavArgNameOnly.argName();
+        }
+        return qav.argName();
     }
 
     @Override

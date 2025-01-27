@@ -45,7 +45,7 @@ import org.antlr.v4.runtime.misc.ParseCancellationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.AudlangValidationException;
 import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.CommonErrors;
@@ -178,7 +178,7 @@ public class PlExpressionBuilder extends AudlangBaseListener {
         if (source == null || source.isBlank()) {
             res.setError(true);
             res.setErrorMessage("Source must not be null or blank.");
-            res.setErrorInfo(AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED));
+            res.getUserMessages().add(AudlangMessage.msg(CommonErrors.ERR_1000_PARSE_FAILED));
         }
         else {
 
@@ -223,10 +223,10 @@ public class PlExpressionBuilder extends AudlangBaseListener {
                     res.setError(true);
                     res.setErrorMessage(msg);
                     if (ex instanceof ConversionException convex) {
-                        res.setErrorInfo(convex.getErrorInfo());
+                        res.getUserMessages().set(0, convex.getUserMessage());
                     }
                     else if (ex instanceof AudlangValidationException ave) {
-                        res.setErrorInfo(ave.getErrorInfo());
+                        res.getUserMessages().set(0, ave.getUserMessage());
                     }
                 }
                 LOGGER.debug(msg, ex);
@@ -1111,7 +1111,7 @@ public class PlExpressionBuilder extends AudlangBaseListener {
         if (!parseResult.isError()) {
             parseResult.setError(true);
             parseResult.setErrorMessage(msg);
-            parseResult.setErrorInfo(AudlangErrorInfo.error(CommonErrors.ERR_1000_PARSE_FAILED, msg));
+            parseResult.getUserMessages().add(0, AudlangMessage.msg(CommonErrors.ERR_1000_PARSE_FAILED, msg));
         }
     }
 

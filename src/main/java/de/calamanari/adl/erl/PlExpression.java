@@ -43,6 +43,7 @@ import de.calamanari.adl.FormatStyle;
  * <p>
  * The <code>toString()</code> method of any {@link PlExpression} <b>must</b> return a valid Audlang expression equivalent to the instance.
  * 
+ * @param <T> the concrete type of the expression (parameterized with itself) to allow for some unary operations like {@link #stripComments()}
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
 @JsonDeserialize(using = PlExpressionDeserializer.class)

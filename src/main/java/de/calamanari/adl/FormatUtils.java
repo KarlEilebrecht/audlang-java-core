@@ -154,7 +154,7 @@ public class FormatUtils {
      * @see #space(StringBuilder)
      * 
      * @param sb
-     * @param value(s) to append surrounded by space
+     * @param values to append surrounded by space
      */
     public static void appendSpaced(StringBuilder sb, String... values) {
         if (values.length > 0) {
@@ -623,9 +623,17 @@ public class FormatUtils {
 
     /**
      * Container to keep the parameter lists a bit shorter
+     * 
+     * @param style
+     * @param level depth (for indentation)
+     * @param flag to enforce a single line (no line breaks, no indentation)
      */
     public static record FormatInfo(FormatStyle style, int level, boolean forceSingleLine) {
 
+        /**
+         * @param style
+         * @param level depth (for indentation)
+         */
         public FormatInfo(FormatStyle style, int level) {
             this(style, level, false);
         }

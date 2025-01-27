@@ -19,7 +19,7 @@
 
 package de.calamanari.adl.cnv.tps;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 
@@ -35,19 +35,19 @@ public class ConfigException extends ConversionException {
 
     /**
      * @param message
-     * @param errorInfo
+     * @param userMessage
      */
-    public ConfigException(String message, AudlangErrorInfo errorInfo) {
-        super(message, errorInfo);
+    public ConfigException(String message, AudlangMessage userMessage) {
+        super(message, userMessage);
     }
 
     /**
      * @param message
      * @param cause
-     * @param errorInfo
+     * @param userMessage
      */
-    public ConfigException(String message, Throwable cause, AudlangErrorInfo errorInfo) {
-        super(message, cause, errorInfo);
+    public ConfigException(String message, Throwable cause, AudlangMessage userMessage) {
+        super(message, cause, userMessage);
     }
 
     /**
@@ -55,14 +55,14 @@ public class ConfigException extends ConversionException {
      * @param cause
      */
     public ConfigException(String message, Throwable cause) {
-        super(message, cause, AudlangErrorInfo.error(CommonErrors.ERR_4002_CONFIG_ERROR));
+        super(message, cause, AudlangMessage.msg(CommonErrors.ERR_4002_CONFIG_ERROR));
     }
 
     /**
      * @param message
      */
     public ConfigException(String message) {
-        super(message, AudlangErrorInfo.error(CommonErrors.ERR_4002_CONFIG_ERROR));
+        super(message, AudlangMessage.msg(CommonErrors.ERR_4002_CONFIG_ERROR));
     }
 
 }

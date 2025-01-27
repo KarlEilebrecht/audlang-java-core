@@ -19,7 +19,7 @@
 
 package de.calamanari.adl.cnv.tps;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.CommonErrors;
 import de.calamanari.adl.ConversionException;
 
@@ -36,18 +36,18 @@ public class AdlFormattingException extends ConversionException {
     /**
      * @param message
      * @param cause
-     * @param errorInfo
+     * @param userMessage
      */
-    public AdlFormattingException(String message, Throwable cause, AudlangErrorInfo errorInfo) {
-        super(message, cause, errorInfo);
+    public AdlFormattingException(String message, Throwable cause, AudlangMessage userMessage) {
+        super(message, cause, userMessage);
     }
 
     /**
      * @param message
-     * @param errorInfo
+     * @param userMessage
      */
-    public AdlFormattingException(String message, AudlangErrorInfo errorInfo) {
-        super(message, errorInfo);
+    public AdlFormattingException(String message, AudlangMessage userMessage) {
+        super(message, userMessage);
     }
 
     /**
@@ -55,14 +55,14 @@ public class AdlFormattingException extends ConversionException {
      * @param cause
      */
     public AdlFormattingException(String message, Throwable cause) {
-        super(message, cause, AudlangErrorInfo.error(CommonErrors.ERR_2004_VALUE_FORMAT));
+        super(message, cause, AudlangMessage.msg(CommonErrors.ERR_2004_VALUE_FORMAT));
     }
 
     /**
      * @param message
      */
     public AdlFormattingException(String message) {
-        super(message, AudlangErrorInfo.error(CommonErrors.ERR_2004_VALUE_FORMAT));
+        super(message, AudlangMessage.msg(CommonErrors.ERR_2004_VALUE_FORMAT));
     }
 
 }

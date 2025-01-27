@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.CommonErrors;
 
 /**
@@ -115,8 +115,8 @@ public record DefaultArgMetaInfoLookup(Map<String, ArgMetaInfo> map) implements 
 
         ArgMetaInfo res = map.get(argName);
         if (res == null) {
-            AudlangErrorInfo errorInfo = AudlangErrorInfo.argError(CommonErrors.ERR_4002_CONFIG_ERROR, argName);
-            throw new LookupException("No meta data available for argName=" + argName, errorInfo);
+            AudlangMessage userMessage = AudlangMessage.argMsg(CommonErrors.ERR_4002_CONFIG_ERROR, argName);
+            throw new LookupException("No meta data available for argName=" + argName, userMessage);
         }
         return res;
 

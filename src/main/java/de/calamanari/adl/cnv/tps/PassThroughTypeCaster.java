@@ -19,7 +19,7 @@
 
 package de.calamanari.adl.cnv.tps;
 
-import de.calamanari.adl.AudlangErrorInfo;
+import de.calamanari.adl.AudlangMessage;
 import de.calamanari.adl.CommonErrors;
 
 /**
@@ -49,9 +49,9 @@ public class PassThroughTypeCaster implements NativeTypeCaster {
             return nativeFieldName;
         }
         else {
-            AudlangErrorInfo errorInfo = AudlangErrorInfo.argError(CommonErrors.ERR_3001_TYPE_MISMATCH, argName);
+            AudlangMessage userMessage = AudlangMessage.argMsg(CommonErrors.ERR_3001_TYPE_MISMATCH, argName);
             throw new TypeMismatchException(String.format("Unable to make %s (type: %s, native field name: %s) compatible to type %s", argName, argType,
-                    nativeFieldName, requestedArgType), errorInfo);
+                    nativeFieldName, requestedArgType), userMessage);
         }
     }
 
