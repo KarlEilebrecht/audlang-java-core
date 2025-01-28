@@ -8,7 +8,7 @@ The Java/[ANTLR](https://www.antlr.org/) implementation covers the full language
 		<dependency>
 			<groupId>de.calamanari.adl</groupId>
 			<artifactId>audlang-java-core</artifactId>
-			<version>1.0.5</version>
+			<version>1.0.6</version>
 		</dependency>
 ```
 
