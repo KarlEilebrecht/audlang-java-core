@@ -7,6 +7,8 @@
 	<name>Audlang Java Core</name>
 	<description>Audlang foundation classes for Java (parsing, formatting,
 		conversion)</description>
+    <url>https://github.com/KarlEilebrecht/audlang-java-core</url>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
