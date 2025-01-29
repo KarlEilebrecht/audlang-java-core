@@ -626,7 +626,7 @@ public class FormatUtils {
      * 
      * @param style
      * @param level depth (for indentation)
-     * @param flag to enforce a single line (no line breaks, no indentation)
+     * @param forceSingleLine flag to enforce a single line (no line breaks, no indentation)
      */
     public static record FormatInfo(FormatStyle style, int level, boolean forceSingleLine) {
 
