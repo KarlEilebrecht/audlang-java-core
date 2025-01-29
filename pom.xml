@@ -14,6 +14,24 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+	
+	<developers>
+	    <developer>
+	        <name>Karl Eilebrecht</name>
+	        <email>Karl.Eilebrecht@calamanari.de</email>
+	        <organization>KarlEilebrecht</organization>
+	    </developer>
+	</developers>
+
+
 	<scm>
 		<connection>
 			scm:git:https://github.com/KarlEilebrecht/audlang-java-core.git</connection>
@@ -28,7 +46,7 @@
 		<dependency>
 			<groupId>de.calamanari.adl</groupId>
 			<artifactId>audlang-spec</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.antlr</groupId>
@@ -170,13 +188,25 @@
 		</profile>
 		<profile>
 			<id>mavenCentral</id>
+			<build>
+			    <plugins>
+			        <plugin>
+			          <groupId>org.sonatype.central</groupId>
+			          <artifactId>central-publishing-maven-plugin</artifactId>
+			          <version>0.7.0</version>
+			          <extensions>true</extensions>
+			          <configuration>
+			             <publishingServerId>central</publishingServerId>
+			             <autoPublish>true</autoPublish>
+			          </configuration>
+			        </plugin>
+			    </plugins>
+			</build>			
 			<distributionManagement>
 				<repository>
-                    <!-- This matches the ID in the settings.xml to find the credentials -->				
-					<id>ossrh</id>
-					<name>Central Repository OSSRH</name>
-					<url>
-						https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+					<id>central</id>
+					<name>Maven Central Repository OSSRH</name>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 				</repository>
 			</distributionManagement>
 		</profile>
