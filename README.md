@@ -1,6 +1,6 @@
 # Audlang Java Core
 
-This project provides a *reference implementation* of the **[Audience Definition Language Specification (Audlang)](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#audience-definition-language-specification)**.
+This project provides a *reference implementation* of the **[Audience Definition Language Specification (Audlang)](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#audience-definition-language-specification)**. Latest build artifacts can be found on [Maven Central](https://central.sonatype.com/namespace/de.calamanari.adl).
 
 The Java/[ANTLR](https://www.antlr.org/) implementation covers the full language feature set including **[comments](https://github.com/KarlEilebrecht/audlang-spec/blob/main/doc/AudienceDefinitionLanguageSpecification.md#15-comments)**.
 
