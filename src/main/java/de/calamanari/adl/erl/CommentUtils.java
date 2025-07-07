@@ -228,7 +228,7 @@ public class CommentUtils {
         StringBuilder sb = new StringBuilder();
 
         for (String subToken : subTokens) {
-            if (sb.length() > 0 && (subToken.length() >= FormatConstants.COMPLEX_COMMENT_THRESHOLD
+            if (!sb.isEmpty() && (subToken.length() >= FormatConstants.COMPLEX_COMMENT_THRESHOLD
                     || sb.length() + subToken.length() >= FormatConstants.COMPLEX_COMMENT_THRESHOLD)) {
                 res.add(sb.toString());
                 sb.setLength(0);
@@ -240,7 +240,7 @@ public class CommentUtils {
                 sb.append(subToken);
             }
         }
-        if (sb.length() > 0) {
+        if (!sb.isEmpty()) {
             res.add(sb.toString());
         }
 
