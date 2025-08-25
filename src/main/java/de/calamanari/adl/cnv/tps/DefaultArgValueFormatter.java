@@ -171,6 +171,9 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
                 throw new NumberFormatException("Audlang integers shall not have leading zeros, given: " + argValue);
             }
             double value = Double.parseDouble(argValue);
+            if (!Double.isFinite(value)) {
+                throw new NumberFormatException("Parsed value is not a number or infinite, given: " + argValue);
+            }
             NumberFormat nf = NumberFormat.getInstance(Locale.US);
             // §2.1.2 Audlang Spec: 7 decimal digits max, no grouping
             nf.setMaximumFractionDigits(7);

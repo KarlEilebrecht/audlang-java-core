@@ -148,6 +148,12 @@ class DefaultArgValueFormatterTest {
 
     }
 
+    @Test
+    void testDecimalIssue33() {
+        assertBadValue(DefaultArgValueFormatter.DECIMAL, "1" + Double.MAX_VALUE);
+        assertBadValue(DefaultArgValueFormatter.DECIMAL, "-1" + Double.MAX_VALUE);
+    }
+
     private static void assertBadValue(ArgValueFormatter formatter, String value) {
         assertThrows(AdlFormattingException.class, () -> formatter.format("argName", value, MatchOperator.EQUALS));
 
