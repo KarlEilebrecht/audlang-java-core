@@ -618,7 +618,7 @@ public class PlExpressionBuilder extends AudlangBaseListener {
         try {
             bound = Integer.parseInt(parsedBound);
         }
-        catch (NumberFormatException | NullPointerException ex) {
+        catch (NumberFormatException | NullPointerException _) {
             // handled by value check below
         }
 

@@ -79,7 +79,7 @@ public record ArgNameValueMapping(Map<QualifiedArgValue, QualifiedArgValue> mapp
 
         for (Map.Entry<String, String> entry : argNameToArgNameMap.entrySet()) {
             QualifiedArgValue key = new QualifiedArgValue(entry.getKey(), null);
-            tempMap.computeIfAbsent(key, k -> new QualifiedArgValue(entry.getValue(), null));
+            tempMap.computeIfAbsent(key, _ -> new QualifiedArgValue(entry.getValue(), null));
         }
     }
 

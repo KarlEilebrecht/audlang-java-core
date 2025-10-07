@@ -675,7 +675,7 @@ public class CoreExpressionCodec implements Serializable {
      */
     public int encode(SimpleExpression expression) {
 
-        return encodedExpressionCache.computeIfAbsent(expression, key -> {
+        return encodedExpressionCache.computeIfAbsent(expression, _ -> {
             int negMask = expression instanceof NegationExpression ? NEGATION_MASK : 0;
             int argNameIdxMask = dictionary.indexOfArgName(expression.argName()) << 18;
             int opMask = 0;

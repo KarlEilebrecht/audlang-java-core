@@ -173,7 +173,7 @@ class StandardSamplesTest {
 
             return Collections.unmodifiableList(sampleGroups);
         }
-        catch (IOException ex) {
+        catch (IOException _) {
             throw new RuntimeException("Could not load template file: " + templateFileName);
         }
     }

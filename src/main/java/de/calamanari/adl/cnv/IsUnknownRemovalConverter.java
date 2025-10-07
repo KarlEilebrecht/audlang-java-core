@@ -109,7 +109,7 @@ public class IsUnknownRemovalConverter implements ExpressionConverter<CoreExpres
      */
     private static Function<String, Boolean> createChecker(List<String> argNamesThatSupportIsUnknown) {
         if (argNamesThatSupportIsUnknown == null || argNamesThatSupportIsUnknown.isEmpty()) {
-            return s -> Boolean.FALSE;
+            return _ -> Boolean.FALSE;
         }
         Set<String> set = new HashSet<>(argNamesThatSupportIsUnknown);
         return set::contains;

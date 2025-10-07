@@ -439,7 +439,7 @@ public class OrOfAndOverlapRegrouper implements ExpressionTreeProcessor {
                 }
                 Overlap overlap = computeOverlap(tree.membersOf(leftMember), tree.membersOf(rightMember));
                 if (overlap != Overlap.EMPTY) {
-                    int[] counter = overlaps.computeIfAbsent(overlap, key -> new int[1]);
+                    int[] counter = overlaps.computeIfAbsent(overlap, _ -> new int[1]);
                     counter[0]++;
                 }
             }

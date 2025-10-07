@@ -618,7 +618,7 @@ public class EncodedExpressionTree implements Serializable {
                     appendDebugString(sb, members[i]);
                 }
             }
-            catch (IndexOutOfBoundsException ex) {
+            catch (IndexOutOfBoundsException _) {
                 // This code is only for the case that a bug was introduced to
                 // prevent the debug string method from crashing
                 LOGGER.error("Decoding error, unrecognizable combined node: {}", node);

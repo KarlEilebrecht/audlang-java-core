@@ -118,7 +118,7 @@ public class MemberArrayRegistry implements Serializable {
      */
     public int registerMemberArray(int[] memberArray) {
         CacheEntry cacheKey = new CacheEntry(memberArray);
-        return cache.computeIfAbsent(cacheKey, key -> registerNewMemberArray(memberArray));
+        return cache.computeIfAbsent(cacheKey, _ -> registerNewMemberArray(memberArray));
     }
 
     /**

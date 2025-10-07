@@ -40,7 +40,7 @@ public enum DefaultArgValueFormatter implements ArgValueFormatter {
     /**
      * Passes the string value as-is, replaces <b>null</b> with the string <code>"null"</code>
      */
-    NONE((argName, argValue, operator) -> String.valueOf(argValue)),
+    NONE((_, argValue, _) -> String.valueOf(argValue)),
 
     /**
      * Encloses the argValue in double-quotes and escapes in standard manner, see {@link DefaultEscaper}, unsupported characters (control characters &lt;32)

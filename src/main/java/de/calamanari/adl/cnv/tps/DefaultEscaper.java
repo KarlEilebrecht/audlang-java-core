@@ -106,7 +106,7 @@ public class DefaultEscaper implements NativeEscaper {
                     charsToBeEscaped, Arrays.toString(escapeSequences)));
         }
         if (supportChecker == null) {
-            supportChecker = ch -> true;
+            supportChecker = _ -> true;
         }
 
         this.charsToBeEscaped = charsToBeEscaped;
