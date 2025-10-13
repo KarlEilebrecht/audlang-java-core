@@ -214,34 +214,20 @@ public record PlNegationExpression(PlExpression<?> delegate, @JsonInclude(JsonIn
      * First resolves the higher language features on the delegate, evaluates the result and processes then type-specific
      * @return resolved expression without any higher language features
      */
-    @SuppressWarnings("java:S6880")
     private PlExpression<?> resolveHigherLanguageFeaturesInternal() {
         
         // inner-outer resolution (apply the NOT to the already resolved delegate)
         PlExpression<?> resolvedDelegate = delegate.resolveHigherLanguageFeatures();
 
-        // Not using switch here because of an OpenJDK bug in the switch-statement-implementation
-        // that lead to JVM-crash that could only be fixed by reverting the code below to classic IF-ELSE 
-        // Symptom: java.lang.VerifyError: Inconsistent stackmap frames at branch target
-        // See https://bugs.openjdk.org/browse/JDK-8332934
-
         PlExpression<?> res = null;
-        if (resolvedDelegate instanceof PlNegationExpression neg) {
-            res = resolveHigherLanguageFeatures(neg);
+        switch(resolvedDelegate) {
+        case PlNegationExpression neg : res = resolveHigherLanguageFeatures(neg); break;
+        case PlCombinedExpression cmb : res = resolveHigherLanguageFeatures(cmb); break;
+        case PlMatchExpression match : res = resolveHigherLanguageFeatures(match); break;
+        case PlSpecialSetExpression spc : res = resolveHigherLanguageFeatures(spc); break;
+        default : throw new IllegalStateException("BUG: Unexpected expression type: " + this.getClass().getName());
         }
-        else if (resolvedDelegate instanceof PlCombinedExpression cmb) {
-            res = resolveHigherLanguageFeatures(cmb);
-        }
-        else if (resolvedDelegate instanceof PlMatchExpression match) {
-            res = resolveHigherLanguageFeatures(match);
-        }
-        else if (resolvedDelegate instanceof PlSpecialSetExpression spc) {
-            res = resolveHigherLanguageFeatures(spc);
-        }
-        else {
-            throw new IllegalStateException("BUG: Unexpected expression type: " + this.getClass().getName());
-        }
-        return res == this ? this : res;
+        return res.equals(this) ? this : res;
     }
 
     private PlExpression<?> resolveHigherLanguageFeatures(PlSpecialSetExpression spc) {
