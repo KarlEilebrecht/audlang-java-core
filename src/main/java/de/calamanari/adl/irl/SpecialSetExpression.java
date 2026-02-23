@@ -19,8 +19,6 @@
 
 package de.calamanari.adl.irl;
 
-import static de.calamanari.adl.FormatUtils.appendSpecialSetExpression;
-
 import java.util.Collections;
 
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -30,6 +28,8 @@ import de.calamanari.adl.AudlangValidationException;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.FormatUtils.FormatInfo;
 import de.calamanari.adl.SpecialSetType;
+
+import static de.calamanari.adl.FormatUtils.appendSpecialSetExpression;
 
 /**
  * {@link SpecialSetExpression} stands for the Audlang expressions <code>&lt;ALL&gt;</code> (resp. no restriction, always true, {@link SpecialSetType#ALL}) and
