@@ -19,12 +19,6 @@
 
 package de.calamanari.adl.irl.biceps;
 
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.BitSet;
@@ -36,6 +30,12 @@ import org.slf4j.LoggerFactory;
 
 import de.calamanari.adl.FormatUtils;
 import de.calamanari.adl.irl.CoreExpression;
+
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
 
 /**
  * The {@link ExpressionTreeSimulator} allows a <b>brute-force simulation</b> (truth-table) of one or multiple expressions (side-by-side).

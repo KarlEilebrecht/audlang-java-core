@@ -19,6 +19,22 @@
 
 package de.calamanari.adl.irl.biceps;
 
+import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.calamanari.adl.DeepCopyUtils;
+import de.calamanari.adl.irl.CombinedExpression;
+import de.calamanari.adl.irl.CoreExpression;
+import de.calamanari.adl.irl.MatchExpression;
+import de.calamanari.adl.irl.MatchOperator;
+import de.calamanari.adl.irl.Operand;
+import de.calamanari.adl.irl.SimpleExpression;
+import de.calamanari.adl.irl.SpecialSetExpression;
+import de.calamanari.adl.irl.biceps.CoreExpressionCodec.Dictionary;
+
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.createIsUnknownForArgName;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.createIsUnknownForReferencedArgName;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.decodeCombinedExpressionId;
@@ -39,22 +55,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import de.calamanari.adl.DeepCopyUtils;
-import de.calamanari.adl.irl.CombinedExpression;
-import de.calamanari.adl.irl.CoreExpression;
-import de.calamanari.adl.irl.MatchExpression;
-import de.calamanari.adl.irl.MatchOperator;
-import de.calamanari.adl.irl.Operand;
-import de.calamanari.adl.irl.SimpleExpression;
-import de.calamanari.adl.irl.SpecialSetExpression;
-import de.calamanari.adl.irl.biceps.CoreExpressionCodec.Dictionary;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

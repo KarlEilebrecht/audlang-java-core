@@ -19,11 +19,6 @@
 
 package de.calamanari.adl.irl.biceps;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -33,6 +28,11 @@ import de.calamanari.adl.cnv.PlToCoreExpressionConverter;
 import de.calamanari.adl.erl.AudlangParseResult;
 import de.calamanari.adl.erl.PlExpressionBuilder;
 import de.calamanari.adl.irl.CoreExpression;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

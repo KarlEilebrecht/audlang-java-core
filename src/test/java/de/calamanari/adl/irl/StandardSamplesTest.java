@@ -19,10 +19,6 @@
 
 package de.calamanari.adl.irl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -43,6 +39,10 @@ import de.calamanari.adl.irl.biceps.CoreExpressionOptimizer;
 import de.calamanari.adl.util.sgen.SampleExpression;
 import de.calamanari.adl.util.sgen.SampleExpressionGroup;
 import de.calamanari.adl.util.sgen.SampleExpressionUtils;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

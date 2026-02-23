@@ -19,6 +19,13 @@
 
 package de.calamanari.adl;
 
+import java.util.Collections;
+import java.util.List;
+
+import de.calamanari.adl.erl.CommentAware;
+import de.calamanari.adl.erl.CommentUtils;
+import de.calamanari.adl.erl.PlComment;
+
 import static de.calamanari.adl.CombinedExpressionType.createOperatorString;
 import static de.calamanari.adl.FormatConstants.T_CURB;
 import static de.calamanari.adl.FormatConstants.T_NOT;
@@ -28,13 +35,6 @@ import static de.calamanari.adl.erl.CommentUtils.appendCommentsOrWhitespace;
 import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
 import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
 import static de.calamanari.adl.erl.PlComment.Position.C1;
-
-import java.util.Collections;
-import java.util.List;
-
-import de.calamanari.adl.erl.CommentAware;
-import de.calamanari.adl.erl.CommentUtils;
-import de.calamanari.adl.erl.PlComment;
 
 /**
  * This class contains a couple of helper methods to simplify and standardize formatting across the Audlang expressions

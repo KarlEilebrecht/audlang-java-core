@@ -19,6 +19,21 @@
 
 package de.calamanari.adl.erl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.calamanari.adl.AudlangField;
+import de.calamanari.adl.AudlangValidationException;
+import de.calamanari.adl.FormatStyle;
+import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
+import de.calamanari.adl.util.JsonUtils;
+
 import static de.calamanari.adl.FormatStyle.INLINE;
 import static de.calamanari.adl.FormatStyle.PRETTY_PRINT;
 import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
@@ -78,21 +93,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import de.calamanari.adl.AudlangField;
-import de.calamanari.adl.AudlangValidationException;
-import de.calamanari.adl.FormatStyle;
-import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
-import de.calamanari.adl.util.JsonUtils;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

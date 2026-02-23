@@ -19,12 +19,6 @@
 
 package de.calamanari.adl.cnv;
 
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getOperator;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isNegation;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.negate;
-
 import java.util.concurrent.TimeoutException;
 
 import org.slf4j.Logger;
@@ -52,6 +46,12 @@ import de.calamanari.adl.irl.biceps.ExpressionTreeLevel;
 import de.calamanari.adl.irl.biceps.ExpressionTreeProcessor;
 import de.calamanari.adl.irl.biceps.ImplicationResolver;
 import de.calamanari.adl.irl.biceps.NodeType;
+
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getOperator;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isNegation;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.negate;
 
 /**
  * The {@link PlToCoreExpressionConverter} takes a presentation layer expression and produces a corresponding {@link CoreExpression}.

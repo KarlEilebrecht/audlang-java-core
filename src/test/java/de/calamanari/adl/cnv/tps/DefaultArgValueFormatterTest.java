@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.cnv.tps;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -29,6 +26,9 @@ import java.util.TimeZone;
 import org.junit.jupiter.api.Test;
 
 import de.calamanari.adl.irl.MatchOperator;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

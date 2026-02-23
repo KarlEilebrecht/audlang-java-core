@@ -19,10 +19,6 @@
 
 package de.calamanari.adl.erl;
 
-import static de.calamanari.adl.FormatUtils.appendIndentOrWhitespace;
-import static de.calamanari.adl.erl.CommentUtils.appendComments;
-import static de.calamanari.adl.erl.CommentUtils.verifyCommentsApplicable;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +34,10 @@ import de.calamanari.adl.AudlangValidationException;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.erl.PlComment.Position;
 import de.calamanari.adl.util.AdlTextUtils;
+
+import static de.calamanari.adl.FormatUtils.appendIndentOrWhitespace;
+import static de.calamanari.adl.erl.CommentUtils.appendComments;
+import static de.calamanari.adl.erl.CommentUtils.verifyCommentsApplicable;
 
 /**
  * A {@link PlOperand} can either be a plain string value or an argument reference in Audlang comparison to an argument

@@ -19,10 +19,6 @@
 
 package de.calamanari.adl.erl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,6 +44,10 @@ import de.calamanari.adl.util.sgen.SampleExpressionGroup;
 import de.calamanari.adl.util.sgen.SampleExpressionOperator;
 import de.calamanari.adl.util.sgen.SampleExpressionUtils;
 import de.calamanari.adl.util.sgen.SampleGenInfo;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

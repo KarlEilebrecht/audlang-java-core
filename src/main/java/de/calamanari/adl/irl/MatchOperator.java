@@ -19,11 +19,11 @@
 
 package de.calamanari.adl.irl;
 
-import static de.calamanari.adl.FormatUtils.endsWith;
-import static de.calamanari.adl.FormatUtils.space;
-
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.util.AdlTextUtils;
+
+import static de.calamanari.adl.FormatUtils.endsWith;
+import static de.calamanari.adl.FormatUtils.space;
 
 /**
  * The {@link MatchOperator} enumeration covers the simple compare operations of {@link CoreExpression}s.

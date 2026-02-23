@@ -19,14 +19,14 @@
 
 package de.calamanari.adl.erl;
 
-import static de.calamanari.adl.FormatUtils.space;
-
 import java.io.Serializable;
 
 import de.calamanari.adl.AudlangFormattable;
 import de.calamanari.adl.AudlangValidationException;
 import de.calamanari.adl.FormatConstants;
 import de.calamanari.adl.FormatStyle;
+
+import static de.calamanari.adl.FormatUtils.space;
 
 /**
  * A {@link PlComment} represents a comment, see

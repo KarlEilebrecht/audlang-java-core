@@ -19,16 +19,16 @@
 
 package de.calamanari.adl.erl;
 
-import static de.calamanari.adl.erl.PlComment.Position.BEFORE_OPERAND;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 
 import de.calamanari.adl.AudlangValidationException;
 import de.calamanari.adl.FormatStyle;
+
+import static de.calamanari.adl.erl.PlComment.Position.BEFORE_OPERAND;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

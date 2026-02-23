@@ -19,10 +19,6 @@
 
 package de.calamanari.adl.irl.biceps;
 
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -35,6 +31,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.calamanari.adl.TimeOut;
+
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
 
 /**
  * The {@link OrOfAndOverlapRegrouper} takes a tree with an expression tree (typically previously normalized using the {@link OrOfAndNormalizer}) and step by

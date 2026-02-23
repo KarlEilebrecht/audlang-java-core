@@ -19,10 +19,6 @@
 
 package de.calamanari.adl.irl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
@@ -34,6 +30,10 @@ import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.SpecialSetType;
 import de.calamanari.adl.cnv.StandardConversions;
 import de.calamanari.adl.util.JsonUtils;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

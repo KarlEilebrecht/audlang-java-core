@@ -19,12 +19,6 @@
 
 package de.calamanari.adl.erl;
 
-import static de.calamanari.adl.FormatUtils.appendCurbExpression;
-import static de.calamanari.adl.erl.CommentUtils.verifyCommentsApplicable;
-import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
-import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
-import static de.calamanari.adl.erl.PlComment.Position.C1;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -43,6 +37,12 @@ import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.FormatUtils.FormatInfo;
 import de.calamanari.adl.Visit;
+
+import static de.calamanari.adl.FormatUtils.appendCurbExpression;
+import static de.calamanari.adl.erl.CommentUtils.verifyCommentsApplicable;
+import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
+import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
+import static de.calamanari.adl.erl.PlComment.Position.C1;
 
 /**
  * {@link PlCurbExpression} represents a an Audlang curb-expression (syntactic sugar on the presentation layer) to limit an OR (e.g., <i>two of five</i>).

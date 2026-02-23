@@ -19,6 +19,16 @@
 
 package de.calamanari.adl.erl;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.calamanari.adl.FormatStyle;
+import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
+
 import static de.calamanari.adl.FormatStyle.INLINE;
 import static de.calamanari.adl.FormatStyle.PRETTY_PRINT;
 import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
@@ -82,16 +92,6 @@ import static de.calamanari.adl.erl.SamplePlExpressions.or;
 import static de.calamanari.adl.erl.SamplePlExpressions.strictNot;
 import static de.calamanari.adl.erl.SamplePlExpressions.vop;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.Arrays;
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import de.calamanari.adl.FormatStyle;
-import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

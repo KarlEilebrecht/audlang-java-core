@@ -19,6 +19,14 @@
 
 package de.calamanari.adl.irl.biceps;
 
+import java.util.Arrays;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.calamanari.adl.TimeOut;
+import de.calamanari.adl.irl.biceps.ExpressionLogicHelper.Advice;
+
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
@@ -31,14 +39,6 @@ import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isReferenceMatch;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isUnknown;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.negate;
-
-import java.util.Arrays;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import de.calamanari.adl.TimeOut;
-import de.calamanari.adl.irl.biceps.ExpressionLogicHelper.Advice;
 
 /**
  * The {@link ImplicationResolver} cleans-up a couple of implications in a given expression tree.

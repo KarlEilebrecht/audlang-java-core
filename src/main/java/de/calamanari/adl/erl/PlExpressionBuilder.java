@@ -19,12 +19,6 @@
 
 package de.calamanari.adl.erl;
 
-import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
-import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
-import static de.calamanari.adl.erl.PlComment.Position.BEFORE_OPERAND;
-import static de.calamanari.adl.erl.PlComment.Position.C1;
-import static de.calamanari.adl.erl.PlComment.Position.C2;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -112,6 +106,12 @@ import de.calamanari.adl.erl.CommentUtils.PhysicalCommentPosition;
 import de.calamanari.adl.erl.PlComment.Position;
 import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
 import de.calamanari.adl.util.AdlTextUtils;
+
+import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
+import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
+import static de.calamanari.adl.erl.PlComment.Position.BEFORE_OPERAND;
+import static de.calamanari.adl.erl.PlComment.Position.C1;
+import static de.calamanari.adl.erl.PlComment.Position.C2;
 
 /**
  * The {@link PlExpressionBuilder} is the concrete ANTLR-listener implementation for parsing textual representations of Audlang expressions. It supports the

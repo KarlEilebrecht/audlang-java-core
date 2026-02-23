@@ -19,11 +19,6 @@
 
 package de.calamanari.adl.erl;
 
-import static de.calamanari.adl.FormatUtils.appendSpecialSetExpression;
-import static de.calamanari.adl.erl.CommentUtils.verifyCommentsApplicable;
-import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
-import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -39,6 +34,11 @@ import de.calamanari.adl.AudlangValidationException;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.FormatUtils.FormatInfo;
 import de.calamanari.adl.SpecialSetType;
+
+import static de.calamanari.adl.FormatUtils.appendSpecialSetExpression;
+import static de.calamanari.adl.erl.CommentUtils.verifyCommentsApplicable;
+import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
+import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
 
 /**
  * {@link PlSpecialSetExpression} stands for the Audlang expressions <code>&lt;ALL&gt;</code> (resp. no restriction, always true, {@link SpecialSetType#ALL})

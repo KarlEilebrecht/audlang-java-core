@@ -19,12 +19,6 @@
 
 package de.calamanari.adl.erl;
 
-import static de.calamanari.adl.FormatUtils.appendCombinedExpressionMultiLine;
-import static de.calamanari.adl.FormatUtils.appendCombinedExpressionSingleLine;
-import static de.calamanari.adl.erl.CommentUtils.verifyCommentsApplicable;
-import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
-import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -44,6 +38,12 @@ import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.FormatUtils.FormatInfo;
 import de.calamanari.adl.Visit;
+
+import static de.calamanari.adl.FormatUtils.appendCombinedExpressionMultiLine;
+import static de.calamanari.adl.FormatUtils.appendCombinedExpressionSingleLine;
+import static de.calamanari.adl.erl.CommentUtils.verifyCommentsApplicable;
+import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
+import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
 
 /**
  * A {@link PlCombinedExpression} connects at least two expressions to form a new one either with {@link CombinedExpressionType#OR} or

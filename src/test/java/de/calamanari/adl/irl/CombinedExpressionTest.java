@@ -19,17 +19,6 @@
 
 package de.calamanari.adl.irl;
 
-import static de.calamanari.adl.CombinedExpressionType.AND;
-import static de.calamanari.adl.CombinedExpressionType.OR;
-import static de.calamanari.adl.FormatStyle.INLINE;
-import static de.calamanari.adl.FormatStyle.PRETTY_PRINT;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -48,6 +37,17 @@ import de.calamanari.adl.erl.PlExpressionBuilder;
 import de.calamanari.adl.irl.biceps.CoreExpressionOptimizer;
 import de.calamanari.adl.irl.biceps.EncodedExpressionTree;
 import de.calamanari.adl.util.JsonUtils;
+
+import static de.calamanari.adl.CombinedExpressionType.AND;
+import static de.calamanari.adl.CombinedExpressionType.OR;
+import static de.calamanari.adl.FormatStyle.INLINE;
+import static de.calamanari.adl.FormatStyle.PRETTY_PRINT;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

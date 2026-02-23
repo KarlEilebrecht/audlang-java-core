@@ -19,6 +19,9 @@
 
 package de.calamanari.adl.irl.biceps;
 
+import java.io.Serializable;
+import java.util.Arrays;
+
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
@@ -34,9 +37,6 @@ import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isReferenceMatch;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isUnknown;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.negate;
-
-import java.io.Serializable;
-import java.util.Arrays;
 
 /**
  * The {@link ExpressionLogicHelper} contains a couple of common utility methods to make logic decisions when transforming an expression tree.

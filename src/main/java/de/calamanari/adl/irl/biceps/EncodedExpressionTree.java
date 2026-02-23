@@ -19,14 +19,6 @@
 
 package de.calamanari.adl.irl.biceps;
 
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.encodeCombinedExpressionId;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isCombinedExpressionId;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,6 +31,14 @@ import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.irl.CombinedExpression;
 import de.calamanari.adl.irl.CoreExpression;
 import de.calamanari.adl.irl.biceps.CoreExpressionCodec.Dictionary;
+
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.encodeCombinedExpressionId;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isCombinedExpressionId;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
 
 /**
  * The {@link EncodedExpressionTree} holds an expression in memory that is <i>work-in-progress</i> and that may need lots of transformations. It uses a

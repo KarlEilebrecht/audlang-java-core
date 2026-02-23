@@ -19,6 +19,16 @@
 
 package de.calamanari.adl.erl;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
+
+import de.calamanari.adl.CombinedExpressionType;
+import de.calamanari.adl.SpecialSetType;
+import de.calamanari.adl.erl.PlComment.Position;
+import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
+
 import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
 import static de.calamanari.adl.erl.PlComment.Position.AFTER_OPERAND;
 import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
@@ -29,16 +39,6 @@ import static de.calamanari.adl.erl.PlComment.Position.C3;
 import static de.calamanari.adl.erl.PlComment.Position.C4;
 import static de.calamanari.adl.erl.PlComment.Position.C5;
 import static de.calamanari.adl.erl.PlComment.Position.C6;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Stream;
-
-import de.calamanari.adl.CombinedExpressionType;
-import de.calamanari.adl.SpecialSetType;
-import de.calamanari.adl.erl.PlComment.Position;
-import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

@@ -19,13 +19,13 @@
 
 package de.calamanari.adl.irl.biceps;
 
+import java.util.Arrays;
+
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
 import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isCombinedExpressionId;
-
-import java.util.Arrays;
 
 /**
  * This utility collection simplifies the work with the members of encoded expressions in the tree.

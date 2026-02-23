@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.erl;
 
-import static de.calamanari.adl.VariationUtils.computeNumberOfSubLists;
-import static de.calamanari.adl.VariationUtils.createSubLists;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,6 +30,9 @@ import org.slf4j.LoggerFactory;
 import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.SpecialSetType;
 import de.calamanari.adl.erl.PlCurbExpression.PlCurbOperator;
+
+import static de.calamanari.adl.VariationUtils.computeNumberOfSubLists;
+import static de.calamanari.adl.VariationUtils.createSubLists;
 
 /**
  * The {@link CurbResolver} utility resolves {@link PlCurbExpression}s (recursively) into basic Audlang expressions.

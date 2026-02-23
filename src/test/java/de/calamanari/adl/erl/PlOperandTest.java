@@ -19,6 +19,12 @@
 
 package de.calamanari.adl.erl;
 
+import java.util.Collections;
+
+import org.junit.jupiter.api.Test;
+
+import de.calamanari.adl.AudlangValidationException;
+
 import static de.calamanari.adl.erl.PlComment.Position.BEFORE_OPERAND;
 import static de.calamanari.adl.erl.SamplePlExpressions.COMMENT_AFTER_EXPR;
 import static de.calamanari.adl.erl.SamplePlExpressions.COMMENT_AFTER_OPERAND;
@@ -31,12 +37,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.util.Collections;
-
-import org.junit.jupiter.api.Test;
-
-import de.calamanari.adl.AudlangValidationException;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

@@ -19,9 +19,6 @@
 
 package de.calamanari.adl;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
@@ -40,6 +37,9 @@ import de.calamanari.adl.cnv.tps.LessThanGreaterThanNotSupportedException;
 import de.calamanari.adl.cnv.tps.LookupException;
 import de.calamanari.adl.cnv.tps.TypeMismatchException;
 import de.calamanari.adl.erl.CurbComplexityException;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

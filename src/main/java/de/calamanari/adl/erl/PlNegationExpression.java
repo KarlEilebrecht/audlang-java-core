@@ -19,12 +19,6 @@
 
 package de.calamanari.adl.erl;
 
-import static de.calamanari.adl.FormatUtils.appendNegationExpressionMultiLine;
-import static de.calamanari.adl.FormatUtils.appendNegationExpressionSingleLine;
-import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
-import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
-import static de.calamanari.adl.erl.PlComment.Position.C1;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -46,6 +40,12 @@ import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.FormatUtils.FormatInfo;
 import de.calamanari.adl.SpecialSetType;
 import de.calamanari.adl.Visit;
+
+import static de.calamanari.adl.FormatUtils.appendNegationExpressionMultiLine;
+import static de.calamanari.adl.FormatUtils.appendNegationExpressionSingleLine;
+import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
+import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
+import static de.calamanari.adl.erl.PlComment.Position.C1;
 
 /**
  * {@link PlNegationExpression} represents a logical NOT on the Audlang presentation layer.

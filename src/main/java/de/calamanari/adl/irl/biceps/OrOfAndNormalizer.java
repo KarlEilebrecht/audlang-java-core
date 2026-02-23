@@ -19,16 +19,16 @@
 
 package de.calamanari.adl.irl.biceps;
 
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isCombinedExpressionId;
-
 import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.calamanari.adl.TimeOut;
+
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.INVALID;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isCombinedExpressionId;
 
 /**
  * The {@link OrOfAndNormalizer} brings the expression tree in such a form that the result is either a LEAF or an AND composed of LEAFs or an OR that can

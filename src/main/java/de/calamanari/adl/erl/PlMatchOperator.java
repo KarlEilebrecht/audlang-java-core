@@ -19,6 +19,16 @@
 
 package de.calamanari.adl.erl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import de.calamanari.adl.AudlangValidationException;
+import de.calamanari.adl.FormatStyle;
+import de.calamanari.adl.erl.PlComment.Position;
+import de.calamanari.adl.util.AdlTextUtils;
+
 import static de.calamanari.adl.FormatConstants.EMPTY_PREFIX;
 import static de.calamanari.adl.FormatConstants.STRICT_PREFIX;
 import static de.calamanari.adl.FormatConstants.T_ANY;
@@ -42,16 +52,6 @@ import static de.calamanari.adl.erl.CommentUtils.appendComments;
 import static de.calamanari.adl.erl.CommentUtils.appendCommentsOrWhitespace;
 import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
 import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import de.calamanari.adl.AudlangValidationException;
-import de.calamanari.adl.FormatStyle;
-import de.calamanari.adl.erl.PlComment.Position;
-import de.calamanari.adl.util.AdlTextUtils;
 
 /**
  * The {@link PlMatchOperator} enumeration covers the Audlang operators for {@link PlMatchExpression}s on the presentation layer.

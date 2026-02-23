@@ -19,6 +19,14 @@
 
 package de.calamanari.adl.erl;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import de.calamanari.adl.FormatConstants;
+import de.calamanari.adl.FormatStyle;
+import de.calamanari.adl.erl.PlComment.Position;
+
 import static de.calamanari.adl.FormatConstants.COMMENT_LINE_THRESHOLD;
 import static de.calamanari.adl.FormatUtils.appendIndent;
 import static de.calamanari.adl.FormatUtils.newLine;
@@ -31,14 +39,6 @@ import static de.calamanari.adl.erl.PlComment.Position.C3;
 import static de.calamanari.adl.erl.PlComment.Position.C4;
 import static de.calamanari.adl.erl.PlComment.Position.C5;
 import static de.calamanari.adl.erl.PlComment.Position.C6;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import de.calamanari.adl.FormatConstants;
-import de.calamanari.adl.FormatStyle;
-import de.calamanari.adl.erl.PlComment.Position;
 
 /**
  * Some helper methods for writing comments on elements of an expression.

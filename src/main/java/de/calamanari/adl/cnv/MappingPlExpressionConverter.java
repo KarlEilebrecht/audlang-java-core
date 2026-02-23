@@ -51,7 +51,6 @@ public class MappingPlExpressionConverter extends AbstractPlExpressionConverter<
      * @param mapper
      */
     public MappingPlExpressionConverter(ArgNameValueMapper mapper) {
-        super(DefaultConversionContext::new);
         if (!mapper.isArgumentStructurePreserving()) {
             throw new IncompatibleMappingException("""
                     The given mapping is not applicable to a presentation layer expression because it potentially changes the structure of the expression.
@@ -64,6 +63,7 @@ public class MappingPlExpressionConverter extends AbstractPlExpressionConverter<
                     PlExpression mapping conversions are intended to switch (back and forth) between ids/labels, which is impossible with the given mapping.
                     """);
         }
+        super(DefaultConversionContext::new);
         this.mapper = mapper;
     }
 

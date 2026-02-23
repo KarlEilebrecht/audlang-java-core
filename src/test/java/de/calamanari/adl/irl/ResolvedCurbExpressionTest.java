@@ -19,8 +19,6 @@
 
 package de.calamanari.adl.irl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +29,8 @@ import de.calamanari.adl.cnv.StandardConversions;
 import de.calamanari.adl.erl.AudlangParseResult;
 import de.calamanari.adl.erl.PlExpressionBuilder;
 import de.calamanari.adl.irl.biceps.ExpressionTreeSimulator;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

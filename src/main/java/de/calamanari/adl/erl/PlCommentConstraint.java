@@ -19,6 +19,11 @@
 
 package de.calamanari.adl.erl;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import static de.calamanari.adl.erl.PlComment.Position.AFTER_EXPRESSION;
 import static de.calamanari.adl.erl.PlComment.Position.BEFORE_EXPRESSION;
 import static de.calamanari.adl.erl.PlComment.Position.C1;
@@ -27,11 +32,6 @@ import static de.calamanari.adl.erl.PlComment.Position.C3;
 import static de.calamanari.adl.erl.PlComment.Position.C4;
 import static de.calamanari.adl.erl.PlComment.Position.C5;
 import static de.calamanari.adl.erl.PlComment.Position.C6;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 /**
  * Comments can only appear between certain tokens of the Audlang, and not every operator has the same number of tokens so that the number of available slots to

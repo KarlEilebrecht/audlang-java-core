@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.irl;
 
-import static de.calamanari.adl.FormatUtils.appendCombinedExpressionMultiLine;
-import static de.calamanari.adl.FormatUtils.appendCombinedExpressionSingleLine;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,6 +34,9 @@ import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.FormatUtils.FormatInfo;
 import de.calamanari.adl.Visit;
+
+import static de.calamanari.adl.FormatUtils.appendCombinedExpressionMultiLine;
+import static de.calamanari.adl.FormatUtils.appendCombinedExpressionSingleLine;
 
 /**
  * A {@link CombinedExpression} connects at least two expressions to form a new one either with {@link CombinedExpressionType#OR} or

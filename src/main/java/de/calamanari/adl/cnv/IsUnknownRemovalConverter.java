@@ -19,14 +19,6 @@
 
 package de.calamanari.adl.cnv;
 
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isCombinedExpressionId;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isNegatedUnknown;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
-import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isUnknown;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -43,6 +35,14 @@ import de.calamanari.adl.irl.biceps.CoreExpressionOptimizer;
 import de.calamanari.adl.irl.biceps.EncodedExpressionTree;
 import de.calamanari.adl.irl.biceps.ImplicationResolver;
 import de.calamanari.adl.irl.biceps.MemberUtils;
+
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.ALL;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.NONE;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.getNodeType;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isCombinedExpressionId;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isNegatedUnknown;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isSpecialSet;
+import static de.calamanari.adl.irl.biceps.CoreExpressionCodec.isUnknown;
 
 /**
  * This converter allows to streamline an expression once we have the information if arguments can be UNKNOWN or not. <br>

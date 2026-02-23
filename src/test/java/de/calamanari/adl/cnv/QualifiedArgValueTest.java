@@ -19,14 +19,14 @@
 
 package de.calamanari.adl.cnv;
 
+import org.junit.jupiter.api.Test;
+
+import de.calamanari.adl.DeepCopyUtils;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import org.junit.jupiter.api.Test;
-
-import de.calamanari.adl.DeepCopyUtils;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

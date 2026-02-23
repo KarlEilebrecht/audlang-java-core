@@ -19,10 +19,6 @@
 
 package de.calamanari.adl.cnv;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +26,10 @@ import org.junit.jupiter.api.Test;
 
 import de.calamanari.adl.DeepCopyUtils;
 import de.calamanari.adl.cnv.ArgNameValueMapping.Builder;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

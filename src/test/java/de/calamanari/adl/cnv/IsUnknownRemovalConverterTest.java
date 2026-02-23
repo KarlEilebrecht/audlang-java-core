@@ -19,8 +19,6 @@
 
 package de.calamanari.adl.cnv;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -28,12 +26,14 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import de.calamanari.adl.FormatStyle;
-import de.calamanari.adl.cnv.tps.DefaultArgMetaInfoLookup;
 import de.calamanari.adl.cnv.tps.DefaultAdlType;
+import de.calamanari.adl.cnv.tps.DefaultArgMetaInfoLookup;
 import de.calamanari.adl.erl.AudlangParseResult;
 import de.calamanari.adl.erl.PlExpressionBuilder;
 import de.calamanari.adl.irl.CoreExpression;
 import de.calamanari.adl.irl.biceps.CoreExpressionOptimizer;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>

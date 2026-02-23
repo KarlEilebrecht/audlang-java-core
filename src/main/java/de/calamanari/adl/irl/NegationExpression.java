@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.irl;
 
-import static de.calamanari.adl.FormatUtils.appendNegationExpressionMultiLine;
-import static de.calamanari.adl.FormatUtils.appendNegationExpressionSingleLine;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,6 +34,9 @@ import de.calamanari.adl.CombinedExpressionType;
 import de.calamanari.adl.FormatStyle;
 import de.calamanari.adl.FormatUtils.FormatInfo;
 import de.calamanari.adl.Visit;
+
+import static de.calamanari.adl.FormatUtils.appendNegationExpressionMultiLine;
+import static de.calamanari.adl.FormatUtils.appendNegationExpressionSingleLine;
 
 /**
  * A {@link NegationExpression} represents a logical NOT on the Audlang internal representation layer and covers all kind of negation <i>on attribute level</i>.

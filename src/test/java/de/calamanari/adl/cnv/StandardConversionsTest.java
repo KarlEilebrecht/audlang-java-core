@@ -19,9 +19,6 @@
 
 package de.calamanari.adl.cnv;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import java.util.Optional;
 import java.util.function.UnaryOperator;
 
@@ -31,6 +28,9 @@ import de.calamanari.adl.AudlangResult;
 import de.calamanari.adl.ConversionException;
 import de.calamanari.adl.erl.AudlangParseResult;
 import de.calamanari.adl.erl.PlExpression;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
