@@ -70,7 +70,7 @@ class ExceptionConstructorTest {
         
         // @formatter:on
 
-        toBeTested.stream().forEach(ExceptionConstructorTest::assertCanConstruct);
+        toBeTested.forEach(ExceptionConstructorTest::assertCanConstruct);
     }
 
     private static void assertCanConstruct(Class<? extends AdlException> exClass) {

@@ -140,7 +140,7 @@ public record PlCurbExpression(PlCombinedExpression curbDelegate, PlCurbOperator
     public void accept(PlExpressionVisitor visitor) {
         visitor.visit(this, Visit.ENTER);
         // skip the OR-level
-        curbDelegate.members().stream().forEach(m -> m.accept(visitor));
+        curbDelegate.members().forEach(m -> m.accept(visitor));
         visitor.visit(this, Visit.EXIT);
     }
 

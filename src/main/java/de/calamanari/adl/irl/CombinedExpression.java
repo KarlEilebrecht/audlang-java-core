@@ -302,7 +302,7 @@ public record CombinedExpression(CombinedExpressionType combiType, List<CoreExpr
     @Override
     public void accept(CoreExpressionVisitor visitor) {
         visitor.visit(this, Visit.ENTER);
-        members.stream().forEach(m -> m.accept(visitor));
+        members.forEach(m -> m.accept(visitor));
         visitor.visit(this, Visit.EXIT);
     }
 

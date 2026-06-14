@@ -113,7 +113,7 @@ public record PlCombinedExpression(CombinedExpressionType combiType, List<PlExpr
     @Override
     public void accept(PlExpressionVisitor visitor) {
         visitor.visit(this, Visit.ENTER);
-        members.stream().forEach(m -> m.accept(visitor));
+        members.forEach(m -> m.accept(visitor));
         visitor.visit(this, Visit.EXIT);
     }
 

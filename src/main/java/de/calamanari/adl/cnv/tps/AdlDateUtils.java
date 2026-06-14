@@ -39,6 +39,7 @@ import de.calamanari.adl.irl.MatchOperator;
  * 
  * @author <a href="mailto:Karl.Eilebrecht(a/t)calamanari.de">Karl Eilebrecht</a>
  */
+@SuppressWarnings("java:S2143")
 public class AdlDateUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AdlDateUtils.class);
