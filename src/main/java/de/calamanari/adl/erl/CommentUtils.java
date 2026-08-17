@@ -180,7 +180,7 @@ public class CommentUtils {
 
         while (state.srcIdx < comment.length()) {
             char ch = comment.charAt(state.srcIdx);
-            if ((ch >= 0 && ch < 32) || ch == 127) {
+            if (ch < 32 || ch == 127) {
                 ch = ' ';
             }
             handleCommentCharacter(comment, state, ch);
