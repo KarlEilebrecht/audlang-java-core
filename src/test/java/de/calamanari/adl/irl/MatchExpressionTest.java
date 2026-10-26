@@ -21,7 +21,7 @@ package de.calamanari.adl.irl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -370,7 +370,7 @@ class MatchExpressionTest {
 
         // @formatter:on
         List<String> expectedFieldNames = new ArrayList<>(Arrays.asList("arg", "ref1"));
-        Collections.sort(expectedFieldNames);
+        expectedFieldNames.sort(Comparator.naturalOrder());
         assertEquals(expectedFieldNames, expr.allArgNames());
 
         List<CoreExpression> collectedExpressions = new ArrayList<>();

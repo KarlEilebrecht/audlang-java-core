@@ -121,7 +121,7 @@ class CoreExpressionCodecTest {
     @Test
     void testReferenceEncoding() {
 
-        int[] validIds = new int[] { 0, 1, 100, 1_000, 1_000_000, 99_888_777, CoreExpressionCodec.MAX_EXTERNAL_EXPRESSION_ID };
+        int[] validIds = { 0, 1, 100, 1_000, 1_000_000, 99_888_777, CoreExpressionCodec.MAX_EXTERNAL_EXPRESSION_ID };
 
         for (int id : validIds) {
 

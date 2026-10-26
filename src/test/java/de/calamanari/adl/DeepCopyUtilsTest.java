@@ -48,12 +48,7 @@ class DeepCopyUtilsTest {
 
         assertNull(DeepCopyUtils.deepCopy(null));
 
-        Runnable notSerializable = new Runnable() {
-
-            @Override
-            public void run() {
-                // nothing to do
-            }
+        Runnable notSerializable = () -> {//
         };
 
         class Something implements Serializable {

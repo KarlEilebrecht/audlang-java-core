@@ -137,7 +137,7 @@ class GrowingIntArrayTest {
     @Test
     void testCopy() {
 
-        int[] arr = new int[] { 1, 2, 3, 4, 5 };
+        int[] arr = { 1, 2, 3, 4, 5 };
 
         GrowingIntArray gra = new GrowingIntArray(arr, true);
 
@@ -198,7 +198,7 @@ class GrowingIntArrayTest {
         assertThrows(IndexOutOfBoundsException.class, () -> gra.setLength(-1));
         assertThrows(IndexOutOfBoundsException.class, () -> gra.setLength(11));
 
-        int[] arrToBeAdded = new int[] { 7, 8, 9 };
+        int[] arrToBeAdded = { 7, 8, 9 };
         GrowingIntArray graToBeAdded = new GrowingIntArray(arrToBeAdded, false);
 
         assertThrows(IndexOutOfBoundsException.class, () -> gra.addAll(arrToBeAdded, -1, 3));

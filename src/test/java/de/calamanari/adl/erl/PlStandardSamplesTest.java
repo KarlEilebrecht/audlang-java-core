@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -212,10 +213,10 @@ class PlStandardSamplesTest {
     private static <T extends Comparable<T>> void assertSameElements(List<T> expected, List<T> actual) {
 
         List<T> expectedOrdered = new ArrayList<>(expected);
-        Collections.sort(expectedOrdered);
+        expectedOrdered.sort(Comparator.naturalOrder());
 
         List<T> actualOrdered = new ArrayList<>(actual);
-        Collections.sort(actualOrdered);
+        actualOrdered.sort(Comparator.naturalOrder());
 
         assertEquals(expectedOrdered, actualOrdered);
     }

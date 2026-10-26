@@ -22,6 +22,7 @@ package de.calamanari.adl.erl;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -1143,7 +1144,7 @@ class PlMatchExpressionTest {
         
         // @formatter:on
         List<String> expectedFieldNames = new ArrayList<>(Arrays.asList("arg", "ref1"));
-        Collections.sort(expectedFieldNames);
+        expectedFieldNames.sort(Comparator.naturalOrder());
         assertEquals(expectedFieldNames, expr.allArgNames());
 
         List<PlExpression<?>> collectedExpressions = new ArrayList<>();
@@ -1168,10 +1169,10 @@ class PlMatchExpressionTest {
             ));
         // @formatter:on
 
-        Collections.sort(expectedComments);
+        expectedComments.sort(Comparator.naturalOrder());
 
         List<String> comments = new ArrayList<>(expr.allComments().stream().map(PlComment::comment).toList());
-        Collections.sort(comments);
+        comments.sort(Comparator.naturalOrder());
 
         assertEquals(expectedComments, comments);
 

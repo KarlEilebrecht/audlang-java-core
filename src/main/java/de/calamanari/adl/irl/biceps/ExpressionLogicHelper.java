@@ -870,7 +870,7 @@ public class ExpressionLogicHelper implements Serializable {
         if (isReferenceMatch(node)) {
             int referencedArgIsUnknown = createIsUnknownForReferencedArgName(node);
 
-            int[] orMembers = new int[] { negatedNode, argIsUnknown, referencedArgIsUnknown };
+            int[] orMembers = { negatedNode, argIsUnknown, referencedArgIsUnknown };
             return tree.createNode(NodeType.OR, orMembers);
 
         }

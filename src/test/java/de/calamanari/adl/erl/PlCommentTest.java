@@ -95,7 +95,7 @@ class PlCommentTest {
 
     private String createComment(Random rand) {
 
-        String[] fragments = new String[] { " ", " ", " ", " ", " ", "\n", "hugo", "/*", "*/", "\"   bla    \"", "(", ")", ",", "=", "a", "b", "c", "1",
+        String[] fragments = { " ", " ", " ", " ", " ", "\n", "hugo", "/*", "*/", "\"   bla    \"", "(", ")", ",", "=", "a", "b", "c", "1",
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
                 "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" };
 

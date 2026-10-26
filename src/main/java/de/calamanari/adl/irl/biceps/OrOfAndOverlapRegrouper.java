@@ -21,7 +21,6 @@ package de.calamanari.adl.irl.biceps;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -411,7 +410,7 @@ public class OrOfAndOverlapRegrouper implements ExpressionTreeProcessor {
         }
         List<Map.Entry<Overlap, int[]>> entries = new ArrayList<>(overlaps.entrySet());
         updateContainedOverlapCounts(entries);
-        Collections.sort(entries, OVERLAP_ENTRY_RANK_COMPARATOR);
+        entries.sort(OVERLAP_ENTRY_RANK_COMPARATOR);
         return entries.get(entries.size() - 1).getKey();
     }
 
@@ -455,7 +454,7 @@ public class OrOfAndOverlapRegrouper implements ExpressionTreeProcessor {
     private void updateContainedOverlapCounts(List<Map.Entry<Overlap, int[]>> overlapEntries) {
         // put the shorter overlaps strictly before the longer ones
         // so it is possible that the next overlap can contain the current one but never vice-versa
-        Collections.sort(overlapEntries, OVERLAP_ENTRY_SIZE_COMPARATOR);
+        overlapEntries.sort(OVERLAP_ENTRY_SIZE_COMPARATOR);
 
         for (int leftIdx = 0; leftIdx < overlapEntries.size() - 1; leftIdx++) {
             Map.Entry<Overlap, int[]> leftEntry = overlapEntries.get(leftIdx);

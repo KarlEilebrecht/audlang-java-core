@@ -128,7 +128,7 @@ public class OrOfAndNormalizer implements ExpressionTreeProcessor {
         }
 
         if (LOGGER.isTraceEnabled()) {
-            LOGGER.trace("normalize AFTER: {}{}", ((updatedNode != node) ? "*" : " "), tree.createDebugString(updatedNode));
+            LOGGER.trace("normalize AFTER: {}{}", ((updatedNode == node) ? " " : "*"), tree.createDebugString(updatedNode));
         }
 
         return updatedNode;
@@ -258,7 +258,7 @@ public class OrOfAndNormalizer implements ExpressionTreeProcessor {
         }
 
         int sizeAfter = updatedMembers.size();
-        LOGGER.trace("cleanupImplications AFTER: {}{}", (sizeBefore != sizeAfter) ? "*" : " ", sizeAfter);
+        LOGGER.trace("cleanupImplications AFTER: {}{}", (sizeBefore == sizeAfter) ? " " : "*", sizeAfter);
     }
 
     /**

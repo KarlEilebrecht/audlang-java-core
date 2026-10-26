@@ -37,7 +37,7 @@ public class DefaultEscaper implements NativeEscaper {
     /**
      * Sequences to represent escaped characters (same order as {@link #DEFAULT_CHARS_TO_BE_ESCAPED_DQ}).
      */
-    private static final String[] DEFAULT_ESCAPE_SEQUENCES_DQ = new String[] { "\\b", "\\n", "\\r", "\\t", "\\\\", "\\\"" };
+    private static final String[] DEFAULT_ESCAPE_SEQUENCES_DQ = { "\\b", "\\n", "\\r", "\\t", "\\\\", "\\\"" };
 
     /**
      * Default set of characters which must be prepended by a backslash to escape them: {@value}
@@ -47,7 +47,7 @@ public class DefaultEscaper implements NativeEscaper {
     /**
      * Sequences to represent escaped characters (same order as {@link #DEFAULT_CHARS_TO_BE_ESCAPED_SQ}).
      */
-    private static final String[] DEFAULT_ESCAPE_SEQUENCES_SQ = new String[] { "\\b", "\\n", "\\r", "\\t", "\\\\", "\\'" };
+    private static final String[] DEFAULT_ESCAPE_SEQUENCES_SQ = { "\\b", "\\n", "\\r", "\\t", "\\\\", "\\'" };
 
     private static final DefaultEscaper DEFAULT_DQ_INSTANCE = new DefaultEscaper(DEFAULT_CHARS_TO_BE_ESCAPED_DQ, DEFAULT_ESCAPE_SEQUENCES_DQ,
             ch -> (ch >= 32 || DEFAULT_CHARS_TO_BE_ESCAPED_DQ.indexOf(ch) > -1));

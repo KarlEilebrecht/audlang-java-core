@@ -207,7 +207,7 @@ public class CoreToPlExpressionConverter extends AbstractCoreExpressionConverter
         res = applyPrettyMemberOrder(res);
 
         if (LOGGER.isTraceEnabled()) {
-            LOGGER.trace("finishResult AFTER: {}{}", ((res != before) ? "*" : " "), res);
+            LOGGER.trace("finishResult AFTER: {}{}", ((res == before) ? " " : "*"), res);
         }
 
         return res;
@@ -287,7 +287,7 @@ public class CoreToPlExpressionConverter extends AbstractCoreExpressionConverter
         }
 
         if (LOGGER.isTraceEnabled()) {
-            LOGGER.trace("removeRedundantStrictness AFTER: {}{}", ((update != expression) ? "*" : " "), update);
+            LOGGER.trace("removeRedundantStrictness AFTER: {}{}", ((update == expression) ? " " : "*"), update);
         }
 
         return update;
@@ -745,16 +745,14 @@ public class CoreToPlExpressionConverter extends AbstractCoreExpressionConverter
             }
 
             List<PlExpression<?>> members = new ArrayList<>(expression.childExpressions());
-            for (int idx = 0; idx < members.size(); idx++) {
-                members.set(idx, applyPrettyMemberOrder(members.get(idx)));
-            }
-            Collections.sort(members, MEMBER_PRETTY_ORDER_COMPARATOR);
+            members.replaceAll(this::applyPrettyMemberOrder);
+            members.sort(MEMBER_PRETTY_ORDER_COMPARATOR);
             if (!members.equals(expression.childExpressions())) {
                 res = new PlCombinedExpression(cmb.combiType(), members, cmb.comments());
             }
 
             if (LOGGER.isTraceEnabled()) {
-                LOGGER.trace("applyPrettyMemberOrder AFTER: {}{}", ((res != expression) ? "*" : " "), res);
+                LOGGER.trace("applyPrettyMemberOrder AFTER: {}{}", ((res == expression) ? " " : "*"), res);
             }
 
         }

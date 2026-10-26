@@ -22,6 +22,7 @@ package de.calamanari.adl.erl;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -203,10 +204,10 @@ class PlSpecialSetExpressionTest {
             ));
         // @formatter:on
 
-        Collections.sort(expectedComments);
+        expectedComments.sort(Comparator.naturalOrder());
 
         List<String> comments = new ArrayList<>(expr.allComments().stream().map(PlComment::comment).toList());
-        Collections.sort(comments);
+        comments.sort(Comparator.naturalOrder());
 
         assertEquals(expectedComments, comments);
 

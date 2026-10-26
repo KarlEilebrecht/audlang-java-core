@@ -22,6 +22,7 @@ package de.calamanari.adl.irl;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -186,7 +187,7 @@ public record CombinedExpression(CombinedExpressionType combiType, List<CoreExpr
     private static void sortFilterExpandMembers(List<CoreExpression> members, CombinedExpressionType combiType) {
 
         List<CoreExpression> res = new ArrayList<>(members.size());
-        Collections.sort(members);
+        members.sort(Comparator.naturalOrder());
         CoreExpression prevMember = null;
         boolean expanded = false;
         for (CoreExpression member : members) {

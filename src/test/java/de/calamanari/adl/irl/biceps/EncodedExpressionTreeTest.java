@@ -181,7 +181,7 @@ class EncodedExpressionTreeTest {
         int node4 = tree.createNode(StandardConversions.parseCoreExpression("b = 4"));
         int node5 = tree.createNode(StandardConversions.parseCoreExpression("( ( d = 9 OR e = foo ) AND c = 8 )"));
 
-        int[] before = new int[] { node2, node1, node1, node2, CoreExpressionCodec.INVALID, CoreExpressionCodec.ALL };
+        int[] before = { node2, node1, node1, node2, CoreExpressionCodec.INVALID, CoreExpressionCodec.ALL };
 
         assertArrayEquals(new int[] { node1, node2 }, tree.consolidateMembers(NodeType.AND, before));
 

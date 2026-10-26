@@ -80,7 +80,7 @@ class MemberUtilsTest {
         MemberUtils.sortDistinctMembers(gar);
         assertTrue(gar.isEmpty());
 
-        int[] arr = new int[] { 7, 2, 3, 1 };
+        int[] arr = { 7, 2, 3, 1 };
         assertSame(arr, MemberUtils.sortDistinctMembers(arr, false));
         arr = new int[] { 7, 2, 3, 1 };
         assertNotSame(arr, MemberUtils.sortDistinctMembers(arr, true));
@@ -105,7 +105,7 @@ class MemberUtilsTest {
                 MemberUtils.discardSpecialSetMembers(new int[] { CoreExpressionCodec.ALL, 6, CoreExpressionCodec.ALL, 7, CoreExpressionCodec.NONE, 1, 1,
                         CoreExpressionCodec.NONE, 1, 1, 4, CoreExpressionCodec.INVALID }, false));
 
-        int[] arr = new int[] { 1, 2, 3, 4, 5, CoreExpressionCodec.INVALID };
+        int[] arr = { 1, 2, 3, 4, 5, CoreExpressionCodec.INVALID };
 
         assertSame(arr, MemberUtils.discardSpecialSetMembers(arr, false));
         assertNotSame(arr, MemberUtils.discardSpecialSetMembers(arr, true));
@@ -114,9 +114,8 @@ class MemberUtilsTest {
 
     @Test
     void testCopyFilterCombinedMembers() {
-        int[] members = new int[] { CoreExpressionCodec.encodeCombinedExpressionId(1, NodeType.AND),
-                CoreExpressionCodec.encodeCombinedExpressionId(2, NodeType.OR), CoreExpressionCodec.ALL, CoreExpressionCodec.INVALID,
-                CoreExpressionCodec.NONE };
+        int[] members = { CoreExpressionCodec.encodeCombinedExpressionId(1, NodeType.AND), CoreExpressionCodec.encodeCombinedExpressionId(2, NodeType.OR),
+                CoreExpressionCodec.ALL, CoreExpressionCodec.INVALID, CoreExpressionCodec.NONE };
 
         assertArrayEquals(
                 new int[] { CoreExpressionCodec.encodeCombinedExpressionId(1, NodeType.AND), CoreExpressionCodec.encodeCombinedExpressionId(2, NodeType.OR) },
@@ -134,9 +133,8 @@ class MemberUtilsTest {
 
     @Test
     void testCopyFilterLeafMembers() {
-        int[] members = new int[] { CoreExpressionCodec.encodeCombinedExpressionId(1, NodeType.AND),
-                CoreExpressionCodec.encodeCombinedExpressionId(2, NodeType.OR), CoreExpressionCodec.ALL, CoreExpressionCodec.INVALID, CoreExpressionCodec.NONE,
-                CoreExpressionCodec.NONE };
+        int[] members = { CoreExpressionCodec.encodeCombinedExpressionId(1, NodeType.AND), CoreExpressionCodec.encodeCombinedExpressionId(2, NodeType.OR),
+                CoreExpressionCodec.ALL, CoreExpressionCodec.INVALID, CoreExpressionCodec.NONE, CoreExpressionCodec.NONE };
 
         assertArrayEquals(new int[] { CoreExpressionCodec.ALL, CoreExpressionCodec.NONE, CoreExpressionCodec.NONE },
                 MemberUtils.copyFilterLeafMembers(members));
@@ -154,9 +152,8 @@ class MemberUtilsTest {
 
     @Test
     void testContainsAnyCombinedMember() {
-        int[] members = new int[] { CoreExpressionCodec.encodeCombinedExpressionId(1, NodeType.AND),
-                CoreExpressionCodec.encodeCombinedExpressionId(2, NodeType.OR), CoreExpressionCodec.ALL, CoreExpressionCodec.INVALID,
-                CoreExpressionCodec.NONE };
+        int[] members = { CoreExpressionCodec.encodeCombinedExpressionId(1, NodeType.AND), CoreExpressionCodec.encodeCombinedExpressionId(2, NodeType.OR),
+                CoreExpressionCodec.ALL, CoreExpressionCodec.INVALID, CoreExpressionCodec.NONE };
 
         assertTrue(MemberUtils.containsAnyCombinedMember(members));
 
@@ -168,7 +165,7 @@ class MemberUtilsTest {
 
     @Test
     void testCopySkipMember() {
-        int[] members = new int[] { 17, 23, 412, 453, 3, 1, 18 };
+        int[] members = { 17, 23, 412, 453, 3, 1, 18 };
 
         assertArrayEquals(new int[] { 23, 412, 453, 3, 1, 18 }, MemberUtils.copySkipMember(members, 17));
 
@@ -191,7 +188,7 @@ class MemberUtilsTest {
     @Test
     void testSortedLeftMembersContainSortedRightMembers() {
 
-        int[] members = new int[] { 2, 3, 5, 7, 11, 13, 19 };
+        int[] members = { 2, 3, 5, 7, 11, 13, 19 };
 
         assertTrue(MemberUtils.sortedLeftMembersContainSortedRightMembers(new int[0], new int[0]));
         assertTrue(MemberUtils.sortedLeftMembersContainSortedRightMembers(members, new int[0]));

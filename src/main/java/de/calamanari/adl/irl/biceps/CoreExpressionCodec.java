@@ -22,6 +22,7 @@ package de.calamanari.adl.irl.biceps;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -987,7 +988,7 @@ public class CoreExpressionCodec implements Serializable {
          */
         private static List<String> dedup(List<String> values) {
             List<String> valuesSorted = new ArrayList<>(values == null ? Collections.emptyList() : values);
-            Collections.sort(valuesSorted);
+            valuesSorted.sort(Comparator.naturalOrder());
 
             String prevValue = null;
             for (int i = valuesSorted.size() - 1; i > -1; i--) {

@@ -22,6 +22,7 @@ package de.calamanari.adl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -97,7 +98,7 @@ public interface AudlangExpression<T extends AudlangExpression<T, V>, V> extends
     default List<T> collectExpressions(Predicate<T> filter) {
         List<T> res = new ArrayList<>();
         collectExpressions(filter, res);
-        Collections.sort(res);
+        res.sort(Comparator.naturalOrder());
         return res;
     }
 

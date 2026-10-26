@@ -53,8 +53,8 @@ public class ImplicationResolver implements ExpressionTreeProcessor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ImplicationResolver.class);
 
-    private static final int[] ALL_ARRAY = new int[] { CoreExpressionCodec.ALL };
-    private static final int[] NONE_ARRAY = new int[] { CoreExpressionCodec.NONE };
+    private static final int[] ALL_ARRAY = { CoreExpressionCodec.ALL };
+    private static final int[] NONE_ARRAY = { CoreExpressionCodec.NONE };
 
     private final TimeOut timeout;
 

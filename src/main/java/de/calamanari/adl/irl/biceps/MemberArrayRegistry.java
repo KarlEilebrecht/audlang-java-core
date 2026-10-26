@@ -22,7 +22,7 @@ package de.calamanari.adl.irl.biceps;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -169,7 +169,7 @@ public class MemberArrayRegistry implements Serializable {
 
         List<Integer> validIds = new ArrayList<>(memberArrays.size());
         collectValidIds(rootNode, validIds);
-        Collections.sort(validIds);
+        validIds.sort(Comparator.naturalOrder());
         int[] uniqueSortedIds = new int[validIds.size()];
         int numberOfUniqueIds = 0;
         int prevId = -1;
